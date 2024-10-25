@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 public class CameraScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _playerCharacter;
-
-    [SerializeField]
     private float _minZoomValue = 5, _maxZoomValue = 13;
 
     [SerializeField]
@@ -24,9 +21,8 @@ public class CameraScript : MonoBehaviour
         }
     }
 
-    public void ZoomAction(InputAction.CallbackContext callbackContext)
+    public void Zoom(float scrollValue)
     {
-        float scrollValue = callbackContext.ReadValue<float>();
         _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize - scrollValue * _zoomForce, _minZoomValue, _maxZoomValue);
     }
 }

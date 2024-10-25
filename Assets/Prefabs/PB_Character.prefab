@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02a872f6596feb4b9d52e1a30080455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 7727281446905364035}
   _speed: 8
 --- !u!114 &3970107291243484780
 MonoBehaviour:
@@ -212,8 +213,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7727281446905364035}
-        m_TargetAssemblyTypeName: CameraScript, Assembly-CSharp
+      - m_Target: {fileID: 1400867527067549288}
+        m_TargetAssemblyTypeName: CharacterScript, Assembly-CSharp
         m_MethodName: ZoomAction
         m_Mode: 0
         m_Arguments:
@@ -381,7 +382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121773b8845185e4089eb8684f71b217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerCharacter: {fileID: 2786736221312726058}
   _minZoomValue: 5
   _maxZoomValue: 13
   _zoomForce: 0.5
