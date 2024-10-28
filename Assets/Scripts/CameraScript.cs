@@ -21,6 +21,9 @@ public class CameraScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the camera orthographicSize between the minZoomValue and the maxZoomValue
+    /// </summary>
     public void Zoom(float scrollValue)
     {
         _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize - scrollValue * _zoomForce, _minZoomValue, _maxZoomValue);
