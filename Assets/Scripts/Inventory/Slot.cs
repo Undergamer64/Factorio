@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public ItemBase _Item;
+    private ItemBase _Item;
 
-    public int _MaxItems;
-    public int _Quantity;
+    private int _MaxItems;
+    private int _Quantity;
 
     [SerializeField]
     private TextMeshProUGUI _quantityText;
@@ -82,5 +82,6 @@ public class Slot : MonoBehaviour
 
     public ItemBase Item { get { return _Item; } set { _Item = value; } }
     public int Quantity { get { return _Quantity; } }
+    public int MaxItems { get { return _MaxItems; } }
 
 }
