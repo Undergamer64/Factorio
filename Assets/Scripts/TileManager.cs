@@ -28,13 +28,6 @@ public class TileManager : MonoBehaviour
     {
         //return true if you can place a gameobject at the desired location
         Vector2 offset = new Vector2(WorldPosition.x + SizeX/2-0.5f, WorldPosition.y + SizeY / 2 - 0.5f);
-        if (Physics2D.OverlapBoxAll(offset, new Vector2(SizeX, SizeY),0) != null)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return (Physics2D.OverlapBoxAll(offset, new Vector2(SizeX, SizeY), 0) == null);
     }
 }
