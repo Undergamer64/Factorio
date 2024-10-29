@@ -26,7 +26,7 @@ public class TileManager : MonoBehaviour
 
     public bool CanPlace(Tilemap TileMap, Vector2 WorldPosition, int SizeX, int SizeY)
     {
-        //return true if you can place a gameobject at the desired location
+        //return true if you can place a GameObject at the desired location
         Vector2 offset = new Vector2(WorldPosition.x + SizeX/2-0.5f, WorldPosition.y + SizeY / 2 - 0.5f);
         return (Physics2D.OverlapBoxAll(offset, new Vector2(SizeX, SizeY), 0) == null);
     }
