@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if (itemSlot.Item == null)
+        if (IsEmpty(itemSlot))
         {
             itemSlot.AddItemToSlot(item);
         }
@@ -61,26 +61,27 @@ public class Inventory : MonoBehaviour
     public void TryRemoveItems(ItemBase item, int quantity)
     {
         int tempQuantity = quantity;
-        for (int i = _Slots.Count - 1; i >= 0; i--)
+        for (int i = _Slots.Count - 1; i > 0; i--)
         {
+            Slot itemSlot = _Slots[i];
             if (tempQuantity <= 0)
             {
                 return;
             }
-            if (_Slots[i].Item == null)
+            if (IsEmpty(itemSlot))
             {
                 continue;
             }
-            if (_Slots[i].Item == item && _Slots[i].Quantity > 0)
+            if (itemSlot.Item == item && itemSlot.Quantity > 0)
             {
-                if (tempQuantity > _Slots[i].Quantity)
+                if (tempQuantity > itemSlot.Quantity)
                 {
-                    tempQuantity -= _Slots[i].Quantity;
-                    _Slots[i].UpdateQuantity(0);
+                    tempQuantity -= itemSlot.Quantity;
+                    itemSlot.UpdateQuantity(0);
                 }
                 else
                 {
-                    _Slots[i].UpdateQuantity(_Slots[i].Quantity - tempQuantity);
+                    itemSlot.UpdateQuantity(itemSlot.Quantity - tempQuantity);
                     return;
                 }
             }
@@ -147,7 +148,7 @@ public class Inventory : MonoBehaviour
         //search empty slots
         foreach (Slot itemSlot in _Slots)
         {
-            if (itemSlot.Item == null)
+            if (IsEmpty(itemSlot))
             {
                 return itemSlot;
             }
@@ -163,11 +164,16 @@ public class Inventory : MonoBehaviour
     {
         foreach (Slot itemSlot in _Slots)
         {
-            if (itemSlot.Item == null)
+            if (IsEmpty(itemSlot))
             {
                 return false;
             }
         }
         return true;
+    }
+
+    private bool IsEmpty(Slot itemSlot)
+    {
+        return itemSlot.Item == null;
     }
 }
