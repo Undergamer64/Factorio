@@ -27,17 +27,4 @@ public class Input : Tunnel
             }
         }
     }
-       
-
-    public void PushToInventory(ItemBase item, int quantity)
-    {
-        if (!_ParentInventory.IsInventoryFull(item, quantity))
-        {
-            if (_Output.PullOutInventory(item, quantity))
-            {
-                _ParentInventory.TryAddItems(item, _Output._PulledItem);
-            }
-        }
-    }
-
 }

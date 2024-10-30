@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Extractor
   m_EditorClassIdentifier: 
   _name: Extractor
+  _maxStack: 64
   _sprite: {fileID: 0}
-  _structure: {fileID: 0}
+  _structure: {fileID: 1544764270192503503, guid: d9bc619a9361c214b98731e5358d1ba8, type: 3}

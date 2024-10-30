@@ -5,7 +5,6 @@ using UnityEngine;
 public class Output : Tunnel
 {
     public Input _Input;
-    public int _PulledItem;
 
     private void Start()
     {
@@ -25,17 +24,13 @@ public class Output : Tunnel
         }
     }
 
-        /// <summary>
-        /// only used in PushToInventory from Input
-        /// </summary>
-        public bool PullOutInventory(ItemBase item,int quantity)
+    public void PullOutInventory(ItemBase item,int quantity)
     {
-        _PulledItem = _ParentInventory.TryRemoveItems(item, quantity);
-        if (_PulledItem < quantity)
+        if (!_Input._ParentInventory.IsInventoryFull(item,quantity))
         {
-            _PulledItem = quantity - _PulledItem;
-            return true;
+            int pulledItem = quantity - _ParentInventory.TryRemoveItems(item, quantity);
+            _Input._ParentInventory.TryAddItems(item, pulledItem);
         }
-        return false;
     }
+    
 }

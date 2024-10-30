@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Iron_Ingot
   m_EditorClassIdentifier: 
   _name: Iron Ingot
+  _maxStack: 60
   _sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}

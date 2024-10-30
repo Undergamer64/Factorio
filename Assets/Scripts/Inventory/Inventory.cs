@@ -23,6 +23,15 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool IsInventoryEmpty()
+    {
+        foreach(Slot slot in _Slots)
+        {
+            if (!IsEmpty(slot)) return false;
+        }
+        return true;
+    }
+
     /// <summary>
     /// Tries to Add "quantity" items of type "item"
     /// </summary>
