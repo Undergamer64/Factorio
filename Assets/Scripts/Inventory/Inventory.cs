@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
     /// Tries to remove the quantity "quantity" of last instance of the item "item" in inventory.
     /// </summary>
     /// <returns>The remaining quantity of items left to remove (0 if none are left)</returns>
-    public void TryRemoveItems(ItemBase item, int quantity)
+    public int TryRemoveItems(ItemBase item, int quantity)
     {
         int tempQuantity = quantity;
         for (int i = _Slots.Count - 1; i > 0; i--)
@@ -78,7 +78,7 @@ public class Inventory : MonoBehaviour
             Slot itemSlot = _Slots[i];
             if (tempQuantity <= 0)
             {
-                return;
+                return 0;
             }
             if (IsEmpty(itemSlot))
             {
@@ -94,10 +94,11 @@ public class Inventory : MonoBehaviour
                 else
                 {
                     itemSlot.UpdateQuantity(itemSlot.Quantity - tempQuantity);
-                    return;
+                    return 0;
                 }
             }
         }
+        return tempQuantity;
     }
 
     /// <summary>
