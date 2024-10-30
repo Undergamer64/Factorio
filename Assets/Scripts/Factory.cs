@@ -2,54 +2,58 @@ using UnityEngine;
 
 public class Factory : Structure
 {
-    [SerializeField] private float Cooldown = 0;
-    [SerializeField] private float MaxCooldown;
-    [SerializeField] private Recipe Recipe;
+    private float _cooldown = 0;
+    [SerializeField] protected Recipe _recipe;
+
 
     private void Update()
     {
-        if (Cooldown > 0)
+        if (_cooldown >= 0)
         {
-            Cooldown -= Time.deltaTime;
-            if (Cooldown <= 0)
+            _cooldown -= Time.deltaTime;
+            if (_cooldown < 0)
             {
-                TryToCraft();
+                Craft();
+                TryToStartCraft();
             }
         }
     }
 
     public override void Process()
     {
-        TryToCraft();
+        TryToStartCraft();
     }
 
-    public void craft()
+    public void Craft()
     {
-        Cooldown = MaxCooldown;
-        foreach (var InputItem in Recipe.InputItem)
+        if (_recipe != null)
         {
-            _Inventory.TryRemoveItems(InputItem.Item, InputItem.Quantity);
-        }
-        foreach (var OutputItem in Recipe.OutputItem)
-        {
-            _Inventory.TryAddItems(OutputItem.Item, OutputItem.Quantity);
+
+            foreach (var InputItem in _recipe._InputItem)
+            {
+                _Inventory.TryRemoveItems(InputItem._Item, InputItem._Quantity);
+            }
+            foreach (var OutputItem in _recipe._OutputItem)
+            {
+                _Inventory.TryAddItems(OutputItem._Item, OutputItem._Quantity);
+            }
         }
     }
 
-    public bool TryToCraft()
+    public bool TryToStartCraft()
     {
-        if (Cooldown > 0) 
+        if (_cooldown > 0 || _recipe == null) 
         {
             return false;
         }
-        foreach (var inputItem in Recipe.InputItem)
+        foreach (var inputItem in _recipe._InputItem)
         {
-            if(_Inventory.CountItem(inputItem.Item) < inputItem.Quantity)
+            if(_Inventory.CountItem(inputItem._Item) < inputItem._Quantity)
             {
                 return false;
             }
         }
-        craft();
+        _cooldown = _recipe._Cooldown;
         return true;
     }
 }

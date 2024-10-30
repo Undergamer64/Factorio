@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1241067001853913296}
-  - component: {fileID: 5675896757240418626}
   - component: {fileID: 1532517974863151658}
+  - component: {fileID: -3436525339498644197}
   m_Layer: 0
-  m_Name: IronSmeltery
+  m_Name: Extractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,21 +36,6 @@ Transform:
   - {fileID: 2061612959859110231}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5675896757240418626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544764270192503503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745029c429112a34ab5bef10cd014357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Inventory: {fileID: 1532517974863151658}
-  _Item: {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
-  _recipe: {fileID: 11400000, guid: b647fead682073749baf4d71810e528e, type: 2}
 --- !u!114 &1532517974863151658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,10 +49,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Slots: []
-  _Inputs:
-  - {fileID: 0}
+  _Inputs: []
   _Outputs:
   - {fileID: 0}
+--- !u!114 &-3436525339498644197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544764270192503503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640f5916ef3fe9f4b9e9833a4a203e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Inventory: {fileID: 1532517974863151658}
+  _Item: {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
+  _cooldown: 0
+  _recipe: {fileID: 0}
+  _childTransform: {fileID: 3546055159537882559}
 --- !u!1 &1693941906926781891
 GameObject:
   m_ObjectHideFlags: 0
