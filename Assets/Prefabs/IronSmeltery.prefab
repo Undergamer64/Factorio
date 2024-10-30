@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5df26cf66797944a5d9ed4226f1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Slots: []
+  _slotNumbers: 0
   _Inputs:
   - {fileID: 0}
   _Outputs:
@@ -229,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 2472392146117766037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +279,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &6328820164349617826
 MonoBehaviour:
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Transform: {fileID: 4664479394305337263}
+  _ParentInventory: {fileID: 1532517974863151658}
   _Output: {fileID: 0}
 --- !u!1 &6084443497394279138
 GameObject:
@@ -322,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 6084443497394279138}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -372,7 +373,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &2127591005246305345
 MonoBehaviour:
@@ -387,7 +388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Transform: {fileID: 4102168909766078048}
+  _ParentInventory: {fileID: 1532517974863151658}
   _Input: {fileID: 0}
+  _PulledItem: 0
 --- !u!1 &7514967469268616271
 GameObject:
   m_ObjectHideFlags: 0
