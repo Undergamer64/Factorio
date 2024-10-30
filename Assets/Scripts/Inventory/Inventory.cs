@@ -18,7 +18,8 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < _slotNumbers; i++)
         {
-            _Slots.Add(new Slot());
+            Slot slot = new Slot();
+            _Slots.Add(slot);
         }
     }
 
@@ -180,6 +181,29 @@ public class Inventory : MonoBehaviour
                 return false;
             }
         }
+        return true;
+    }
+
+    public bool IsInventoryFull(ItemBase item, int quantity = 1)
+    {
+        if (!IsInventoryFull()) 
+        { 
+            return false; 
+        }
+
+        int remainingQuantity = quantity;
+        foreach (Slot itemSlot in _Slots)
+        {
+            if (itemSlot.Item == item && itemSlot.Item.MaxStack < itemSlot.Quantity)
+            {
+                remainingQuantity = itemSlot.Item.MaxStack - itemSlot.Quantity;
+                if (remainingQuantity <= 0)
+                {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 
