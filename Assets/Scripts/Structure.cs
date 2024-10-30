@@ -6,4 +6,5 @@ public class Structure : MonoBehaviour
     public StructureItem _Item;
 
     public virtual void Process() { }
+    public virtual void Init() { }
 }
