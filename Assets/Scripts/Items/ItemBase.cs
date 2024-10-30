@@ -7,7 +7,7 @@ public class ItemBase : ScriptableObject
     protected string _name;
 
     [SerializeField]
-    protected int _maxStack = 64;
+    protected int _maxStack = 60;
 
     [SerializeField]
     protected Sprite _sprite;

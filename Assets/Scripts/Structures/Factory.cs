@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Factory : Structure
 {
-    private float _cooldown = 0;
+    private float _craftCooldown = 0;
     [SerializeField] protected Recipe _recipe;
 
     private bool _canCraft = false;
@@ -10,12 +11,12 @@ public class Factory : Structure
     private int _failedCraftQuantity = 0;
 
 
-    private void Update()
+    private void CraftUpdate()
     {
-        if (_cooldown >= 0)
+        if (_craftCooldown >= 0)
         {
-            _cooldown -= Time.deltaTime;
-            if (_cooldown < 0)
+            _craftCooldown -= Time.deltaTime;
+            if (_craftCooldown < 0)
             {
                 _canCraft = true;
             }
@@ -33,6 +34,46 @@ public class Factory : Structure
                 TryToStartCraft();
             }
         }
+    }
+
+    protected override bool CallOutput()
+    {
+        bool HasOutputItem = false;
+        foreach (ItemsWithQuantity item in _recipe._OutputItem)
+        {
+            if (_Inventory.CountItem(item._Item) >= 1)
+            {
+                HasOutputItem = true; break;
+            }
+        }
+        if(HasOutputItem)
+        {
+            List<Output> outputs = new List<Output>();
+            foreach (Output output in _Inventory._Outputs)
+            {
+                if (output._Input != null)
+                {
+                    outputs.Add(output);
+                }
+            }
+            foreach (ItemsWithQuantity item in _recipe._OutputItem)
+            {
+                foreach (Output output in outputs)
+                {
+                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count);   
+                }
+                outputs[0].PullOutInventory(item._Item, item._Quantity % outputs.Count);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        CraftUpdate();
+        CallOutput();
     }
 
     public override void Process()
@@ -87,7 +128,7 @@ public class Factory : Structure
 
     public bool TryToStartCraft()
     {
-        if (_cooldown > 0 || _recipe == null) 
+        if (_craftCooldown > 0 || _recipe == null) 
         {
             return false;
         }
@@ -98,7 +139,7 @@ public class Factory : Structure
                 return false;
             }
         }
-        _cooldown = _recipe._Cooldown;
+        _craftCooldown = _recipe._Cooldown;
         _canCraft = false;
         return true;
     }
