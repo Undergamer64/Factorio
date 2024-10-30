@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField]
+    private int _slotNumbers = 0;
+
     public List<Slot> _Slots = new List<Slot>();
     public List<Input> _Inputs = new List<Input>();
     public List<Output> _Outputs = new List<Output>();
@@ -10,6 +13,14 @@ public class Inventory : MonoBehaviour
     //public List<ItemBase> _WhiteListItems = new List<ItemBase>();
     //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
+
+    private void Start()
+    {
+        for (int i = 0; i < _slotNumbers; i++)
+        {
+            _Slots.Add(new Slot());
+        }
+    }
 
     /// <summary>
     /// Tries to Add "quantity" items of type "item"
