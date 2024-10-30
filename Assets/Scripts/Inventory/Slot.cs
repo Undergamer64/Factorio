@@ -2,12 +2,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public class Slot
 {
-    private ItemBase _Item;
-
-    private int _MaxItems;
-    private int _Quantity;
+    private ItemBase _item = null;
+    private int _quantity = 0;
 
     [SerializeField]
     private TextMeshProUGUI _quantityText;
@@ -24,17 +22,12 @@ public class Slot : MonoBehaviour
     [SerializeField]
     private Image _itemSlotSprite;
 
-    private void Start()
-    {
-        UpdateQuantity(_Quantity);
-    }
-
     /// <summary>
     /// method to add 1 item to the empty slot
     /// </summary>
     public void AddItemToSlot(ItemBase item)
     {
-        _Item = item;
+        _item = item;
         UpdateQuantity(1);
     }
 
@@ -43,9 +36,9 @@ public class Slot : MonoBehaviour
     /// </summary>
     public void UpdateItemSprite()
     {
-        if (_Item != null)
+        if (_item != null)
         {
-            _itemSprite.sprite = _Item.Sprite;
+            _itemSprite.sprite = _item.Sprite;
             _itemSprite.color = Color.white;
 
             _quantityContainerText.SetActive(false);
@@ -64,24 +57,31 @@ public class Slot : MonoBehaviour
     public void UpdateQuantity(int quantity)
     {
         //_tierText.gameObject.SetActive(false);
-        if (quantity > 0 && _Item != null)
+        if (quantity > 0 && _item != null)
         {
+            _quantity = quantity;
+            if (_quantityText == null || _itemSprite)
+            {
+                return;
+            }
             UpdateItemSprite();
-            _Quantity = quantity;
-            _quantityText.text = _Quantity.ToString();
+            _quantityText.text = _quantity.ToString();
         }
         else
         {
-            _Item = null;
+            _item = null;
+            _quantity = 0;
+            if (_quantityText == null || _itemSprite)
+            {
+                return;
+            }
             UpdateItemSprite();
-            _Quantity = 0;
             _quantityText.gameObject.SetActive(false);
             _quantityContainerText.SetActive(false);
         }
     }
 
-    public ItemBase Item { get { return _Item; } set { _Item = value; } }
-    public int Quantity { get { return _Quantity; } }
-    public int MaxItems { get { return _MaxItems; } }
+    public ItemBase Item { get { return _item; } set { _item = value; } }
+    public int Quantity { get { return _quantity; } }
 
 }
