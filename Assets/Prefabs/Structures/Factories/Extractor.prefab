@@ -65,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Inventory: {fileID: 1532517974863151658}
   _Item: {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
+  _maxOutputCooldown: 5
   _recipe: {fileID: 0}
   _childTransform: {fileID: 3546055159537882559}
 --- !u!1 &1693941906926781891
@@ -295,7 +296,6 @@ MonoBehaviour:
   _Transform: {fileID: 4102168909766078048}
   _ParentInventory: {fileID: 0}
   _Input: {fileID: 0}
-  _PulledItem: 0
 --- !u!1 &7514967469268616271
 GameObject:
   m_ObjectHideFlags: 0
