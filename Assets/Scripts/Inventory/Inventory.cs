@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public List<Input> _Inputs = new List<Input>();
     public List<Output> _Outputs = new List<Output>();
 
-    //public List<ItemBase> _WhiteListItems = new List<ItemBase>();
+    public List<ItemBase> _WhiteListItems = new List<ItemBase>();
     //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
 
@@ -30,6 +30,15 @@ public class Inventory : MonoBehaviour
             if (!IsEmpty(slot)) return false;
         }
         return true;
+    }
+
+    public bool CanAddItem(ItemBase ItemToADD)
+    {
+        foreach(ItemBase item in _WhiteListItems)
+        {
+             if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD) == null) return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -161,21 +170,15 @@ public class Inventory : MonoBehaviour
         //search stacks first
         foreach (Slot itemSlot in _Slots)
         {
+            if (IsEmpty(itemSlot))
+            {
+                return itemSlot;
+            }
             if (itemSlot.Item == item && itemSlot.Quantity < itemSlot.Item.MaxStack)
             {
                 return itemSlot;
             }
         }
-
-        //search empty slots
-        foreach (Slot itemSlot in _Slots)
-        {
-            if (IsEmpty(itemSlot))
-            {
-                return itemSlot;
-            }
-        }
-
         return null;
     }
 
