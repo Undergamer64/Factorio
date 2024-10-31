@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8731728584932522765}
   - component: {fileID: 6669114095702720291}
   - component: {fileID: 1400867527067549288}
+  - component: {fileID: 9001069619609939379}
+  - component: {fileID: 3562032907747021742}
   - component: {fileID: 3970107291243484780}
   m_Layer: 0
   m_Name: PB_Character
@@ -169,7 +171,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 7727281446905364035}
+  _characterData: {fileID: 9001069619609939379}
   _speed: 8
+--- !u!114 &9001069619609939379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786736221312726058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00b2b8da1c7d624381a849e3065a92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Inventory: {fileID: 3562032907747021742}
+  _PlacedStructureItem: {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
+--- !u!114 &3562032907747021742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786736221312726058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5df26cf66797944a5d9ed4226f1429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotNumbers: 0
+  _Inputs: []
+  _Outputs: []
 --- !u!114 &3970107291243484780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +259,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 39f330f6-86ac-4c7a-a565-7e92f3d2e616
     m_ActionName: 'InGame/Zoom[/Mouse/scroll/y]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1400867527067549288}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: LeftClickAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d53a0228-4cd2-4c09-8cba-2c5f39529d48
+    m_ActionName: 'InGame/LeftClick[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1400867527067549288}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: RigthClickAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b398c3f0-2926-4e09-85b5-750dd9178825
+    m_ActionName: 'InGame/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1400867527067549288}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: MouseMovementAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 83a7cbc0-163f-4b2f-802d-98b9a95404b3
+    m_ActionName: 'InGame/MouseMove[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
