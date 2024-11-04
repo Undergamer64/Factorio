@@ -12,7 +12,6 @@ public class Gatherer : Factory
     }
     public override void Init()
     {
-        base.Init();
         List<Collider2D> collider2Ds  = Physics2D.OverlapBoxAll(_childTransform.position, _childTransform.localScale, 0,1 << 0).ToList();
         foreach(Collider2D collider in collider2Ds)
         {   
@@ -22,5 +21,6 @@ public class Gatherer : Factory
                 break;
             }
         }
+        base.Init();
     }
 }

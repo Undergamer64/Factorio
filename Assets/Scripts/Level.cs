@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level", order = 1)]
-public class Level : MonoBehaviour
+public class Level : ScriptableObject
 {
-    public ItemBase _item;
-    public int _amount;
+    public int _Level;
+    public List<ItemBase> _Items;
+    public int _Amount;
 }
 

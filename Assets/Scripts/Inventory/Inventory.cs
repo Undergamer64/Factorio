@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -23,6 +25,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void EmptyInventory()
+    {
+        foreach(var slot in _Slots)
+        {
+            slot.UpdateQuantity(0);
+        }
+    }
+
     public bool IsInventoryEmpty()
     {
         foreach(Slot slot in _Slots)
@@ -39,6 +49,15 @@ public class Inventory : MonoBehaviour
              if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD) == null) return true;
         }
         return false;
+    }
+
+    public void UpdateWhiteList(List<ItemBase> items)
+    {
+        _WhiteListItems.Clear();
+        foreach(var item in items)
+        {
+            _WhiteListItems.Add(item);
+        }
     }
 
     /// <summary>
