@@ -17,10 +17,13 @@ public class Depot : Structure
     {
         foreach (ItemBase item in _Inventory._WhiteListItems)
         {
-            _amount = _Inventory.CountItem(item);
+            _amount = _Inventory.CountItem(item, InputOrOutput._InputSlots);
             if(_amount >= _objectiveAmount)
             {
-                SetObjective(_levels[_level + 1]);
+                if (_level < _levels.Count-1) 
+                {
+                    SetObjective(_levels[_level + 1]);
+                }
             }
         }
     }
@@ -35,7 +38,7 @@ public class Depot : Structure
     private void SetObjective(Level level)
     {
         _Inventory.UpdateWhiteList(level._Items);
-        _Inventory.EmptyInventory();
+        _Inventory.EmptyInventory(InputOrOutput._InputSlots);
         _level = level._Level;
         _objectiveAmount = level._Amount;
         _amount = 0;
