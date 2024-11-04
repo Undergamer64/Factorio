@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Factory : Structure
@@ -9,6 +10,20 @@ public class Factory : Structure
     private bool _canCraft = false;
     private int _failedCraftIndex = -1;
     private int _failedCraftQuantity = 0;
+
+    private void Start()
+    {
+        Init();
+    }
+
+    public override void Init()
+    {
+        base.Init();
+        foreach(var item in _recipe._InputItem)
+        {
+            _Inventory._WhiteListItems.Add(item._Item);
+        }
+    }
 
 
     private void CraftUpdate()

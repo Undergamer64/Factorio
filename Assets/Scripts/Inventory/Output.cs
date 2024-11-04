@@ -24,12 +24,15 @@ public class Output : Tunnel
         }
     }
 
-    public void PullOutInventory(ItemBase item,int quantity)
+    public void PullOutInventory(ItemBase item, int quantity)
     {
         if (!_Input._ParentInventory.IsInventoryFull(item,quantity))
         {
-            int pulledItem = quantity - _ParentInventory.TryRemoveItems(item, quantity);
-            _Input._ParentInventory.TryAddItems(item, pulledItem);
+            if (_Input._ParentInventory.CanAddItem(item))
+            {
+                _Input._ParentInventory.TryAddItems(item, quantity);
+                _Input.GetComponentInParent<Transform>().GetComponentInParent<Structure>().Process();
+            }
         }
     }
     

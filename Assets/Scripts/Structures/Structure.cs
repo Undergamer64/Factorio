@@ -8,7 +8,10 @@ public abstract class Structure : MonoBehaviour
     private float _cooldown;
 
     public virtual void Process() { }
-    public virtual void Init() { }
+    public virtual void Init() 
+    {
+        Process();
+    }
 
     protected virtual void Update()
     {
