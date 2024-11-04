@@ -51,22 +51,48 @@ public class CharacterController : MonoBehaviour
     {
         if (context.started)
         {
+            StructureItem itemStructure = _characterData._PlacedStructureItem;
+            if (_currentMousePosition == Vector2.zero || itemStructure == null) { return; }
+
             Vector3 mousePos = _camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos + Vector3.back * 10, _camera.GetComponent<Camera>().transform.forward, 11f);
-            if (hit.collider == null)
-            { 
-                StructureItem itemStructure = _characterData._PlacedStructureItem;
-                if (itemStructure != null && itemStructure.Structure != null)
-                {
-                    TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos);
-                }
+            if (hit.collider != null || !TileManager._Instance.CanPlace(hit.point, itemStructure._SizeX, itemStructure._SizeY))
+            {
+                return;
+            }
+            
+            if (itemStructure.Structure != null)
+            {
+                TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos);
             }
         }
     }
 
     public void RigthClickAction(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            if (_currentMousePosition == Vector2.zero) { return; }
 
+            Vector3 mousePos = _camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos + Vector3.back * 10, _camera.GetComponent<Camera>().transform.forward, 11f);
+            if (hit.collider == null)
+            {
+                return;
+            }
+
+            Structure structure = hit.collider.GetComponentInParent<Structure>();
+            if (structure == null || structure._Item == null)
+            {
+                return;
+            }
+
+            StructureItem item = structure._Item;
+            Destroy(structure.gameObject);
+
+            //_characterData._Inventory.TryAddItems(item);
+        }
     }
 }
