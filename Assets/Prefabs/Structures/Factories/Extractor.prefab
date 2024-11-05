@@ -51,6 +51,7 @@ MonoBehaviour:
   _Inputs: []
   _Outputs:
   - {fileID: 2127591005246305345}
+  _WhiteListItems: []
 --- !u!114 &-3436525339498644197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Transform: {fileID: 4102168909766078048}
-  _ParentInventory: {fileID: 0}
+  _ParentInventory: {fileID: 1532517974863151658}
   _Input: {fileID: 0}
 --- !u!1 &7514967469268616271
 GameObject:

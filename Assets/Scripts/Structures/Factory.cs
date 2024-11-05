@@ -74,9 +74,9 @@ public class Factory : Structure
             {
                 foreach (Output output in outputs)
                 {
-                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count);   
+                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count, InputOrOutput._OutputSlots);   
                 }
-                outputs[0].PullOutInventory(item._Item, item._Quantity % outputs.Count);
+                outputs[0].PullOutInventory(item._Item, item._Quantity % outputs.Count, InputOrOutput._OutputSlots);
             }
             return true;
         }
@@ -85,11 +85,12 @@ public class Factory : Structure
 
     protected override void Update()
     {
-        base.Update();
+        _cooldown -= Time.deltaTime;
         CraftUpdate();
-        if (!_Inventory.IsInventoryEmpty(InputOrOutput._OutputSlots))
+        if (!_Inventory.IsInventoryEmpty(InputOrOutput._OutputSlots) && _cooldown <= 0)
         {
-            CallOutput();//remember when inventory split to change it
+            _cooldown = _maxOutputCooldown;
+            CallOutput();
         }
     }
 
@@ -128,6 +129,7 @@ public class Factory : Structure
                 else
                 {
                     remainingQuantity = _Inventory.TryAddItems(_recipe._OutputItem[i]._Item, _recipe._OutputItem[i]._Quantity,InputOrOutput._OutputSlots);
+                    
                 }
 
                 if (remainingQuantity > 0)

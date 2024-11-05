@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5df26cf66797944a5d9ed4226f1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotNumbers: 0
+  _slotNumbers: 1
   _Inputs:
-  - {fileID: 0}
+  - {fileID: 6328820164349617826}
   _Outputs:
-  - {fileID: 0}
+  - {fileID: 2127591005246305345}
+  - {fileID: 2931362633629664422}
+  - {fileID: 2805591630548086698}
+  _WhiteListItems: []
 --- !u!114 &813247630314970421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Inventory: {fileID: 1532517974863151658}
   _Item: {fileID: 11400000, guid: 71dfd144762bddf478b01a6dd59632ea, type: 2}
-  _maxOutputCooldown: 10
+  _maxOutputCooldown: 1
 --- !u!1 &1693941906926781891
 GameObject:
   m_ObjectHideFlags: 0

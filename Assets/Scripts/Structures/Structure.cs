@@ -5,8 +5,8 @@ public abstract class Structure : MonoBehaviour
 {
     public Inventory _Inventory;
     public StructureItem _Item;
-    [SerializeField] private float _maxOutputCooldown = 10;
-    private float _cooldown;
+    [SerializeField] protected float _maxOutputCooldown = 10;
+    protected float _cooldown;
 
     public virtual void Process() { }
     public virtual void Init() 
@@ -17,7 +17,7 @@ public abstract class Structure : MonoBehaviour
     protected virtual void Update()
     {
         _cooldown -= Time.deltaTime;
-        if (CallOutput())
+        if (CallOutput() && _cooldown <= 0)
         {
             _cooldown = _maxOutputCooldown;
         }

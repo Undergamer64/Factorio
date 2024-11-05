@@ -13,7 +13,6 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private int _slotNumbers = 0;
 
-    public List<Slot> _Slots = new List<Slot>();
     public List<Slot> _InputSlots = new List<Slot>();
     public List<Slot> _OutputSlots = new List<Slot>();
     public List<Input> _Inputs = new List<Input>();
@@ -21,14 +20,18 @@ public class Inventory : MonoBehaviour
     public List<ItemBase> _WhiteListItems = new List<ItemBase>();
     //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
-
+    private void Update()
+    {
+        Debug.Log("output " + CountItem(_OutputSlots[0].Item,InputOrOutput._OutputSlots) + " " + gameObject.name);
+        Debug.Log("Input " + CountItem(_InputSlots[0].Item,InputOrOutput._InputSlots) + " " + gameObject.name);
+    }
 
     private void Start()
     {
         for (int i = 0; i < _slotNumbers; i++)
         {
-            Slot slot = new Slot();
-            _Slots.Add(slot);
+            _InputSlots.Add(new Slot());
+            _OutputSlots.Add(new Slot());
         }
     }
 
@@ -70,9 +73,16 @@ public class Inventory : MonoBehaviour
 
     public bool CanAddItem(ItemBase ItemToADD,InputOrOutput slots)
     {
-        foreach(ItemBase item in _WhiteListItems)
+        if (_WhiteListItems.Count == 0)
         {
-             if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD,slots) == null) return true;
+            return true;
+        }
+        else
+        {
+            foreach(ItemBase item in _WhiteListItems)
+            {
+                if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD,slots) == null) return true;
+            }
         }
         return false;
     }
