@@ -57,7 +57,7 @@ public class CharacterController : MonoBehaviour
             Vector3 mousePos = _camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos + Vector3.back * 10, _camera.GetComponent<Camera>().transform.forward, 11f);
-            if (hit.collider != null || !TileManager._Instance.CanPlace(hit.point, itemStructure._SizeX, itemStructure._SizeY))
+            if (hit.collider != null || !TileManager._Instance.CanPlace(mousePos, itemStructure._SizeX, itemStructure._SizeY))
             {
                 return;
             }

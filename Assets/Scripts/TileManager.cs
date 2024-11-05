@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -54,7 +55,12 @@ public class TileManager : MonoBehaviour
     public bool CanPlace(Vector2 WorldPosition, int SizeX, int SizeY)
     {
         //return true if you can place a GameObject at the desired location
-        Vector2 position = new Vector2(RoundToCell(_defaultTileMap, WorldPosition).x + SizeX / 2f - 0.5f, RoundToCell(_defaultTileMap, WorldPosition).y + SizeY / 2f - 0.5f);
-        return (Physics2D.OverlapBoxAll(position, new Vector2(SizeX, SizeY), 0).Where(x => x.GetComponentInParent<Structure>() != null).Count() == 0);
+        Vector2 position = new Vector2(RoundToCell(_defaultTileMap, WorldPosition).x + (SizeX / 2f), RoundToCell(_defaultTileMap, WorldPosition).y + (SizeY / 2f));
+
+        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, new Vector2(SizeX - 0.5f, SizeY - 0.5f), 0).ToList();
+
+        if (colliders.Where(x => x.GetComponent<CharacterController>() != null).Count() > 0) { return false; }
+
+        return (colliders.Where(x => x.GetComponentInParent<Structure>() != null).Count() == 0);
     }
 }
