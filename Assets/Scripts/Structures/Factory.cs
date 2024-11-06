@@ -37,7 +37,7 @@ public class Factory : Structure
         }
         if (_canCraft)
         {
-            if (_failedCraftIndex > 0)
+            if (_failedCraftIndex < 0)
             {
                 RemoveCraftInput();
             }
@@ -69,6 +69,10 @@ public class Factory : Structure
                 {
                     outputs.Add(output);
                 }
+            }
+            if (outputs.Count < 0)
+            {
+                return false;
             }
             foreach (ItemsWithQuantity item in _recipe._OutputItem)
             {
@@ -147,6 +151,7 @@ public class Factory : Structure
 
     public bool TryToStartCraft()
     {
+        _canCraft = false;
         if (_craftCooldown > 0 || _recipe == null) 
         {
             return false;
@@ -159,7 +164,6 @@ public class Factory : Structure
             }
         }
         _craftCooldown = _recipe._Cooldown;
-        _canCraft = false;
         return true;
     }
 }

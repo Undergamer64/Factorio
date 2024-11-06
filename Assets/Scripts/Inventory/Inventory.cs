@@ -146,7 +146,7 @@ public class Inventory : MonoBehaviour
     public int TryRemoveItems(ItemBase item, int quantity,InputOrOutput slots)
     {
         int tempQuantity = quantity;
-        for (int i = EnumToSlots(slots).Count - 1; i > 0; i--)
+        for (int i = EnumToSlots(slots).Count - 1; i >= 0; i--)
         {
             Slot itemSlot = EnumToSlots(slots)[i];
             if (tempQuantity <= 0)
@@ -262,9 +262,9 @@ public class Inventory : MonoBehaviour
         int remainingQuantity = quantity;
         foreach (Slot itemSlot in EnumToSlots(slots))
         {
-            if (itemSlot.Item == item && itemSlot.Item.MaxStack < itemSlot.Quantity)
+            if (itemSlot.Item == item && itemSlot.Quantity < itemSlot.Item.MaxStack)
             {
-                remainingQuantity = itemSlot.Item.MaxStack - itemSlot.Quantity;
+                remainingQuantity -= itemSlot.Quantity;
                 if (remainingQuantity <= 0)
                 {
                     return false;

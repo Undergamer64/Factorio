@@ -31,9 +31,9 @@ public class Output : Tunnel
             if (_Input._ParentInventory.CanAddItem(item, InputOrOutput._InputSlots))
                 {
                     int LeftToAdd = _Input._ParentInventory.TryAddItems(item, quantity, InputOrOutput._InputSlots);
-                    Debug.Log(LeftToAdd);
+                    //Debug.Log(LeftToAdd);
                     _ParentInventory.TryRemoveItems(item, quantity - LeftToAdd, slots);
-                    _Input.GetComponentInParent<Transform>().GetComponentInParent<Structure>().Process();
+                    _Input.transform.parent.GetComponentInParent<Structure>().Process();
                 }
             }
         
