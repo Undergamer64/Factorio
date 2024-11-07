@@ -30,26 +30,33 @@ public class TileManager : MonoBehaviour
     /// <param name="StructPrefab">the object you want to create</param>
     /// <param name="WorldPosition"> the position you are in the world</param>
     /// <param name="Rotation">the rotation of the object you want to create</param>
-    public void Place(Tilemap TileMap, GameObject StructPrefab, int SizeX, int SizeY, Vector3 WorldPosition, Quaternion Rotation = new Quaternion())
+    public GameObject Place(Tilemap TileMap, GameObject StructPrefab, int SizeX, int SizeY, Vector3 WorldPosition, Quaternion Rotation = new Quaternion())
     {
         //create a gameobject at the center of the cell it's in
         Vector3 offset = new Vector3(SizeX / 2f, SizeY / 2f, 0);
-        Instantiate(StructPrefab, RoundToCell(TileMap, WorldPosition) + offset, Rotation, TileMap.transform);
+        return Instantiate(StructPrefab, RoundToCell(TileMap, WorldPosition) + offset, Rotation, TileMap.transform);
     }
 
-    public void Place(GameObject StructPrefab, int SizeX, int SizeY, Vector3 WorldPosition, Quaternion Rotation = new Quaternion())
+    public GameObject Place(GameObject StructPrefab, int SizeX, int SizeY, Vector3 WorldPosition, Quaternion Rotation = new Quaternion())
     {
         if (_defaultTileMap != null)
         {
             Vector3 offset = new Vector3(SizeX / 2f, SizeY / 2f, 0);
-            Instantiate(StructPrefab, RoundToCell(_defaultTileMap, WorldPosition) + offset, Rotation, _defaultTileMap.transform);
+            return Instantiate(StructPrefab, RoundToCell(WorldPosition) + offset, Rotation, _defaultTileMap.transform);
         }
+        return null;
     }
 
     public Vector3 RoundToCell(Tilemap TileMap,Vector3 WorldPosition)
     {
         //return the world position of the cell the sent position is in
         return (TileMap.CellToWorld(TileMap.WorldToCell(WorldPosition)));
+    }
+
+    public Vector3 RoundToCell(Vector3 WorldPosition)
+    {
+        //return the world position of the cell the sent position is in
+        return RoundToCell(_defaultTileMap, WorldPosition);
     }
 
     public bool CanPlace(Vector2 WorldPosition, int SizeX, int SizeY)

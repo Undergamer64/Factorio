@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
@@ -12,7 +11,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private CharacterData _characterData;
 
-    private Vector2 _currentMousePosition;
+    private Vector2 _currentMousePosition = Vector2.zero;
+    private Vector2 _lastMousePosition = Vector2.zero;
+    private GameObject _currentPreviewStructure = null;
 
     private Rigidbody2D _rigidbody2D;
     private Vector2 _velocity;
@@ -47,27 +48,33 @@ public class CharacterController : MonoBehaviour
 
     public void MouseMovementAction(InputAction.CallbackContext context)
     {
-        Vector2 oldPos = _currentMousePosition;
+        if (context.ReadValue<Vector2>() == Vector2.zero)
+        {
+            return;
+        }
         _currentMousePosition = context.ReadValue<Vector2>();
 
-        StructureItem structure = _characterData._PlacedStructureItem;
-        if (structure == null)
+        StructureItem structureItem = _characterData._PlacedStructureItem;
+        if (structureItem == null || structureItem.Structure == null)
         {
             return;
         }
 
-        Vector2 structurePos = _currentMousePosition;
-
-        if (_currentMousePosition == Vector2.zero)
+        if (_currentPreviewStructure == null)
         {
-            if (oldPos ==  Vector2.zero)
-            { 
-                return; 
-            }
-            structurePos = oldPos;
+            _currentPreviewStructure = TileManager._Instance.Place(structureItem.Structure, structureItem._SizeX, structureItem._SizeY, TileManager._Instance.RoundToCell(_currentMousePosition));
+            if (_currentPreviewStructure == null) { return; }
+            _currentPreviewStructure.GetComponent<Structure>().enabled = false;
+            _currentPreviewStructure.GetComponentInChildren<Collider2D>().enabled = false;
         }
-        
 
+        Vector2 currentMousePositionRounded = (Vector2)TileManager._Instance.RoundToCell(_camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition));
+        currentMousePositionRounded += new Vector2(structureItem._SizeX / 2f, structureItem._SizeY / 2f);
+        if (_lastMousePosition != currentMousePositionRounded)
+        {
+            _lastMousePosition = currentMousePositionRounded;
+            _currentPreviewStructure.transform.position = _lastMousePosition;
+        }
     }
 
     public void LeftClickAction(InputAction.CallbackContext context)
@@ -75,10 +82,15 @@ public class CharacterController : MonoBehaviour
         if (context.started)
         {
             StructureItem itemStructure = _characterData._PlacedStructureItem;
-            if (_currentMousePosition == Vector2.zero || itemStructure == null) { return; }
+            if (_currentMousePosition == Vector2.zero || itemStructure == null) 
+            {
+                ResetPreview();
+                return; 
+            }
 
             if (CheckUIInTheWay())
             {
+                ResetPreview();
                 return;
             }
 
@@ -87,13 +99,18 @@ public class CharacterController : MonoBehaviour
             RaycastHit2D hit2D = Physics2D.Raycast(mousePos, _camera.GetComponent<Camera>().transform.forward, 1f);
             if (hit2D.collider != null || !TileManager._Instance.CanPlace(mousePos, itemStructure._SizeX, itemStructure._SizeY))
             {
+                ResetPreview();
                 return;
             }
             
             if (itemStructure.Structure != null)
             {
                 //_characterData._Inventory.TryRemoveItems(itemStructure, 1);
-                TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos);
+                GameObject structure = TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos);
+                if (structure == null)
+                {
+                    ResetPreview();
+                }
             }
         }
     }
@@ -106,6 +123,7 @@ public class CharacterController : MonoBehaviour
             
             if (CheckUIInTheWay())
             {
+                ResetPreview();
                 return;
             }
 
@@ -114,12 +132,14 @@ public class CharacterController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos + Vector3.back * 10, _camera.GetComponent<Camera>().transform.forward, 11f);
             if (hit.collider == null)
             {
+                ResetPreview();
                 return;
             }
 
             Structure structure = hit.collider.GetComponentInParent<Structure>();
             if (structure == null || structure._Item == null)
             {
+                ResetPreview();
                 return;
             }
 
@@ -127,7 +147,16 @@ public class CharacterController : MonoBehaviour
             Destroy(structure.gameObject);
 
             //_characterData._Inventory.TryAddItems(item);
+
+            ResetPreview();
         }
+    }
+
+    private void ResetPreview()
+    {
+        _characterData._PlacedStructureItem = null;
+        Destroy(_currentPreviewStructure);
+        _currentPreviewStructure = null;
     }
 
     private bool CheckUIInTheWay()
