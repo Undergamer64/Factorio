@@ -202,6 +202,7 @@ MonoBehaviour:
   _slotNumbers: 0
   _Inputs: []
   _Outputs: []
+  _WhiteListItems: []
 --- !u!114 &3970107291243484780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +308,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 83a7cbc0-163f-4b2f-802d-98b9a95404b3
     m_ActionName: 'InGame/MouseMove[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1400867527067549288}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: RotateAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 60f8ee5c-2a47-4709-9bbb-8ca0aa0d10cd
+    m_ActionName: 'InGame/Rotate[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame

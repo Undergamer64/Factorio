@@ -20,12 +20,6 @@ public class Inventory : MonoBehaviour
     public List<ItemBase> _WhiteListItems = new List<ItemBase>();
     //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
-    private void Update()
-    {
-        Debug.Log("output " + CountItem(_OutputSlots[0].Item,InputOrOutput._OutputSlots) + " " + gameObject.name);
-        Debug.Log("Input " + CountItem(_InputSlots[0].Item,InputOrOutput._InputSlots) + " " + gameObject.name);
-    }
-
     private void Start()
     {
         for (int i = 0; i < _slotNumbers; i++)
