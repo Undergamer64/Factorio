@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -100,8 +101,7 @@ public class CharacterController : MonoBehaviour
 
             Vector3 mousePos = _camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition);
 
-            RaycastHit2D hit2D = Physics2D.Raycast(mousePos, _camera.GetComponent<Camera>().transform.forward, 1f);
-            if (hit2D.collider != null || !TileManager._Instance.CanPlace(mousePos, itemStructure._SizeX, itemStructure._SizeY))
+            if (!TileManager._Instance.CanPlace(mousePos, itemStructure._SizeX, itemStructure._SizeY))
             {
                 ResetPreview();
                 return;
@@ -167,8 +167,6 @@ public class CharacterController : MonoBehaviour
 
             _currentRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, 90 + _currentRotation.eulerAngles.z);
 
-            Debug.Log(_currentRotation);
-
             _currentPreviewStructure.transform.rotation = _currentRotation;
         }
     }
@@ -188,7 +186,7 @@ public class CharacterController : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(customEventData, results);
 
-        if (results.Count > 0)
+        if (results.Where(x => x.gameObject.GetComponentInParent<Structure>() == null).Count() > 0)
         {
             return true;
         }

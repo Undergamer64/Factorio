@@ -68,6 +68,6 @@ public class TileManager : MonoBehaviour
 
         if (colliders.Where(x => x.GetComponent<CharacterController>() != null).Count() > 0) { return false; }
 
-        return (colliders.Where(x => x.GetComponentInParent<Structure>() != null).Count() == 0);
+        return (colliders.Where(x => x.GetComponentInParent<Structure>() != null && x.transform.parent.GetComponentInParent<Tilemap>() == _defaultTileMap).Count() == 0);
     }
 }
