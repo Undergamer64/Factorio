@@ -165,9 +165,6 @@ public class CharacterController : MonoBehaviour
                 return;
             }
 
-            Debug.Log(_rotation);
-            Debug.Log(_currentRotation);
-
             _currentRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, 90 + _currentRotation.eulerAngles.z);
 
             Debug.Log(_currentRotation);

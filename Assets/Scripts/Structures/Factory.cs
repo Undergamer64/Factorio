@@ -43,7 +43,11 @@ public class Factory : Structure
         {
             if (_failedCraftIndex < 0)
             {
-                foreach(var item in _recipe._InputItem)
+                if (_recipe == null)
+                {
+                    return;
+                }
+                foreach (var item in _recipe._InputItem)
                 {
                     if (_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) > item._Quantity)
                     {
