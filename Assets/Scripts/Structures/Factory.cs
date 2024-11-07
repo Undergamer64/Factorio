@@ -4,7 +4,7 @@ using UnityEngine;
 public class Factory : Structure
 {
     protected float _craftCooldown = 0;
-    [SerializeField] protected Recipe _recipe;
+    protected Recipe _recipe;
 
     private bool _canCraft = false;
     private int _failedCraftIndex = -1;
