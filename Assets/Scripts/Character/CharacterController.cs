@@ -15,6 +15,9 @@ public class CharacterController : MonoBehaviour
     private Vector2 _lastMousePosition = Vector2.zero;
     private GameObject _currentPreviewStructure = null;
 
+    private Quaternion _rotation = Quaternion.Euler(0,0,90);
+    private Quaternion _currentRotation = default;
+
     private Rigidbody2D _rigidbody2D;
     private Vector2 _velocity;
 
@@ -74,6 +77,7 @@ public class CharacterController : MonoBehaviour
         {
             _lastMousePosition = currentMousePositionRounded;
             _currentPreviewStructure.transform.position = _lastMousePosition;
+            _currentPreviewStructure.transform.rotation = _currentRotation;
         }
     }
 
@@ -106,7 +110,7 @@ public class CharacterController : MonoBehaviour
             if (itemStructure.Structure != null)
             {
                 //_characterData._Inventory.TryRemoveItems(itemStructure, 1);
-                GameObject structure = TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos);
+                GameObject structure = TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos, _currentRotation);
                 if (structure == null)
                 {
                     ResetPreview();
@@ -149,6 +153,26 @@ public class CharacterController : MonoBehaviour
             //_characterData._Inventory.TryAddItems(item);
 
             ResetPreview();
+        }
+    }
+
+    public void RotateAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (_currentPreviewStructure == null)
+            {
+                return;
+            }
+
+            Debug.Log(_rotation);
+            Debug.Log(_currentRotation);
+
+            _currentRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, 90 + _currentRotation.eulerAngles.z);
+
+            Debug.Log(_currentRotation);
+
+            _currentPreviewStructure.transform.rotation = _currentRotation;
         }
     }
 
