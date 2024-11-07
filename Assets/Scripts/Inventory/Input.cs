@@ -16,8 +16,8 @@ public class Input : Tunnel
     }
     public void FindPartner()
     {
-        
-        List<Collider2D>_Outputs = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0).ToList();
+
+        List<Collider2D> _Outputs = Physics2D.OverlapBoxAll(transform.position, Vector2.one*.1f, 0).ToList();
         foreach (Collider2D collider in _Outputs)
         {
             if (collider.TryGetComponent<Output>(out Output output))
