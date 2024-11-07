@@ -20,6 +20,7 @@ public class Depot : Structure
             _amount = _Inventory.CountItem(item, InputOrOutput._InputSlots);
             if(_amount >= _objectiveAmount)
             {
+                Debug.Log("You won");
                 if (_level < _levels.Count-1) 
                 {
                     SetObjective(_levels[_level + 1]);
