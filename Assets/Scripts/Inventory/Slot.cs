@@ -10,9 +10,6 @@ public class Slot
     [SerializeField]
     private TextMeshProUGUI _quantityText;
 
-    //[SerializeField]
-    //private TextMeshProUGUI _tierText;
-
     [SerializeField]
     private GameObject _quantityContainerText;
 

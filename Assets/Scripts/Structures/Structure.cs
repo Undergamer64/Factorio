@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public abstract class Structure : MonoBehaviour
@@ -9,7 +8,10 @@ public abstract class Structure : MonoBehaviour
     private float _cooldown;
 
     public virtual void Process() { }
-    public virtual void Init() { }
+    public virtual void Init() 
+    {
+        Process();
+    }
 
     protected virtual void Update()
     {
