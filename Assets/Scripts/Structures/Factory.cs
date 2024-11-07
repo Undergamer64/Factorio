@@ -53,6 +53,10 @@ public class Factory : Structure
 
     protected override bool CallOutput()
     {
+        if (_recipe == null)
+        {
+            return false;
+        }
         bool HasOutputItem = false;
         foreach (ItemsWithQuantity item in _recipe._OutputItem)
         {
