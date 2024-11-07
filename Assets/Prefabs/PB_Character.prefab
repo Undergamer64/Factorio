@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Inventory: {fileID: 3562032907747021742}
-  _PlacedStructureItem: {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
+  _PlacedStructureItem: {fileID: 0}
 --- !u!114 &3562032907747021742
 MonoBehaviour:
   m_ObjectHideFlags: 0
