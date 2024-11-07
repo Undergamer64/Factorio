@@ -18,6 +18,10 @@ public class Factory : Structure
     public override void Init()
     {
         base.Init();
+        if (_recipe == null )
+        {
+            return;
+        }
         foreach(var item in _recipe._InputItem)
         {
             _Inventory._WhiteListItems.Add(item._Item);
@@ -39,7 +43,18 @@ public class Factory : Structure
         {
             if (_failedCraftIndex < 0)
             {
-                RemoveCraftInput();
+                foreach(var item in _recipe._InputItem)
+                {
+                    if (_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) > item._Quantity)
+                    {
+                        RemoveCraftInput();
+                    }
+                    else
+                    {
+                        _canCraft = false;
+                        return;
+                    }
+                }
             }
             TryAddCraftOutput();
 
@@ -74,12 +89,13 @@ public class Factory : Structure
                     outputs.Add(output);
                 }
             }
-            if (outputs.Count < 0)
+            if (outputs.Count <= 0)
             {
                 return false;
             }
             foreach (ItemsWithQuantity item in _recipe._OutputItem)
             {
+                
                 foreach (Output output in outputs)
                 {
                     output.PullOutInventory(item._Item, item._Quantity / outputs.Count, InputOrOutput._OutputSlots);   
@@ -123,14 +139,15 @@ public class Factory : Structure
     {
         if (_recipe != null)
         {
+            int temp = _failedCraftIndex;
             if (_failedCraftIndex < 0)
             {
-                _failedCraftIndex = 0;
+                temp = 0;
             }
-            for (int i = _failedCraftIndex; i < _recipe._OutputItem.Count; i++)
+            for (int i = temp; i < _recipe._OutputItem.Count; i++)
             {
                 int remainingQuantity = 0;
-                if (i  == _failedCraftIndex && _failedCraftQuantity != 0)
+                if (i  == _failedCraftIndex)
                 {
                     remainingQuantity = _Inventory.TryAddItems(_recipe._OutputItem[i]._Item, _failedCraftQuantity,InputOrOutput._OutputSlots);
                 }
