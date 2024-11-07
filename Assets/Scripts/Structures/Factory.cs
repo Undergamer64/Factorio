@@ -18,11 +18,11 @@ public class Factory : Structure
     public override void Init()
     {
         base.Init();
-        if (_recipe == null )
+        if (_recipe == null)
         {
             return;
         }
-        foreach(var item in _recipe._InputItem)
+        foreach (var item in _recipe._InputItem)
         {
             _Inventory._WhiteListItems.Add(item._Item);
         }
@@ -31,15 +31,16 @@ public class Factory : Structure
 
     private void CraftUpdate()
     {
-        if (_craftCooldown >= 0)
+        if (!_canCraft)
+        {
+            TryToStartCraft();
+        }
+
+        if (_canCraft)
         {
             _craftCooldown -= Time.deltaTime;
-            if (_craftCooldown < 0)
-            {
-                _canCraft = true;
-            }
         }
-        if (_canCraft)
+        if (_craftCooldown < 0)
         {
             if (_failedCraftIndex < 0)
             {
@@ -61,11 +62,6 @@ public class Factory : Structure
                 }
             }
             TryAddCraftOutput();
-
-            if (_canCraft)
-            {
-                TryToStartCraft();
-            }
         }
     }
 
@@ -83,7 +79,7 @@ public class Factory : Structure
                 HasOutputItem = true; break;
             }
         }
-        if(HasOutputItem)
+        if (HasOutputItem)
         {
             List<Output> outputs = new List<Output>();
             foreach (Output output in _Inventory._Outputs)
@@ -99,10 +95,10 @@ public class Factory : Structure
             }
             foreach (ItemsWithQuantity item in _recipe._OutputItem)
             {
-                
+
                 foreach (Output output in outputs)
                 {
-                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count, InputOrOutput._OutputSlots);   
+                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count, InputOrOutput._OutputSlots);
                 }
                 outputs[0].PullOutInventory(item._Item, item._Quantity % outputs.Count, InputOrOutput._OutputSlots);
             }
@@ -124,7 +120,7 @@ public class Factory : Structure
 
     public override void Process()
     {
-        _canCraft = true;
+        TryToStartCraft();
     }
 
     private void RemoveCraftInput()
@@ -133,7 +129,7 @@ public class Factory : Structure
         {
             foreach (var InputItem in _recipe._InputItem)
             {
-                _Inventory.TryRemoveItems(InputItem._Item, InputItem._Quantity,InputOrOutput._InputSlots);
+                _Inventory.TryRemoveItems(InputItem._Item, InputItem._Quantity, InputOrOutput._InputSlots);
             }
         }
     }
@@ -151,19 +147,18 @@ public class Factory : Structure
             for (int i = temp; i < _recipe._OutputItem.Count; i++)
             {
                 int remainingQuantity = 0;
-                if (i  == _failedCraftIndex)
+                if (i == _failedCraftIndex)
                 {
-                    remainingQuantity = _Inventory.TryAddItems(_recipe._OutputItem[i]._Item, _failedCraftQuantity,InputOrOutput._OutputSlots);
+                    remainingQuantity = _Inventory.TryAddItems(_recipe._OutputItem[i]._Item, _failedCraftQuantity, InputOrOutput._OutputSlots);
                 }
                 else
                 {
-                    remainingQuantity = _Inventory.TryAddItems(_recipe._OutputItem[i]._Item, _recipe._OutputItem[i]._Quantity,InputOrOutput._OutputSlots);
-                    
+                    remainingQuantity = _Inventory.TryAddItems(_recipe._OutputItem[i]._Item, _recipe._OutputItem[i]._Quantity, InputOrOutput._OutputSlots);
+
                 }
 
                 if (remainingQuantity > 0)
                 {
-                    _canCraft = false;
                     _failedCraftIndex = i;
                     _failedCraftQuantity = remainingQuantity;
                     return;
@@ -171,24 +166,28 @@ public class Factory : Structure
             }
             _failedCraftQuantity = 0;
             _failedCraftIndex = -1;
+            _canCraft = false;
         }
     }
 
-    public bool TryToStartCraft()
+    public void TryToStartCraft()
     {
-        _canCraft = false;
-        if (_craftCooldown > 0 || _recipe == null) 
+        if (_canCraft)
         {
-            return false;
+            return;
+        }
+        if (_craftCooldown > 0 || _recipe == null)
+        {
+            return;
         }
         foreach (var inputItem in _recipe._InputItem)
         {
-            if(_Inventory.CountItem(inputItem._Item,InputOrOutput._InputSlots) < inputItem._Quantity)
+            if (_Inventory.CountItem(inputItem._Item, InputOrOutput._InputSlots) < inputItem._Quantity)
             {
-                return false;
+                return;
             }
         }
+        _canCraft = true;
         _craftCooldown = _recipe._Cooldown;
-        return true;
     }
 }
