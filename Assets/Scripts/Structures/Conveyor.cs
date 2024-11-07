@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Conveyor : Structure
 {
-
     protected override bool CallOutput()
     {
         if (_Inventory._InputSlots[0].Quantity == 0)
@@ -18,7 +16,7 @@ public class Conveyor : Structure
                 outputs.Add(output);
             }
         }
-        if (outputs.Count == 0)
+        if (outputs.Count <= 0)
         {
             
             return false;
