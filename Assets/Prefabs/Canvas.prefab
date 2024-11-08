@@ -1870,9 +1870,10 @@ MonoBehaviour:
   _characterData: {fileID: 0}
   _structures:
   - {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
+  - {fileID: 11400000, guid: 87ae95559aafe3842bdb42afb6b9fcc7, type: 2}
   - {fileID: 11400000, guid: 71dfd144762bddf478b01a6dd59632ea, type: 2}
+  - {fileID: 11400000, guid: 44fa12d172621574989cf122237e5389, type: 2}
   - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
-  - {fileID: 11400000, guid: 70034b895a2f23440be59af76a877643, type: 2}
 --- !u!1 &8965338431583322589
 GameObject:
   m_ObjectHideFlags: 0
