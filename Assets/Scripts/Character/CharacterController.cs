@@ -192,10 +192,9 @@ public class CharacterController : MonoBehaviour
         if (_lastMousePosition != currentMousePositionRounded)
         {
             _lastMousePosition = currentMousePositionRounded;
-
-            _currentPreviewStructure.transform.position = _lastMousePosition;
-            _currentPreviewStructure.transform.rotation = _currentRotation;
         }
+        _currentPreviewStructure.transform.rotation = _currentRotation;
+        _currentPreviewStructure.transform.position = _lastMousePosition;
     }
 
     private bool CheckUIInTheWay()
