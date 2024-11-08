@@ -17,7 +17,12 @@ public class Output : Tunnel
         {
             if (collider.TryGetComponent<Input>(out Input input))
             {
+                if (input == _Input)
+                {
+                    break;
+                }
                 _Input = input;
+                _Input.FindPartner();
                 break;
             }
         }

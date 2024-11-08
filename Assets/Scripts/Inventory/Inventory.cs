@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     public List<ItemBase> _WhiteListItems = new List<ItemBase>();
     //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < _slotNumbers; i++)
         {

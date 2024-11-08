@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Input : Tunnel
 {
@@ -22,7 +23,12 @@ public class Input : Tunnel
         {
             if (collider.TryGetComponent<Output>(out Output output))
             {
+                if (output == _Output)
+                {
+                    break;
+                }
                 _Output = output;
+                _Output.FindPartner();
                 break;
             }
         }
