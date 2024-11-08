@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Depot : Structure
 {
     [SerializeField] private List<Level> _levels = new List<Level>();
+    [SerializeField] private ProgressScript _progressScript;
     private int _objectiveAmount;
     private int _amount;
     private int _level;
@@ -18,6 +19,7 @@ public class Depot : Structure
         foreach (ItemBase item in _Inventory._WhiteListItems)
         {
             _amount = _Inventory.CountItem(item, InputOrOutput._InputSlots);
+            _progressScript.UpdateProgress(_objectiveAmount, _amount);
             if(_amount >= _objectiveAmount)
             {
                 Debug.Log("You won");
@@ -43,5 +45,6 @@ public class Depot : Structure
         _level = level._Level;
         _objectiveAmount = level._Amount;
         _amount = 0;
+        _progressScript.UpdateDisplay(level, _amount);
     }
 }
