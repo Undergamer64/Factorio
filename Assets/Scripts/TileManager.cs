@@ -88,7 +88,7 @@ public class TileManager : MonoBehaviour
 
         Vector3 position = RoundToCell(WorldPosition) + sizeOffset + _TileOffset;
 
-        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, new Vector2(SizeX, SizeY), 0).ToList();
+        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, new Vector2(SizeX-0.1f, SizeY-1f), 0).ToList();
 
         if (colliders.Where(x => x.GetComponent<CharacterController>() != null).Count() > 0) { return false; }
 
