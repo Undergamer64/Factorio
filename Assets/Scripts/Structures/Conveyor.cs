@@ -1,7 +1,23 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Conveyor : Structure
 {
+    protected override void Update()
+    {
+        if (!_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
+        {
+            _cooldown -= Time.deltaTime;
+        }
+        if (_cooldown <= 0)
+        {
+            if (CallOutput())
+            {
+                _cooldown = _maxOutputCooldown;
+            }
+        }
+    }
+
     protected override bool CallOutput()
     {
         if (_Inventory._InputSlots[0].Quantity == 0)
