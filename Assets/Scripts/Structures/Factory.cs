@@ -172,10 +172,6 @@ public class Factory : Structure
 
     public void TryToStartCraft()
     {
-        if (_CanCraft)
-        {
-            return;
-        }
         if (_craftCooldown > 0 || _Recipe == null)
         {
             return;
@@ -187,7 +183,11 @@ public class Factory : Structure
                 return;
             }
         }
-        _CanCraft = true;
+        if (_CanCraft)
+        {
+            return;
+        }
         _craftCooldown = _Recipe._Cooldown;
+        _CanCraft = true;
     }
 }

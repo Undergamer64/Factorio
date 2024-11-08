@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb4e6cbe77c5ea4a8a64ae1c616dc11, type: 3}
   m_Name: IronExtraction
   m_EditorClassIdentifier: 
-  _Cooldown: 1
+  _Cooldown: 2
   _InputItem: []
   _OutputItem:
   - _Item: {fileID: 11400000, guid: 6eed3a73de307b2448038389e2d13c94, type: 2}

@@ -6,7 +6,7 @@ public class Gatherer : Factory
 {
     [SerializeField] private Transform _childTransform;
 
-    private void Start()
+    private void Awake()
     {
         Init();
     }
