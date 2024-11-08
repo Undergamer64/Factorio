@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb4e6cbe77c5ea4a8a64ae1c616dc11, type: 3}
-  m_Name: IronExtraction
+  m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
+  m_Name: Splitter
   m_EditorClassIdentifier: 
-  _Cooldown: 2
-  _InputItem: []
-  _OutputItem:
-  - _Item: {fileID: 11400000, guid: 6eed3a73de307b2448038389e2d13c94, type: 2}
-    _Quantity: 1
+  _name: Splitter
+  _maxStack: 64
+  _sprite: {fileID: 0}
+  _structure: {fileID: 1544764270192503503, guid: 4c0e454f245853343a5b6d36668f18de, type: 3}
+  _SizeX: 1
+  _SizeY: 1

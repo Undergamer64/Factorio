@@ -6,7 +6,7 @@ public class Gatherer : Factory
 {
     [SerializeField] private Transform _childTransform;
 
-    private void Start()
+    private void Awake()
     {
         Init();
     }
@@ -17,7 +17,7 @@ public class Gatherer : Factory
         {   
             if (collider.TryGetComponent<ResourceOre>(out ResourceOre resource))
             {
-                _recipe = resource._Recipe;
+                _Recipe = resource._Recipe;
                 break;
             }
         }
