@@ -52,11 +52,11 @@ public class CharacterController : MonoBehaviour
 
     public void MouseMovementAction(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>() == Vector2.zero)
+        _currentMousePosition = context.ReadValue<Vector2>();
+        if (_currentMousePosition == Vector2.zero)
         {
             return;
         }
-        _currentMousePosition = context.ReadValue<Vector2>();
 
         StructureItem structureItem = _characterData._PlacedStructureItem;
         if (structureItem == null || structureItem.Structure == null)
@@ -68,6 +68,11 @@ public class CharacterController : MonoBehaviour
         {
             _currentPreviewStructure = TileManager._Instance.Place(structureItem.Structure, structureItem._SizeX, structureItem._SizeY, TileManager._Instance.RoundToCell(_currentMousePosition));
             if (_currentPreviewStructure == null) { return; }
+            ProgressCircle progressCircle = _currentPreviewStructure.GetComponentInChildren<ProgressCircle>();
+            if (progressCircle != null)
+            {
+                progressCircle.enabled = false;
+            }
             _currentPreviewStructure.GetComponent<Structure>().enabled = false;
             _currentPreviewStructure.GetComponentInChildren<Collider2D>().enabled = false;
         }
@@ -167,15 +172,19 @@ public class CharacterController : MonoBehaviour
     private void ResetPreview()
     {
         _characterData._PlacedStructureItem = null;
-        Destroy(_currentPreviewStructure);
-        _currentPreviewStructure = null;
+        if (_currentPreviewStructure != null)
+        {
+            Destroy(_currentPreviewStructure);
+            _currentPreviewStructure = null;
+        }
     }
 
     private void UpdatePreview()
     {
         StructureItem structureItem = _characterData._PlacedStructureItem;
-        if (_currentPreviewStructure == null || structureItem == null || structureItem.Structure == null)
+        if (_currentPreviewStructure == null || structureItem == null || structureItem.Structure == null || _currentMousePosition == Vector2.zero)
         {
+            ResetPreview();
             return;
         }
         Vector3 currentMousePositionRounded = TileManager._Instance.RoundToCell(_camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition));

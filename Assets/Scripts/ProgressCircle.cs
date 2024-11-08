@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ProgressCircle : MonoBehaviour
 {
-    private float _maxTimer;
+    private float _maxTimer = 0f;
     private float _currentTimer;
     private Slider _progressSlider;
     private Factory _parentFactory;
@@ -14,13 +14,19 @@ public class ProgressCircle : MonoBehaviour
     {
 
         _parentFactory = transform.parent.parent.GetComponent<Factory>();
-        _maxTimer = _parentFactory._Recipe._Cooldown;
         _progressSlider = GetComponent<Slider>();
-        
+        if (_parentFactory._Recipe != null)
+        {
+            _maxTimer = _parentFactory._Recipe._Cooldown;
+        }
     }
 
     private void Update()
     {
+        if (_maxTimer == 0f)
+        {
+            return;
+        }
         _currentTimer = _parentFactory._craftCooldown;
         float ratio = _currentTimer / _maxTimer;
         if (_parentFactory._CanCraft)
