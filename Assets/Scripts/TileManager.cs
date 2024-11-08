@@ -50,15 +50,7 @@ public class TileManager : MonoBehaviour
     {
         if (_defaultTileMap != null)
         {
-            Vector3 sizeOffset = new Vector3(SizeX / 2f - 0.5f, SizeY / 2f - 0.5f, 0);
-
-            sizeOffset = new Vector3(
-                sizeOffset.x * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
-                sizeOffset.x * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
-                0
-            );
-
-            return Instantiate(StructPrefab, RoundToCell(WorldPosition) + sizeOffset + _TileOffset, Rotation, _defaultTileMap.transform);
+            return Place(_defaultTileMap, StructPrefab, SizeX, SizeY, WorldPosition, Rotation);
         }
         return null;
     }
