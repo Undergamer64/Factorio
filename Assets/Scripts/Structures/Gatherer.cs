@@ -12,7 +12,7 @@ public class Gatherer : Factory
     }
     public override void Init()
     {
-        List<Collider2D> collider2Ds  = Physics2D.OverlapBoxAll(_childTransform.position, _childTransform.localScale, 0,1 << 0).ToList();
+        List<Collider2D> collider2Ds  = Physics2D.OverlapBoxAll(_childTransform.position, _childTransform.localScale * 0.9f, 0,1 << 0).ToList();
         foreach(Collider2D collider in collider2Ds)
         {   
             if (collider.TryGetComponent<ResourceOre>(out ResourceOre resource))
