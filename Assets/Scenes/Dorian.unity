@@ -388,6 +388,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Extractor
       objectReference: {fileID: 0}
+    - target: {fileID: 3978958534004112980, guid: d9bc619a9361c214b98731e5358d1ba8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978958534004112980, guid: d9bc619a9361c214b98731e5358d1ba8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -652,34 +660,6 @@ PrefabInstance:
     - target: {fileID: 1772569754335076946, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.ctime1
-      value: 32768
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.ctime2
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.key0.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.key0.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.key1.b
-      value: 0.121568635
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.key2.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588570827068022572, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
-      propertyPath: _gradient.m_NumColorKeys
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
