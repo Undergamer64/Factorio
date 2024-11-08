@@ -13,7 +13,7 @@ public class CharacterController : MonoBehaviour
     private CharacterData _characterData;
 
     private Vector2 _currentMousePosition = Vector2.zero;
-    private Vector2 _lastMousePosition = Vector2.zero;
+    private Vector3 _lastMousePosition = Vector3.zero;
     private GameObject _currentPreviewStructure = null;
 
     private Quaternion _rotation = Quaternion.Euler(0,0,90);
@@ -72,14 +72,7 @@ public class CharacterController : MonoBehaviour
             _currentPreviewStructure.GetComponentInChildren<Collider2D>().enabled = false;
         }
 
-        Vector2 currentMousePositionRounded = (Vector2)TileManager._Instance.RoundToCell(_camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition));
-        currentMousePositionRounded += new Vector2(structureItem._SizeX / 2f, structureItem._SizeY / 2f);
-        if (_lastMousePosition != currentMousePositionRounded)
-        {
-            _lastMousePosition = currentMousePositionRounded;
-            _currentPreviewStructure.transform.position = _lastMousePosition;
-            _currentPreviewStructure.transform.rotation = _currentRotation;
-        }
+        UpdatePreview();
     }
 
     public void LeftClickAction(InputAction.CallbackContext context)
@@ -167,7 +160,7 @@ public class CharacterController : MonoBehaviour
 
             _currentRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, 90 + _currentRotation.eulerAngles.z);
 
-            _currentPreviewStructure.transform.rotation = _currentRotation;
+            UpdatePreview();
         }
     }
 
@@ -176,6 +169,33 @@ public class CharacterController : MonoBehaviour
         _characterData._PlacedStructureItem = null;
         Destroy(_currentPreviewStructure);
         _currentPreviewStructure = null;
+    }
+
+    private void UpdatePreview()
+    {
+        StructureItem structureItem = _characterData._PlacedStructureItem;
+        if (_currentPreviewStructure == null || structureItem == null || structureItem.Structure == null)
+        {
+            return;
+        }
+        Vector3 currentMousePositionRounded = TileManager._Instance.RoundToCell(_camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition));
+
+        Vector3 sizeOffset = new Vector3(structureItem._SizeX / 2f - 0.5f, structureItem._SizeY / 2f - 0.5f, 0);
+
+        sizeOffset = new Vector3(
+            sizeOffset.x * Mathf.Cos(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Sin(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            0
+        );
+
+        currentMousePositionRounded += sizeOffset + TileManager._Instance._TileOffset;
+        if (_lastMousePosition != currentMousePositionRounded)
+        {
+            _lastMousePosition = currentMousePositionRounded;
+
+            _currentPreviewStructure.transform.position = _lastMousePosition;
+            _currentPreviewStructure.transform.rotation = _currentRotation;
+        }
     }
 
     private bool CheckUIInTheWay()
