@@ -10,6 +10,8 @@ public class TileManager : MonoBehaviour
     [SerializeField]
     private Tilemap _defaultTileMap;
 
+    public Vector3 _TileOffset { get; private set; } = new Vector3(0.5f,0.5f,0);
+
     private void Awake()
     {
         if (_Instance == null)
@@ -33,16 +35,30 @@ public class TileManager : MonoBehaviour
     public GameObject Place(Tilemap TileMap, GameObject StructPrefab, int SizeX, int SizeY, Vector3 WorldPosition, Quaternion Rotation = new Quaternion())
     {
         //create a gameobject at the center of the cell it's in
-        Vector3 offset = new Vector3(SizeX / 2f, SizeY / 2f, 0);
-        return Instantiate(StructPrefab, RoundToCell(TileMap, WorldPosition) + offset, Rotation, TileMap.transform);
+        Vector3 sizeOffset = new Vector3(SizeX / 2f - 0.5f, SizeY / 2f - 0.5f, 0);
+
+        sizeOffset = new Vector3(
+            sizeOffset.x * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            0
+        );
+
+        return Instantiate(StructPrefab, RoundToCell(TileMap, WorldPosition) + sizeOffset + _TileOffset, Rotation, TileMap.transform);
     }
 
     public GameObject Place(GameObject StructPrefab, int SizeX, int SizeY, Vector3 WorldPosition, Quaternion Rotation = new Quaternion())
     {
         if (_defaultTileMap != null)
         {
-            Vector3 offset = new Vector3(SizeX / 2f, SizeY / 2f, 0);
-            return Instantiate(StructPrefab, RoundToCell(WorldPosition) + offset, Rotation, _defaultTileMap.transform);
+            Vector3 sizeOffset = new Vector3(SizeX / 2f - 0.5f, SizeY / 2f - 0.5f, 0);
+
+            sizeOffset = new Vector3(
+                sizeOffset.x * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+                sizeOffset.x * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+                0
+            );
+
+            return Instantiate(StructPrefab, RoundToCell(WorldPosition) + sizeOffset + _TileOffset, Rotation, _defaultTileMap.transform);
         }
         return null;
     }
@@ -59,15 +75,23 @@ public class TileManager : MonoBehaviour
         return RoundToCell(_defaultTileMap, WorldPosition);
     }
 
-    public bool CanPlace(Vector2 WorldPosition, int SizeX, int SizeY)
+    public bool CanPlace(Vector3 WorldPosition, int SizeX, int SizeY, Quaternion Rotation = new Quaternion())
     {
         //return true if you can place a GameObject at the desired location
-        Vector2 position = new Vector2(RoundToCell(_defaultTileMap, WorldPosition).x + (SizeX / 2f), RoundToCell(_defaultTileMap, WorldPosition).y + (SizeY / 2f));
+        Vector3 sizeOffset = new Vector3(SizeX / 2f - 0.5f, SizeY / 2f - 0.5f, 0);
 
-        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, new Vector2(SizeX - 0.5f, SizeY - 0.5f), 0).ToList();
+        sizeOffset = new Vector3(
+            sizeOffset.x * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            0
+        );
+
+        Vector3 position = RoundToCell(WorldPosition) + sizeOffset + _TileOffset;
+
+        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, new Vector2(SizeX, SizeY), 0).ToList();
 
         if (colliders.Where(x => x.GetComponent<CharacterController>() != null).Count() > 0) { return false; }
 
-        return (colliders.Where(x => x.GetComponentInParent<Structure>() != null && x.transform.parent.GetComponentInParent<Tilemap>() == _defaultTileMap).Count() == 0);
+        return (colliders.Where(x => x.GetComponentInParent<Structure>() != null && x.transform.parent.parent.GetComponent<Tilemap>() == _defaultTileMap).Count() == 0);
     }
 }
