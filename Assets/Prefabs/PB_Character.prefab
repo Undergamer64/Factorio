@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4951626379851101997}
   - component: {fileID: 8731728584932522765}
   - component: {fileID: 6669114095702720291}
-  - component: {fileID: 1400867527067549288}
-  - component: {fileID: 9001069619609939379}
   - component: {fileID: 3562032907747021742}
   - component: {fileID: 3970107291243484780}
+  - component: {fileID: 361360728076352493}
+  - component: {fileID: 6240767962872759159}
   m_Layer: 0
   m_Name: PB_Character
   m_TagString: Untagged
@@ -104,7 +104,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b5e775a7fce92af4d8cb36c08fa25fae, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -158,35 +158,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1400867527067549288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2786736221312726058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c02a872f6596feb4b9d52e1a30080455, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 7727281446905364035}
-  _characterData: {fileID: 9001069619609939379}
-  _speed: 8
---- !u!114 &9001069619609939379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2786736221312726058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00b2b8da1c7d624381a849e3065a92e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Inventory: {fileID: 3562032907747021742}
-  _PlacedStructureItem: {fileID: 0}
 --- !u!114 &3562032907747021742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +201,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400867527067549288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterScript, Assembly-CSharp
         m_MethodName: MovementAction
         m_Mode: 0
@@ -246,7 +217,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400867527067549288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterScript, Assembly-CSharp
         m_MethodName: ZoomAction
         m_Mode: 0
@@ -262,7 +233,7 @@ MonoBehaviour:
     m_ActionName: 'InGame/Zoom[/Mouse/scroll/y]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400867527067549288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
         m_MethodName: LeftClickAction
         m_Mode: 0
@@ -278,7 +249,7 @@ MonoBehaviour:
     m_ActionName: 'InGame/LeftClick[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400867527067549288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
         m_MethodName: RigthClickAction
         m_Mode: 0
@@ -294,7 +265,7 @@ MonoBehaviour:
     m_ActionName: 'InGame/RightClick[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400867527067549288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
         m_MethodName: MouseMovementAction
         m_Mode: 0
@@ -310,7 +281,7 @@ MonoBehaviour:
     m_ActionName: 'InGame/MouseMove[/Mouse/position]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400867527067549288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
         m_MethodName: RotateAction
         m_Mode: 0
@@ -329,6 +300,35 @@ MonoBehaviour:
   m_DefaultActionMap: InGame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &361360728076352493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786736221312726058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf82b0e365d20c04aac8fbb282b7b90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 7727281446905364035}
+  _characterData: {fileID: 6240767962872759159}
+  _speed: 2
+--- !u!114 &6240767962872759159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786736221312726058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146979765f5d73a4f937d212d6e10f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Inventory: {fileID: 3562032907747021742}
+  _PlacedStructureItem: {fileID: 0}
 --- !u!1 &7685907391510673870
 GameObject:
   m_ObjectHideFlags: 0
