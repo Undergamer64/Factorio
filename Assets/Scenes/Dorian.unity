@@ -285,11 +285,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1241067001853913296, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1241067001853913296, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1241067001853913296, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -332,8 +332,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
---- !u!4 &633016857 stripped
-Transform:
+--- !u!224 &633016857 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 1241067001853913296, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
   m_PrefabInstance: {fileID: 633016856}
   m_PrefabAsset: {fileID: 0}
@@ -723,6 +723,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1532517974863151658, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
+      propertyPath: _slotNumbers
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1544764270192503503, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
       propertyPath: m_Name
       value: IronSmeltery
@@ -909,7 +913,7 @@ PrefabInstance:
       objectReference: {fileID: 1142805625}
     - target: {fileID: 1241067001853913296, guid: 357102a0077231f45a46455c05d80b65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1241067001853913296, guid: 357102a0077231f45a46455c05d80b65, type: 3}
       propertyPath: m_LocalPosition.y

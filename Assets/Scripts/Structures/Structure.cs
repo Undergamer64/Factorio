@@ -11,6 +11,7 @@ public abstract class Structure : MonoBehaviour
     public virtual void Process() { }
     public virtual void Init() 
     {
+        _cooldown = _maxOutputCooldown;
         Process();
     }
 
