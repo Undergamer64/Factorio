@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conveyor
       objectReference: {fileID: 0}
+    - target: {fileID: 6031367443719996177, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -689,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1241067001853913296, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -3.43
       objectReference: {fileID: 0}
     - target: {fileID: 1241067001853913296, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1125,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7570948407681630611, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
       propertyPath: m_TileSpriteArray.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7570948407681630611, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
       propertyPath: m_Tiles.Array.data[0].first.x

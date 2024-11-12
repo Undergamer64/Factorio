@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Iron Ore
   _maxStack: 60
-  _sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  _sprite: {fileID: 5409983421505243153, guid: 7d37b3dc3afed6c4fa22bbeddf72ec34, type: 3}

@@ -190,4 +190,8 @@ public class Factory : Structure
         _craftCooldown = _Recipe._Cooldown;
         _CanCraft = true;
     }
+
+    public override void UpdateSprite()
+    {
+    }
 }

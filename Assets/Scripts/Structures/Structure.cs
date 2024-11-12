@@ -1,4 +1,3 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public abstract class Structure : MonoBehaviour
@@ -6,6 +5,7 @@ public abstract class Structure : MonoBehaviour
     public Inventory _Inventory;
     public StructureItem _Item;
     [SerializeField] protected float _maxOutputCooldown = 10;
+    [SerializeField] private SpriteRenderer _resourceRenderer;
     protected float _cooldown;
 
     public virtual void Process() { }
@@ -24,4 +24,11 @@ public abstract class Structure : MonoBehaviour
     }
 
     protected abstract bool CallOutput();
+
+    public abstract void UpdateSprite();
+
+    protected virtual void SetSprite(Sprite resourceSprite)
+    {
+        _resourceRenderer.sprite = resourceSprite;
+    }
 }
