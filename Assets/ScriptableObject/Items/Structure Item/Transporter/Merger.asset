@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Merger
   _maxStack: 64
-  _sprite: {fileID: 0}
+  _sprite: {fileID: -594075314, guid: 19f0de72320a07c4dac6c05bf7c4cbc5, type: 3}
   _structure: {fileID: 1544764270192503503, guid: e476dff289d424e43bd8e4de31d92fa5, type: 3}
   _SizeX: 1
   _SizeY: 1

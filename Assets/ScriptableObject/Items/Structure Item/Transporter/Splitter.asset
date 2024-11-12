@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Splitter
   _maxStack: 64
-  _sprite: {fileID: 0}
+  _sprite: {fileID: -578403157, guid: 724b271154c7ebd4aadebbad74305a7d, type: 3}
   _structure: {fileID: 1544764270192503503, guid: 4c0e454f245853343a5b6d36668f18de, type: 3}
   _SizeX: 1
   _SizeY: 1

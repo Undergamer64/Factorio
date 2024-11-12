@@ -47,4 +47,8 @@ public class Depot : Structure
         _amount = 0;
         _progressScript.UpdateDisplay(level, _amount);
     }
+
+    public override void UpdateSprite()
+    {
+    }
 }

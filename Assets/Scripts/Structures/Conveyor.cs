@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Conveyor : Structure
 {
+    private void Start()
+    {
+        UpdateSprite();
+	}
+	
     protected override void Update()
     {
         if (!_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
@@ -42,6 +47,19 @@ public class Conveyor : Structure
             output.PullOutInventory(_Inventory._InputSlots[0].Item, _Inventory._InputSlots[0].Quantity/ outputs.Count,InputOrOutput._InputSlots);
         }
         outputs[0].PullOutInventory(_Inventory._InputSlots[0].Item, _Inventory._InputSlots[0].Quantity % outputs.Count, InputOrOutput._InputSlots);
+        UpdateSprite();
         return true;
+    }
+
+    public override void UpdateSprite()
+    {
+        if (_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
+        {
+            SetSprite(null);
+        }
+        else
+        {
+            SetSprite(_Inventory._InputSlots[0].Item.Sprite);
+        }
     }
 }
