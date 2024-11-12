@@ -1,11 +1,15 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Conveyor : Structure
 {
+    [SerializeField] private TextMeshProUGUI _amount;
+
     private void Start()
     {
         UpdateSprite();
+        _cooldown = _maxOutputCooldown;
 	}
 	
     protected override void Update()
@@ -55,10 +59,12 @@ public class Conveyor : Structure
     {
         if (_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
         {
+            _amount.SetText("");
             SetSprite(null);
         }
         else
         {
+            _amount.SetText(_Inventory._InputSlots[0].Quantity.ToString());
             SetSprite(_Inventory._InputSlots[0].Item.Sprite);
         }
     }

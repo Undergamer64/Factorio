@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Inventory: {fileID: 1532517974863151658}
   _Item: {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
-  _maxOutputCooldown: 1
+  _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 3542610742867613032}
   _Recipe: {fileID: 0}
   _childTransform: {fileID: 3546055159537882559}

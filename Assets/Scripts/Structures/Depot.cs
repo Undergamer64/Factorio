@@ -46,9 +46,11 @@ public class Depot : Structure
         _objectiveAmount = level._Amount;
         _amount = 0;
         _progressScript.UpdateDisplay(level, _amount);
+        UpdateSprite();
     }
 
     public override void UpdateSprite()
     {
+        SetSprite(_Inventory._WhiteListItems[0].Sprite);
     }
 }
