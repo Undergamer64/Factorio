@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
+  m_Name: Merger
+  m_EditorClassIdentifier: 
+  _name: Merger
+  _maxStack: 64
+  _sprite: {fileID: -594075314, guid: 19f0de72320a07c4dac6c05bf7c4cbc5, type: 3}
+  _structure: {fileID: 1544764270192503503, guid: e476dff289d424e43bd8e4de31d92fa5, type: 3}
+  _SizeX: 1
+  _SizeY: 1
