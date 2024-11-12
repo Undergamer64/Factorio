@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterData : MonoBehaviour
+public class PlayerData : MonoBehaviour
 {
     public Inventory _Inventory;
 

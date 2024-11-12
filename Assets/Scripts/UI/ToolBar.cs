@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ToolBar : MonoBehaviour
 {
-    [SerializeField] private CharacterData _characterData;
+    [SerializeField] private PlayerData _characterData;
     [SerializeField] private List<StructureItem> _structures = new();
 
     public void ChangeStructure(int structureIndex) 

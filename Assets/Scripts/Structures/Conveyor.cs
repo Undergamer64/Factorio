@@ -43,7 +43,6 @@ public class Conveyor : Structure
         }
         if (outputs.Count <= 0)
         {
-            
             return false;
         }
         foreach (Output output in outputs)

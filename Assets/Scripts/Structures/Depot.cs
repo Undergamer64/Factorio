@@ -22,7 +22,6 @@ public class Depot : Structure
             _progressScript.UpdateProgress(_objectiveAmount, _amount);
             if(_amount >= _objectiveAmount)
             {
-                Debug.Log("You won");
                 if (_level < _levels.Count-1) 
                 {
                     SetObjective(_levels[_level + 1]);
