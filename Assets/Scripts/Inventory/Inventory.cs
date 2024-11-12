@@ -3,10 +3,10 @@ using Unity.Loading;
 using UnityEngine;
    
 public enum InputOrOutput
-    {
-        _InputSlots,
-        _OutputSlots
-    }
+{
+    _InputSlots,
+    _OutputSlots
+}
 
 public class Inventory : MonoBehaviour
 {
@@ -49,7 +49,6 @@ public class Inventory : MonoBehaviour
 
     public void EmptyInventory(InputOrOutput slots)
     {
-       
         foreach(var slot in EnumToSlots(slots))
         {
             slot.UpdateQuantity(0);

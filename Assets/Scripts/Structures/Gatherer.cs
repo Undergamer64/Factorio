@@ -10,6 +10,7 @@ public class Gatherer : Factory
     {
         Init();
     }
+
     public override void Init()
     {
         List<Collider2D> collider2Ds  = Physics2D.OverlapBoxAll(_childTransform.position, _childTransform.localScale * 0.9f, 0,1 << 0).ToList();

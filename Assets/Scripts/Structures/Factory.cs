@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Factory : Structure
 {
-    public float _craftCooldown { get; protected set; } = 0;
+    public float _CraftCooldown { get; protected set; } = 0;
     public Recipe _Recipe;
 
     public bool _CanCraft { get; private set; } = false;
@@ -38,9 +38,9 @@ public class Factory : Structure
 
         if (_CanCraft)
         {
-            _craftCooldown -= Time.deltaTime;
+            _CraftCooldown -= Time.deltaTime;
         }
-        if (_craftCooldown < 0)
+        if (_CraftCooldown < 0)
         {
             if (_failedCraftIndex < 0)
             {
@@ -149,7 +149,6 @@ public class Factory : Structure
                 else
                 {
                     remainingQuantity = _Inventory.TryAddItems(_Recipe._OutputItem[i]._Item, _Recipe._OutputItem[i]._Quantity, InputOrOutput._OutputSlots);
-
                 }
 
                 if (remainingQuantity > 0)
@@ -167,7 +166,7 @@ public class Factory : Structure
 
     public void TryToStartCraft()
     {
-        if (_craftCooldown > 0 || _Recipe == null)
+        if (_CraftCooldown > 0 || _Recipe == null)
         {
             return;
         }
@@ -182,7 +181,7 @@ public class Factory : Structure
         {
             return;
         }
-        _craftCooldown = _Recipe._Cooldown;
+        _CraftCooldown = _Recipe._Cooldown;
         UpdateSprite();
         _CanCraft = true;
     }

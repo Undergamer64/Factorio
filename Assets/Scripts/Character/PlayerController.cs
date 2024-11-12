@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private CameraScript _camera;
 
     [SerializeField]
-    private CharacterData _characterData;
+    private PlayerData _characterData;
 
     private Vector2 _currentMousePosition = Vector2.zero;
     private Vector3 _lastMousePosition = Vector3.zero;
