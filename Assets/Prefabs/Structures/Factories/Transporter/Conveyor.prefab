@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Inventory: {fileID: 1532517974863151658}
   _Item: {fileID: 11400000, guid: 87ae95559aafe3842bdb42afb6b9fcc7, type: 2}
-  _maxOutputCooldown: 1
+  _maxOutputCooldown: 0.5
   _resourceRenderer: {fileID: 6031367443719996177}
 --- !u!1 &1693941906926781891
 GameObject:
@@ -468,7 +468,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

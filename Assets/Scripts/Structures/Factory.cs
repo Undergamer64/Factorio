@@ -183,10 +183,12 @@ public class Factory : Structure
             return;
         }
         _craftCooldown = _Recipe._Cooldown;
+        UpdateSprite();
         _CanCraft = true;
     }
 
     public override void UpdateSprite()
     {
+        SetSprite(_Recipe._OutputItem[0]._Item.Sprite);
     }
 }
