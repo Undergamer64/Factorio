@@ -109,13 +109,8 @@ public class Factory : Structure
 
     protected override void Update()
     {
-        _cooldown -= Time.deltaTime;
         CraftUpdate();
-        if (!_Inventory.IsInventoryEmpty(InputOrOutput._OutputSlots) && _cooldown <= 0)
-        {
-            _cooldown = _maxOutputCooldown;
-            CallOutput();
-        }
+        base.Update();
     }
 
     public override void Process()

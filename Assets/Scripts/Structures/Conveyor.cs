@@ -6,6 +6,21 @@ public class Conveyor : Structure
     private void Start()
     {
         UpdateSprite();
+	}
+	
+    protected override void Update()
+    {
+        if (!_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
+        {
+            _cooldown -= Time.deltaTime;
+        }
+        if (_cooldown <= 0)
+        {
+            if (CallOutput())
+            {
+                _cooldown = _maxOutputCooldown;
+            }
+        }
     }
 
     protected override bool CallOutput()

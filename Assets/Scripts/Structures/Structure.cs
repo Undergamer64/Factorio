@@ -16,10 +16,16 @@ public abstract class Structure : MonoBehaviour
 
     protected virtual void Update()
     {
-        _cooldown -= Time.deltaTime;
-        if (CallOutput() && _cooldown <= 0)
+        if (!_Inventory.IsInventoryEmpty(InputOrOutput._OutputSlots))
         {
-            _cooldown = _maxOutputCooldown;
+            _cooldown -= Time.deltaTime;
+        }
+        if (_cooldown <= 0)
+        {
+            if (CallOutput())
+            {
+                _cooldown = _maxOutputCooldown;
+            }
         }
     }
 
