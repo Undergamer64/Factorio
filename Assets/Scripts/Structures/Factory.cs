@@ -131,10 +131,6 @@ public class Factory : Structure
     protected override void Update()
     {
         CraftUpdate();
-        if (_Inventory._OutputSlots.Count > 1)
-        {
-            Debug.Log(_Inventory._OutputSlots[0].Quantity.ToString() + _Inventory._OutputSlots[1].Quantity.ToString() + gameObject.name);
-        }
         base.Update();
     }
 
@@ -175,8 +171,6 @@ public class Factory : Structure
                 {
                     remainingQuantity = _Inventory.TryAddItems(_Recipe._OutputItem[i]._Item, _Recipe._OutputItem[i]._Quantity, InputOrOutput._OutputSlots);
                 }
-
-                Debug.Log(remainingQuantity + gameObject.name);
 
                 if (remainingQuantity > 0)
                 {

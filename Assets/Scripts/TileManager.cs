@@ -80,7 +80,12 @@ public class TileManager : MonoBehaviour
 
         Vector3 position = RoundToCell(WorldPosition) + sizeOffset + _TileOffset;
 
-        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, new Vector2(SizeX-0.1f, SizeY-1f), 0).ToList();
+        Vector2 sizeRotationed = new Vector2(
+            (SizeX * 0.95f) * Mathf.Cos(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - (SizeY * 0.95f) * Mathf.Sin(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            (SizeX * 0.95f) * Mathf.Sin(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + (SizeY * 0.95f) * Mathf.Cos(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f))
+        );
+
+        List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, sizeRotationed, 0).ToList();
 
         if (colliders.Where(x => x.GetComponent<PlayerController>() != null).Count() > 0) { return false; }
 
