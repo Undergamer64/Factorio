@@ -201,8 +201,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterScript, Assembly-CSharp
+      - m_Target: {fileID: 361360728076352493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: MovementAction
         m_Mode: 0
         m_Arguments:
@@ -217,8 +217,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterScript, Assembly-CSharp
+      - m_Target: {fileID: 361360728076352493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: ZoomAction
         m_Mode: 0
         m_Arguments:
@@ -233,8 +233,8 @@ MonoBehaviour:
     m_ActionName: 'InGame/Zoom[/Mouse/scroll/y]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+      - m_Target: {fileID: 361360728076352493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: LeftClickAction
         m_Mode: 0
         m_Arguments:
@@ -249,8 +249,8 @@ MonoBehaviour:
     m_ActionName: 'InGame/LeftClick[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+      - m_Target: {fileID: 361360728076352493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: RigthClickAction
         m_Mode: 0
         m_Arguments:
@@ -265,8 +265,8 @@ MonoBehaviour:
     m_ActionName: 'InGame/RightClick[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+      - m_Target: {fileID: 361360728076352493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: MouseMovementAction
         m_Mode: 0
         m_Arguments:
@@ -281,8 +281,8 @@ MonoBehaviour:
     m_ActionName: 'InGame/MouseMove[/Mouse/position]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+      - m_Target: {fileID: 361360728076352493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: RotateAction
         m_Mode: 0
         m_Arguments:
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 7727281446905364035}
   _characterData: {fileID: 6240767962872759159}
-  _speed: 2
+  _speed: 7
 --- !u!114 &6240767962872759159
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,8 +38,8 @@ public class TileManager : MonoBehaviour
         Vector3 sizeOffset = new Vector3(SizeX / 2f - 0.5f, SizeY / 2f - 0.5f, 0);
 
         sizeOffset = new Vector3(
-            sizeOffset.x * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
-            sizeOffset.x * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Cos(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Sin(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
             0
         );
 
@@ -73,8 +73,8 @@ public class TileManager : MonoBehaviour
         Vector3 sizeOffset = new Vector3(SizeX / 2f - 0.5f, SizeY / 2f - 0.5f, 0);
 
         sizeOffset = new Vector3(
-            sizeOffset.x * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
-            sizeOffset.x * Mathf.Sin(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Cos(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            sizeOffset.x * Mathf.Sin(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(Rotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
             0
         );
 
