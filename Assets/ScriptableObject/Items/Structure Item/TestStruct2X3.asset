@@ -15,6 +15,6 @@ MonoBehaviour:
   _name: Extractor
   _maxStack: 64
   _sprite: {fileID: 0}
-  _structure: {fileID: 1544764270192503503, guid: e386b87610f59ef4c9afc2dec2c91247, type: 3}
+  _structure: {fileID: 1544764270192503503, guid: ba972c931ec628e418eda52f91b682ea, type: 3}
   _SizeX: 2
-  _SizeY: 1
+  _SizeY: 3

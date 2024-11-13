@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 mousePos = _camera.GetComponent<Camera>().ScreenToWorldPoint(_currentMousePosition);
 
-            if (!TileManager._Instance.CanPlace(mousePos, itemStructure._SizeX, itemStructure._SizeY))
+            if (!TileManager._Instance.CanPlace(mousePos, itemStructure._SizeX, itemStructure._SizeY, _currentRotation))
             {
                 ResetPreview();
                 return;
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            _currentRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, 90 + _currentRotation.eulerAngles.z);
+            _currentRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, _rotation.eulerAngles.z + _currentRotation.eulerAngles.z);
 
             UpdatePreview();
         }
@@ -192,8 +192,8 @@ public class PlayerController : MonoBehaviour
         Vector3 sizeOffset = new Vector3(structureItem._SizeX / 2f - 0.5f, structureItem._SizeY / 2f - 0.5f, 0);
 
         sizeOffset = new Vector3(
-            sizeOffset.x * Mathf.Cos(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
-            sizeOffset.x * Mathf.Sin(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(-_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)),
+            (sizeOffset.x * Mathf.Cos(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f))),
+            (sizeOffset.x * Mathf.Sin(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f))),
             0
         );
 
