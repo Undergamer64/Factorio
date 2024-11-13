@@ -93,16 +93,37 @@ public class Factory : Structure
             {
                 return false;
             }
+            bool hasAtLeastOnefail = false;
             foreach (ItemsWithQuantity item in _Recipe._OutputItem)
             {
+                if (_Inventory.CountItem(item._Item, InputOrOutput._OutputSlots) < 1)
+                {
+                    hasAtLeastOnefail = true;
+                    continue;
+                }
 
+                bool hasfailed = true;
                 foreach (Output output in outputs)
                 {
-                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count, InputOrOutput._OutputSlots);
+                    List<ItemBase> _whiteList = output._Input._ParentInventory._WhiteListItems;
+                    if (_whiteList.Count == 0)
+                    {
+                        output._Input._ParentInventory._WhiteListItems.Add(item._Item);
+                        hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
+                        break;
+                    }
+                    else if (_whiteList.Contains(item._Item))
+                    {
+                        hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
+                        break;
+                    }
                 }
-                outputs[0].PullOutInventory(item._Item, item._Quantity % outputs.Count, InputOrOutput._OutputSlots);
+                if (hasfailed)
+                { 
+                    hasAtLeastOnefail = true;
+                }
             }
-            return true;
+            return !hasAtLeastOnefail;
         }
         return false;
     }

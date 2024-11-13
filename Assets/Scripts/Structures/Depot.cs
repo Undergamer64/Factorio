@@ -24,7 +24,8 @@ public class Depot : Structure
             {
                 if (_level < _levels.Count-1) 
                 {
-                    SetObjective(_levels[_level + 1]);
+                    SetObjective(_levels[_level]);
+                    return;
                 }
             }
         }

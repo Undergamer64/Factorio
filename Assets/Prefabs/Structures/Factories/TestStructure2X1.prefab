@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5df26cf66797944a5d9ed4226f1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotNumbers: 1
+  _slotNumbers: 2
   _Inputs:
   - {fileID: 6328820164349617826}
   _Outputs:
