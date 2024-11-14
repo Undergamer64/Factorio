@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7abd09060a86d734da53caee59175716, type: 3}
-  m_Name: Level1
+  m_Script: {fileID: 11500000, guid: a2c54e6e5f982df4b8535e727e56b1f7, type: 3}
+  m_Name: SO_Refined_Iron_Ore
   m_EditorClassIdentifier: 
-  _Level: 2
-  _Items:
-  - {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
-  _Amount: 300
+  _name: Refined Iron Ore
+  _maxStack: 60
+  _sprite: {fileID: 36690017237711160, guid: 7d37b3dc3afed6c4fa22bbeddf72ec34, type: 3}

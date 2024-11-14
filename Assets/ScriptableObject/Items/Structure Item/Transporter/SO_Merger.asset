@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
-  m_Name: Extractor
+  m_Name: SO_Merger
   m_EditorClassIdentifier: 
-  _name: Extractor
+  _name: Merger
   _maxStack: 64
-  _sprite: {fileID: 0}
-  _structure: {fileID: 1544764270192503503, guid: d9bc619a9361c214b98731e5358d1ba8, type: 3}
+  _sprite: {fileID: -594075314, guid: 19f0de72320a07c4dac6c05bf7c4cbc5, type: 3}
+  _structure: {fileID: 1544764270192503503, guid: e476dff289d424e43bd8e4de31d92fa5, type: 3}
+  _SizeX: 1
+  _SizeY: 1

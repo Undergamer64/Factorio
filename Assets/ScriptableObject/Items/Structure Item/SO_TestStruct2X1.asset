@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
-  m_Name: Splitter
+  m_Name: SO_TestStruct2X1
   m_EditorClassIdentifier: 
-  _name: Splitter
+  _name: Extractor
   _maxStack: 64
-  _sprite: {fileID: -578403157, guid: 724b271154c7ebd4aadebbad74305a7d, type: 3}
-  _structure: {fileID: 1544764270192503503, guid: 4c0e454f245853343a5b6d36668f18de, type: 3}
-  _SizeX: 1
+  _sprite: {fileID: 0}
+  _structure: {fileID: 1544764270192503503, guid: 7b5a435f9a795544b8e3c0ced0595595, type: 3}
+  _SizeX: 2
   _SizeY: 1

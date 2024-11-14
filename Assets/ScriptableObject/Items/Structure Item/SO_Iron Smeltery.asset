@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
-  m_Name: Conveyor
+  m_Name: SO_Iron Smeltery
   m_EditorClassIdentifier: 
-  _name: Conveyor
+  _name: Iron Smeltery
   _maxStack: 64
-  _sprite: {fileID: 1976126246, guid: 3990743faac3a2249bf32b5673da9800, type: 3}
-  _structure: {fileID: 1544764270192503503, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
-  _SizeX: 1
-  _SizeY: 1
+  _sprite: {fileID: 0}
+  _structure: {fileID: 1544764270192503503, guid: 7da9903c74f580b4a95f145fe545602a, type: 3}

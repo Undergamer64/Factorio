@@ -18,6 +18,10 @@ public class Conveyor : Structure
         {
             _cooldown -= Time.deltaTime;
         }
+        else
+        {
+            _Inventory._WhiteListItems.Clear();
+        }
         if (_cooldown <= 0)
         {
             if (CallOutput())
@@ -41,15 +45,19 @@ public class Conveyor : Structure
                 outputs.Add(output);
             }
         }
-        if (outputs.Count <= 0)
+        foreach (Slot slot in _Inventory._InputSlots)
         {
-            return false;
+            if (outputs.Count <= 0)
+            {
+                return false;
+            }
+            foreach (Output output in outputs)
+            {
+                output.PullOutInventory(slot.Item, slot.Quantity/ outputs.Count,InputOrOutput._InputSlots);
+            }
+            outputs[0].PullOutInventory(slot.Item, slot.Quantity % outputs.Count, InputOrOutput._InputSlots);
+            break;
         }
-        foreach (Output output in outputs)
-        {
-            output.PullOutInventory(_Inventory._InputSlots[0].Item, _Inventory._InputSlots[0].Quantity/ outputs.Count,InputOrOutput._InputSlots);
-        }
-        outputs[0].PullOutInventory(_Inventory._InputSlots[0].Item, _Inventory._InputSlots[0].Quantity % outputs.Count, InputOrOutput._InputSlots);
         UpdateSprite();
         return true;
     }

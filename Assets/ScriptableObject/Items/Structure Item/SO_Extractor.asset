@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7abd09060a86d734da53caee59175716, type: 3}
-  m_Name: Level2
+  m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
+  m_Name: SO_Extractor
   m_EditorClassIdentifier: 
-  _Level: 3
-  _Items:
-  - {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
-  _Amount: 500
+  _name: Extractor
+  _maxStack: 64
+  _sprite: {fileID: 0}
+  _structure: {fileID: 1544764270192503503, guid: d9bc619a9361c214b98731e5358d1ba8, type: 3}

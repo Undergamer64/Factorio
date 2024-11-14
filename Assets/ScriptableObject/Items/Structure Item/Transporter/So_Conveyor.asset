@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfc96ad9d645d6419a6fb24180085f7, type: 3}
-  m_Name: TestStruct2X1
+  m_Name: So_Conveyor
   m_EditorClassIdentifier: 
-  _name: Extractor
+  _name: Conveyor
   _maxStack: 64
-  _sprite: {fileID: 0}
-  _structure: {fileID: 1544764270192503503, guid: 7b5a435f9a795544b8e3c0ced0595595, type: 3}
-  _SizeX: 2
+  _sprite: {fileID: 1976126246, guid: 3990743faac3a2249bf32b5673da9800, type: 3}
+  _structure: {fileID: 1544764270192503503, guid: 855c45bae9ecc214085a08fcebfe33d1, type: 3}
+  _SizeX: 1
   _SizeY: 1
