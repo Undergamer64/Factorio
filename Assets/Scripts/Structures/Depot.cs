@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Depot : Structure
 {
@@ -22,11 +23,11 @@ public class Depot : Structure
         }
         else
         {
-            foreach (ItemBase item in _Inventory._WhiteListItems)
+            for (int i = 0; i<_Inventory._WhiteListItems.Count; i++)
             {
+                _amount[i] = _Inventory.CountItem(_Inventory._WhiteListItems[0], InputOrOutput._InputSlots);
                 foreach (ItemsWithQuantity ItemQuant in _levels[_level - 1]._Items)
                 {
-                    _amount.Add(_Inventory.CountItem(item, InputOrOutput._InputSlots));
                     if (item == ItemQuant._Item)
                     {
                         if (_Inventory.CountItem(item, InputOrOutput._InputSlots) < ItemQuant._Quantity)
@@ -63,6 +64,7 @@ public class Depot : Structure
         foreach(ItemsWithQuantity item in level._Items)
         {
             _Inventory._WhiteListItems.Add(item._Item);
+            _amount.Add(0);
         }
         _progressScript.UpdateDisplay(level, 0);
         _Inventory.EmptyInventory(InputOrOutput._InputSlots);
