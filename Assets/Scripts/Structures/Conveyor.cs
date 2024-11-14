@@ -51,12 +51,22 @@ public class Conveyor : Structure
             {
                 return false;
             }
+            bool succeded = false;
             foreach (Output output in outputs)
             {
-                output.PullOutInventory(slot.Item, slot.Quantity/ outputs.Count,InputOrOutput._InputSlots);
+                if (output.PullOutInventory(slot.Item, slot.Quantity/ outputs.Count, InputOrOutput._InputSlots))
+                {
+                    succeded = true;
+                }
             }
-            outputs[0].PullOutInventory(slot.Item, slot.Quantity % outputs.Count, InputOrOutput._InputSlots);
-            break;
+            if (outputs[0].PullOutInventory(slot.Item, slot.Quantity % outputs.Count, InputOrOutput._InputSlots))
+            {
+                succeded = true;
+            }
+            if (succeded)
+            {
+                break;
+            }
         }
         UpdateSprite();
         return true;
