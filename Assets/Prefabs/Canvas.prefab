@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: TrashCan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4008,6 +4008,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71dfd144762bddf478b01a6dd59632ea, type: 2}
   - {fileID: 11400000, guid: 44fa12d172621574989cf122237e5389, type: 2}
   - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 11400000, guid: 22941fc57f77b4641877d122951e26bc, type: 2}
 --- !u!1 &8965338431583322589
 GameObject:
   m_ObjectHideFlags: 0

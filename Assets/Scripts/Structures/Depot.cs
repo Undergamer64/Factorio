@@ -8,6 +8,7 @@ public class Depot : Structure
     private int _objectiveAmount;
     private int _amount;
     private int _level;
+    private bool _isTrashCan;
 
     protected override bool CallOutput()
     {
@@ -16,16 +17,23 @@ public class Depot : Structure
 
     public override void Process()
     {
-        foreach (ItemBase item in _Inventory._WhiteListItems)
+        if(_isTrashCan)
         {
-            _amount = _Inventory.CountItem(item, InputOrOutput._InputSlots);
-            _progressScript.UpdateProgress(_objectiveAmount, _amount);
-            if(_amount >= _objectiveAmount)
+            _Inventory.EmptyInventory(InputOrOutput._InputSlots);
+        }
+        else
+        {
+            foreach (ItemBase item in _Inventory._WhiteListItems)
             {
-                if (_level < _levels.Count-1) 
+                _amount = _Inventory.CountItem(item, InputOrOutput._InputSlots);
+                _progressScript.UpdateProgress(_objectiveAmount, _amount);
+                if (_amount >= _objectiveAmount)
                 {
-                    SetObjective(_levels[_level]);
-                    return;
+                    if (_level < _levels.Count - 1)
+                    {
+                        SetObjective(_levels[_level]);
+                        return;
+                    }
                 }
             }
         }
@@ -35,7 +43,14 @@ public class Depot : Structure
 
     private void Start()
     {
-        SetObjective(_levels[0]);
+        if (_progressScript == null)
+        {
+            _isTrashCan = true;
+        }
+        else
+        {
+            SetObjective(_levels[0]);
+        }
     }
 
     private void SetObjective(Level level)
@@ -51,6 +66,9 @@ public class Depot : Structure
 
     public override void UpdateSprite()
     {
-        SetSprite(_Inventory._WhiteListItems[0].Sprite);
+        if (!_isTrashCan)
+        {
+            SetSprite(_Inventory._WhiteListItems[0].Sprite);
+        }
     }
 }
