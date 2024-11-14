@@ -50,16 +50,13 @@ public class Factory : Structure
                 }
                 foreach (var item in _Recipe._InputItem)
                 {
-                    if (_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) > item._Quantity)
-                    {
-                        RemoveCraftInput();
-                    }
-                    else
+                    if (!(_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) >= item._Quantity))
                     {
                         _CanCraft = false;
                         return;
                     }
                 }
+                RemoveCraftInput();
             }
             TryAddCraftOutput();
         }

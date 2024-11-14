@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _lastMousePosition = Vector3.zero;
     private GameObject _currentPreviewStructure = null;
 
-    private Quaternion _rotation = Quaternion.Euler(0,0,90);
+    private Quaternion _rotation = Quaternion.Euler(0,0,-90);
     private Quaternion _currentRotation = default;
 
     private Rigidbody2D _rigidbody2D;
