@@ -10,12 +10,16 @@ public class ProgressScript : MonoBehaviour
     public void UpdateDisplay(Level level, int amount)
     {
         _level.text = "level : " + level._Level.ToString();
-        _item.text = "item : " + level._Items[0].Name;
-        UpdateProgress(level._Amount, amount);
+        _item.text = "items : \n";
+        foreach(ItemsWithQuantity items in level._Items)
+        {
+            _item.text += (items._Item.Name + "\n");
+            UpdateProgress(items._Quantity, amount);
+        }
     }
 
     public void UpdateProgress(int objective, int amount)
     {
-        _Progress.text = amount + " / " + objective;
+        _Progress.text += amount + " / " + objective + "\n";
     }
 }

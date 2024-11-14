@@ -245,7 +245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &32711326689706397
@@ -276,7 +276,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Iron
+
+
+
+
+
+    Smeltery'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -412,10 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Progress
-
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2600,7 +2603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: -300, y: -50}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1929941213142200164
@@ -3440,7 +3443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6639092969497051265
@@ -3471,7 +3474,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'smeltery
+  m_text: 'iron
+
+
+
+
+    Refinery
 
 '
   m_isRightToLeft: 0
@@ -3512,7 +3520,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -4007,9 +4015,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87ae95559aafe3842bdb42afb6b9fcc7, type: 2}
   - {fileID: 11400000, guid: 71dfd144762bddf478b01a6dd59632ea, type: 2}
   - {fileID: 11400000, guid: 44fa12d172621574989cf122237e5389, type: 2}
+  - {fileID: 11400000, guid: f377a5d6b4366b8459b04e875584817a, type: 2}
   - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
-  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
-  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
   - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
   - {fileID: 11400000, guid: 22941fc57f77b4641877d122951e26bc, type: 2}

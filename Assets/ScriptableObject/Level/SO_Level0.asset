@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Level: 1
   _Items:
-  - {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
-  _Amount: 100
+  - _Item: {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
+    _Quantity: 100
+  - _Item: {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
+    _Quantity: 200
+  - _Item: {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
+    _Quantity: 300
+  - _Item: {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
+    _Quantity: 400

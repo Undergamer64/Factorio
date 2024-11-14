@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb4e6cbe77c5ea4a8a64ae1c616dc11, type: 3}
-  m_Name: SO_TestIronRefining
+  m_Name: SO_IronSmelting
   m_EditorClassIdentifier: 
   _Cooldown: 3
   _InputItem:
@@ -18,6 +18,4 @@ MonoBehaviour:
     _Quantity: 3
   _OutputItem:
   - _Item: {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
-    _Quantity: 1
-  - _Item: {fileID: 11400000, guid: d4a5adac1352b7b4a933c2ab175bd229, type: 2}
     _Quantity: 1
