@@ -476,18 +476,6 @@ PrefabInstance:
       propertyPath: _progressScript
       value: 
       objectReference: {fileID: 1315673382}
-    - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
-      propertyPath: _levels.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
-      propertyPath: '_levels.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: fb95aaeac58ccab4b9dc3629f882f363, type: 2}
-    - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
-      propertyPath: '_levels.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: dccb3e7c2196366409dd105238fa9527, type: 2}
     - target: {fileID: 4645926954076931485, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
       propertyPath: m_Name
       value: DevGrid
@@ -530,10 +518,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5637563396280807523, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7617920167096674688, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
-      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -631,10 +615,6 @@ PrefabInstance:
     - target: {fileID: 2786736221312726058, guid: 32eb017f55defd844ab32f9aaf947ae2, type: 3}
       propertyPath: m_Name
       value: PB_Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 4951626379851101997, guid: 32eb017f55defd844ab32f9aaf947ae2, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7568478422126567130, guid: 32eb017f55defd844ab32f9aaf947ae2, type: 3}
       propertyPath: m_LocalPosition.x
