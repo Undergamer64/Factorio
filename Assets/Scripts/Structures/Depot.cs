@@ -44,9 +44,9 @@ public class Depot : Structure
             }
             _progressScript.UpdateProgress(_levels[_level-1]._Items, _amount);
             _Inventory.EmptyInventory(InputOrOutput._InputSlots);
-            if (!failed && _level < _levels.Count)
+            if (!failed && _level <= _levels.Count)
             {
-                if(_level == _levels.Count - 1)
+                if(_level == _levels.Count)
                 {
                     _audioSource.PlayOneShot(_victoryClip);
                     _menuManager.Win();
