@@ -601,6 +601,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
+      propertyPath: _menuManager
+      value: 
+      objectReference: {fileID: 1315673383}
+    - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
       propertyPath: _progressScript
       value: 
       objectReference: {fileID: 1315673382}
