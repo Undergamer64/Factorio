@@ -601,6 +601,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 2146709514}
+    - target: {fileID: 3470942605669283625, guid: e5e41976d58fa5343a9beadb301a38a9, type: 3}
       propertyPath: _menuManager
       value: 
       objectReference: {fileID: 1315673383}
@@ -812,6 +816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &2146709514 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6677277801241346552, guid: 32eb017f55defd844ab32f9aaf947ae2, type: 3}
+  m_PrefabInstance: {fileID: 2146709509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

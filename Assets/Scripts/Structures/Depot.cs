@@ -6,6 +6,9 @@ public class Depot : Structure
     [SerializeField] private List<Level> _levels = new();
     [SerializeField] private ProgressScript _progressScript;
     [SerializeField] private MenuManager _menuManager;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _victoryClip;
+    [SerializeField] private AudioClip _levelUpClip;
     private List<int> _amount = new();
     private int _level;
     private bool _isTrashCan;
@@ -31,7 +34,7 @@ public class Depot : Structure
                 {
                     if (_Inventory._WhiteListItems[i] == ItemQuant._Item)
                     {
-                        if (_Inventory.CountItem(_Inventory._WhiteListItems[i], InputOrOutput._InputSlots) < ItemQuant._Quantity)
+                        if (_amount[i] < ItemQuant._Quantity)
                         {
                             failed = true;
                             break;
@@ -45,8 +48,10 @@ public class Depot : Structure
             {
                 if(_level == _levels.Count - 1)
                 {
+                    _audioSource.PlayOneShot(_victoryClip);
                     _menuManager.Win();
                 }
+                _audioSource.PlayOneShot(_levelUpClip);
                 SetObjective(_levels[_level]);
                 return;
             }
