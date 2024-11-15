@@ -45,7 +45,7 @@ public class Depot : Structure
             {
                 if(_level == _levels.Count - 1)
                 {
-
+                    _menuManager.Win();
                 }
                 SetObjective(_levels[_level]);
                 return;
