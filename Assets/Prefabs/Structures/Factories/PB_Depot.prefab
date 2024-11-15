@@ -435,7 +435,7 @@ MonoBehaviour:
   _Item: {fileID: 0}
   _maxOutputCooldown: 10
   _resourceRenderer: {fileID: 2256786623939581560}
-  _Visuals: {fileID: 0}
+  _Visuals: {fileID: 6081408097924944222}
   _levels:
   - {fileID: 11400000, guid: e50d257429209e440abf230bd6bebcf8, type: 2}
   - {fileID: 11400000, guid: fb95aaeac58ccab4b9dc3629f882f363, type: 2}

@@ -54,7 +54,7 @@ MonoBehaviour:
   _Item: {fileID: 11400000, guid: 5fce84829521b0148a1375e0fc08a9a4, type: 2}
   _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 8413211921764364551}
-  _Visuals: {fileID: 0}
+  _Visuals: {fileID: 6096246713684972606}
   _Recipe: {fileID: 11400000, guid: d2a70aee823f1f147b9da66f8ae55bb0, type: 2}
 --- !u!114 &1532517974863151658
 MonoBehaviour:

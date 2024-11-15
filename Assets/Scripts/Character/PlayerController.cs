@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _currentMousePosition = Vector2.zero;
     private Vector3 _lastMousePosition = Vector3.zero;
     private GameObject _currentPreviewStructure = null;
+    private GameObject _currentVisualStructure = null;
 
     private Quaternion _rotation = Quaternion.Euler(0,0,-90);
     private Quaternion _currentRotation = default;
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         if (_currentPreviewStructure == null)
         {
             _currentPreviewStructure = TileManager._Instance.Place(structureItem.Structure, structureItem._SizeX, structureItem._SizeY, TileManager._Instance.RoundToCell(_currentMousePosition));
+            _currentVisualStructure = _currentPreviewStructure.GetComponent<Structure>()._Visuals;
             _currentPreviewStructure.GetComponent<Structure>().enabled = false;
             if (_currentPreviewStructure == null) { return; }
             ProgressCircle progressCircle = _currentPreviewStructure.GetComponentInChildren<ProgressCircle>();
@@ -112,6 +114,10 @@ public class PlayerController : MonoBehaviour
                 if (structure == null)
                 {
                     ResetPreview();
+                }
+                else
+                {
+                    structure.GetComponent<Structure>()._Visuals.transform.localRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, -_currentRotation.eulerAngles.z);
                 }
             }
         }
@@ -176,6 +182,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(_currentPreviewStructure);
             _currentPreviewStructure = null;
+            _currentVisualStructure = null;
         }
     }
 
@@ -203,6 +210,7 @@ public class PlayerController : MonoBehaviour
             _lastMousePosition = currentMousePositionRounded;
         }
         _currentPreviewStructure.transform.rotation = _currentRotation;
+        _currentVisualStructure.transform.localRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, -_currentRotation.eulerAngles.z);
         _currentPreviewStructure.transform.position = _lastMousePosition;
     }
 
