@@ -17,13 +17,16 @@ public class Output : Tunnel
         {
             if (collider.TryGetComponent<Input>(out Input input))
             {
-                if (input == _Input)
+                if (input._ParentInventory.GetComponent<Structure>().enabled)
                 {
+                    if (input == _Input)
+                    {
+                        break;
+                    }
+                    _Input = input;
+                    _Input.FindPartner();
                     break;
                 }
-                _Input = input;
-                _Input.FindPartner();
-                break;
             }
         }
     }

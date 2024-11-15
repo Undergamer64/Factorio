@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _lastMousePosition = Vector3.zero;
     private GameObject _currentPreviewStructure = null;
 
-    private Quaternion _rotation = Quaternion.Euler(0,0,90);
+    private Quaternion _rotation = Quaternion.Euler(0,0,-90);
     private Quaternion _currentRotation = default;
 
     private Rigidbody2D _rigidbody2D;
@@ -67,13 +67,13 @@ public class PlayerController : MonoBehaviour
         if (_currentPreviewStructure == null)
         {
             _currentPreviewStructure = TileManager._Instance.Place(structureItem.Structure, structureItem._SizeX, structureItem._SizeY, TileManager._Instance.RoundToCell(_currentMousePosition));
+            _currentPreviewStructure.GetComponent<Structure>().enabled = false;
             if (_currentPreviewStructure == null) { return; }
             ProgressCircle progressCircle = _currentPreviewStructure.GetComponentInChildren<ProgressCircle>();
             if (progressCircle != null)
             {
                 progressCircle.enabled = false;
             }
-            _currentPreviewStructure.GetComponent<Structure>().enabled = false;
             _currentPreviewStructure.GetComponentInChildren<Collider2D>().enabled = false;
         }
 

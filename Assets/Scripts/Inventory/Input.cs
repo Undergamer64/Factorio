@@ -22,13 +22,16 @@ public class Input : Tunnel
         {
             if (collider.TryGetComponent<Output>(out Output output))
             {
-                if (output == _Output)
+                if (output._ParentInventory.GetComponent<Structure>().enabled)
                 {
+                    if (output == _Output)
+                    {
+                        break;
+                    }
+                    _Output = output;
+                    _Output.FindPartner();
                     break;
                 }
-                _Output = output;
-                _Output.FindPartner();
-                break;
             }
         }
     }
