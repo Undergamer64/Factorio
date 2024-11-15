@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Depot : Structure
 {
     [SerializeField] private List<Level> _levels = new();
     [SerializeField] private ProgressScript _progressScript;
+    [SerializeField] private MenuManager _menuManager;
     private List<int> _amount = new();
     private int _level;
     private bool _isTrashCan;
@@ -43,9 +43,14 @@ public class Depot : Structure
             _Inventory.EmptyInventory(InputOrOutput._InputSlots);
             if (!failed && _level < _levels.Count)
             {
+                if(_level == _levels.Count - 1)
+                {
+
+                }
                 SetObjective(_levels[_level]);
                 return;
             }
+
         }
     }
 
