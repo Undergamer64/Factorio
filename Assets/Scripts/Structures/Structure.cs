@@ -6,6 +6,7 @@ public abstract class Structure : MonoBehaviour
     public StructureItem _Item;
     [SerializeField] protected float _maxOutputCooldown = 10;
     [SerializeField] private SpriteRenderer _resourceRenderer;
+    [SerializeField] public GameObject _Visuals;
     protected float _cooldown;
 
     public virtual void Process() { }
