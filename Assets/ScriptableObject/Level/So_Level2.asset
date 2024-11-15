@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Level: 3
   _Items:
-  - _Item: {fileID: 11400000, guid: 8b54a1e9e52728e449671665c63f0f4e, type: 2}
-    _Quantity: 300
+  - _Item: {fileID: 11400000, guid: af36b278220144849a391357ab76004a, type: 2}
+    _Quantity: 100

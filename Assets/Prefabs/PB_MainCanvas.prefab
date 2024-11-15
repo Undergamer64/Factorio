@@ -1377,8 +1377,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 104, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3170319337747075515
 CanvasRenderer:
@@ -1408,7 +1408,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Aluminium
+
+
+
+
+
+    Refinery'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4895,8 +4901,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 104, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2853400808027115024
 CanvasRenderer:
@@ -4926,7 +4932,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Aluminium
+
+
+
+
+
+    Smeltery'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5321,9 +5333,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44fa12d172621574989cf122237e5389, type: 2}
   - {fileID: 11400000, guid: f377a5d6b4366b8459b04e875584817a, type: 2}
   - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
+  - {fileID: 11400000, guid: 5ac012781d188904d9f6308a5e57779b, type: 2}
+  - {fileID: 11400000, guid: 911b726aa2ea44c4fa3aa8ac321db6c2, type: 2}
   - {fileID: 0}
-  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
-  - {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
   - {fileID: 11400000, guid: 22941fc57f77b4641877d122951e26bc, type: 2}
 --- !u!1 &8965338431583322589
 GameObject:
@@ -5494,3 +5506,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 2937702426378065072}
+  _playerInput: {fileID: 0}
