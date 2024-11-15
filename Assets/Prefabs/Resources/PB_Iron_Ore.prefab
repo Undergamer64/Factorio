@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4951781147502615747}
   - component: {fileID: 8419901631235962494}
   m_Layer: 0
-  m_Name: PB_IronOre
+  m_Name: PB_Iron_Ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
