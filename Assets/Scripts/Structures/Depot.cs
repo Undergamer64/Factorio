@@ -4,9 +4,9 @@ using static UnityEditor.Progress;
 
 public class Depot : Structure
 {
-    [SerializeField] private List<Level> _levels = new List<Level>();
+    [SerializeField] private List<Level> _levels = new();
     [SerializeField] private ProgressScript _progressScript;
-    private List<int> _amount;
+    private List<int> _amount = new();
     private int _level;
     private bool _isTrashCan;
 
@@ -23,21 +23,24 @@ public class Depot : Structure
         }
         else
         {
+            bool failed = false;
             for (int i = 0; i<_Inventory._WhiteListItems.Count; i++)
             {
-                _amount[i] = _Inventory.CountItem(_Inventory._WhiteListItems[0], InputOrOutput._InputSlots);
+                _amount[i] = _Inventory.CountItem(_Inventory._WhiteListItems[i], InputOrOutput._InputSlots);
                 foreach (ItemsWithQuantity ItemQuant in _levels[_level - 1]._Items)
                 {
-                    if (item == ItemQuant._Item)
+                    if (_Inventory._WhiteListItems[i] == ItemQuant._Item)
                     {
-                        if (_Inventory.CountItem(item, InputOrOutput._InputSlots) < ItemQuant._Quantity)
+                        if (_Inventory.CountItem(_Inventory._WhiteListItems[i], InputOrOutput._InputSlots) < ItemQuant._Quantity)
                         {
-                            return;
+                            failed = true;
+                            break;
                         }
                     }
                 }
             }
-            if (_level < _levels.Count - 1)
+            _progressScript.UpdateProgress(_levels[_level-1]._Items, _amount);
+            if (!failed && _level < _levels.Count)
             {
                 SetObjective(_levels[_level]);
                 return;
@@ -61,12 +64,14 @@ public class Depot : Structure
 
     private void SetObjective(Level level)
     {
+        _amount.Clear();
+        _Inventory._WhiteListItems.Clear();
         foreach(ItemsWithQuantity item in level._Items)
         {
             _Inventory._WhiteListItems.Add(item._Item);
             _amount.Add(0);
         }
-        _progressScript.UpdateDisplay(level, 0);
+        _progressScript.UpdateDisplay(level, _amount);
         _Inventory.EmptyInventory(InputOrOutput._InputSlots);
         _level = level._Level;
         
@@ -77,7 +82,7 @@ public class Depot : Structure
     {
         if (!_isTrashCan)
         {
-                SetSprite(_Inventory._WhiteListItems[0].Sprite);
+            SetSprite(_Inventory._WhiteListItems[0].Sprite);
         }
     }
 }
