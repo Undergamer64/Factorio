@@ -55,7 +55,7 @@ MonoBehaviour:
   _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 8413211921764364551}
   _Visuals: {fileID: 6418870399348109737}
-  _Recipe: {fileID: 11400000, guid: 1de0d018447788d4fb985786362de46b, type: 2}
+  _Recipe: {fileID: 11400000, guid: 99d96913e5aa0fc4ca2e07c7dd221930, type: 2}
 --- !u!114 &1532517974863151658
 MonoBehaviour:
   m_ObjectHideFlags: 0
