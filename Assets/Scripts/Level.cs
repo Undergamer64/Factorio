@@ -1,11 +1,10 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level", order = 1)]
 public class Level : ScriptableObject
 {
     public int _Level;
-    public List<ItemBase> _Items;
-    public int _Amount;
+    public List<ItemsWithQuantity> _Items;
 }
 

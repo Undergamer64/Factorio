@@ -15,5 +15,5 @@ MonoBehaviour:
   _Cooldown: 2
   _InputItem: []
   _OutputItem:
-  - _Item: {fileID: 11400000, guid: 6eed3a73de307b2448038389e2d13c94, type: 2}
+  - _Item: {fileID: 11400000, guid: af33f1b644b46e346b6aeacefb7c369c, type: 2}
     _Quantity: 1

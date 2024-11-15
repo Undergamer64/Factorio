@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Scrap
   _maxStack: 60
-  _sprite: {fileID: 2185479473856573754, guid: 7d37b3dc3afed6c4fa22bbeddf72ec34, type: 3}
+  _sprite: {fileID: -1663191069317769477, guid: 7d37b3dc3afed6c4fa22bbeddf72ec34, type: 3}
