@@ -51,7 +51,10 @@ public class Depot : Structure
                     _audioSource.PlayOneShot(_victoryClip);
                     _menuManager.Win();
                 }
-                _audioSource.PlayOneShot(_levelUpClip);
+                else
+                {
+                    _audioSource.PlayOneShot(_levelUpClip);
+                }
                 SetObjective(_levels[_level]);
                 return;
             }
