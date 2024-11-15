@@ -22,10 +22,10 @@ public class Depot : Structure
             _progressScript.UpdateProgress(_objectiveAmount, _amount);
             if(_amount >= _objectiveAmount)
             {
-                Debug.Log("You won");
                 if (_level < _levels.Count-1) 
                 {
-                    SetObjective(_levels[_level + 1]);
+                    SetObjective(_levels[_level]);
+                    return;
                 }
             }
         }
@@ -46,9 +46,11 @@ public class Depot : Structure
         _objectiveAmount = level._Amount;
         _amount = 0;
         _progressScript.UpdateDisplay(level, _amount);
+        UpdateSprite();
     }
 
     public override void UpdateSprite()
     {
+        SetSprite(_Inventory._WhiteListItems[0].Sprite);
     }
 }

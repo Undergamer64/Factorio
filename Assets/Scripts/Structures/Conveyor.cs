@@ -1,11 +1,15 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Conveyor : Structure
 {
+    [SerializeField] private TextMeshProUGUI _amount;
+
     private void Start()
     {
         UpdateSprite();
+        _cooldown = _maxOutputCooldown;
 	}
 	
     protected override void Update()
@@ -13,6 +17,10 @@ public class Conveyor : Structure
         if (!_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
         {
             _cooldown -= Time.deltaTime;
+        }
+        else
+        {
+            _Inventory._WhiteListItems.Clear();
         }
         if (_cooldown <= 0)
         {
@@ -37,16 +45,29 @@ public class Conveyor : Structure
                 outputs.Add(output);
             }
         }
-        if (outputs.Count <= 0)
+        foreach (Slot slot in _Inventory._InputSlots)
         {
-            
-            return false;
+            if (outputs.Count <= 0)
+            {
+                return false;
+            }
+            bool succeded = false;
+            foreach (Output output in outputs)
+            {
+                if (output.PullOutInventory(slot.Item, slot.Quantity/ outputs.Count, InputOrOutput._InputSlots))
+                {
+                    succeded = true;
+                }
+            }
+            if (outputs[0].PullOutInventory(slot.Item, slot.Quantity % outputs.Count, InputOrOutput._InputSlots))
+            {
+                succeded = true;
+            }
+            if (succeded)
+            {
+                break;
+            }
         }
-        foreach (Output output in outputs)
-        {
-            output.PullOutInventory(_Inventory._InputSlots[0].Item, _Inventory._InputSlots[0].Quantity/ outputs.Count,InputOrOutput._InputSlots);
-        }
-        outputs[0].PullOutInventory(_Inventory._InputSlots[0].Item, _Inventory._InputSlots[0].Quantity % outputs.Count, InputOrOutput._InputSlots);
         UpdateSprite();
         return true;
     }
@@ -55,10 +76,12 @@ public class Conveyor : Structure
     {
         if (_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
         {
+            _amount.SetText("");
             SetSprite(null);
         }
         else
         {
+            _amount.SetText(_Inventory._InputSlots[0].Quantity.ToString());
             SetSprite(_Inventory._InputSlots[0].Item.Sprite);
         }
     }

@@ -12,7 +12,6 @@ public class ProgressCircle : MonoBehaviour
 
     private void Start()
     {
-
         _parentFactory = transform.parent.parent.GetComponent<Factory>();
         _progressSlider = GetComponent<Slider>();
         if (_parentFactory._Recipe != null)
@@ -27,7 +26,7 @@ public class ProgressCircle : MonoBehaviour
         {
             return;
         }
-        _currentTimer = _parentFactory._craftCooldown;
+        _currentTimer = _parentFactory._CraftCooldown;
         float ratio = _currentTimer / _maxTimer;
         if (_parentFactory._CanCraft)
         {

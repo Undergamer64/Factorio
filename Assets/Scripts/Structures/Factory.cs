@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Factory : Structure
 {
-    public float _craftCooldown { get; protected set; } = 0;
+    public float _CraftCooldown { get; protected set; } = 0;
     public Recipe _Recipe;
 
     public bool _CanCraft { get; private set; } = false;
@@ -38,9 +38,9 @@ public class Factory : Structure
 
         if (_CanCraft)
         {
-            _craftCooldown -= Time.deltaTime;
+            _CraftCooldown -= Time.deltaTime;
         }
-        if (_craftCooldown < 0)
+        if (_CraftCooldown < 0)
         {
             if (_failedCraftIndex < 0)
             {
@@ -50,16 +50,13 @@ public class Factory : Structure
                 }
                 foreach (var item in _Recipe._InputItem)
                 {
-                    if (_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) > item._Quantity)
-                    {
-                        RemoveCraftInput();
-                    }
-                    else
+                    if (!(_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) >= item._Quantity))
                     {
                         _CanCraft = false;
                         return;
                     }
                 }
+                RemoveCraftInput();
             }
             TryAddCraftOutput();
         }
@@ -93,16 +90,37 @@ public class Factory : Structure
             {
                 return false;
             }
+            bool hasAtLeastOnefail = false;
             foreach (ItemsWithQuantity item in _Recipe._OutputItem)
             {
+                if (_Inventory.CountItem(item._Item, InputOrOutput._OutputSlots) < 1)
+                {
+                    hasAtLeastOnefail = true;
+                    continue;
+                }
 
+                bool hasfailed = true;
                 foreach (Output output in outputs)
                 {
-                    output.PullOutInventory(item._Item, item._Quantity / outputs.Count, InputOrOutput._OutputSlots);
+                    List<ItemBase> _whiteList = output._Input._ParentInventory._WhiteListItems;
+                    if (_whiteList.Count == 0)
+                    {
+                        output._Input._ParentInventory._WhiteListItems.Add(item._Item);
+                        hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
+                        break;
+                    }
+                    else if (_whiteList.Contains(item._Item))
+                    {
+                        hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
+                        break;
+                    }
                 }
-                outputs[0].PullOutInventory(item._Item, item._Quantity % outputs.Count, InputOrOutput._OutputSlots);
+                if (hasfailed)
+                { 
+                    hasAtLeastOnefail = true;
+                }
             }
-            return true;
+            return !hasAtLeastOnefail;
         }
         return false;
     }
@@ -149,7 +167,6 @@ public class Factory : Structure
                 else
                 {
                     remainingQuantity = _Inventory.TryAddItems(_Recipe._OutputItem[i]._Item, _Recipe._OutputItem[i]._Quantity, InputOrOutput._OutputSlots);
-
                 }
 
                 if (remainingQuantity > 0)
@@ -167,7 +184,7 @@ public class Factory : Structure
 
     public void TryToStartCraft()
     {
-        if (_craftCooldown > 0 || _Recipe == null)
+        if (_CraftCooldown > 0 || _Recipe == null)
         {
             return;
         }
@@ -182,7 +199,7 @@ public class Factory : Structure
         {
             return;
         }
-        _craftCooldown = _Recipe._Cooldown;
+        _CraftCooldown = _Recipe._Cooldown;
         UpdateSprite();
         _CanCraft = true;
     }
