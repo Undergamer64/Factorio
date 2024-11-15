@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &217144128922574064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6619678336894998585}
+  m_Layer: 0
+  m_Name: Visuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6619678336894998585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217144128922574064}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2097271378163018253}
+  - {fileID: 221046233903814297}
+  m_Father: {fileID: 1241067001853913296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &285015673194996044
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +95,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1241067001853913296}
+  m_Father: {fileID: 6619678336894998585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3542610742867613032
 SpriteRenderer:
@@ -151,10 +184,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 49030410679762261}
-  - {fileID: 221046233903814297}
   - {fileID: 3546055159537882559}
   - {fileID: 2061612959859110231}
-  - {fileID: 2097271378163018253}
+  - {fileID: 6619678336894998585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1532517974863151658
@@ -190,6 +222,7 @@ MonoBehaviour:
   _Item: {fileID: 11400000, guid: edffb8c99c171ef49ad402fd044407ad, type: 2}
   _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 3542610742867613032}
+  _Visuals: {fileID: 0}
   _Recipe: {fileID: 0}
   _childTransform: {fileID: 3546055159537882559}
 --- !u!1 &1693941906926781891
@@ -545,7 +578,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1241067001853913296}
+    m_TransformParent: {fileID: 6619678336894998585}
     m_Modifications:
     - target: {fileID: 1507169402038184935, guid: 8685a41a4858ee848a185bf136f78d26, type: 3}
       propertyPath: m_AnchorMax.x
