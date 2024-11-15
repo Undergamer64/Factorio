@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb4e6cbe77c5ea4a8a64ae1c616dc11, type: 3}
-  m_Name: SO_IronRefining
+  m_Name: SO_Aluminium_Smelting
   m_EditorClassIdentifier: 
-  _Cooldown: 2
+  _Cooldown: 3
   _InputItem:
-  - _Item: {fileID: 11400000, guid: af33f1b644b46e346b6aeacefb7c369c, type: 2}
+  - _Item: {fileID: 11400000, guid: edd49e43ed0cb364ea239178c3852dea, type: 2}
     _Quantity: 2
   _OutputItem:
-  - _Item: {fileID: 11400000, guid: 6eed3a73de307b2448038389e2d13c94, type: 2}
+  - _Item: {fileID: 11400000, guid: af36b278220144849a391357ab76004a, type: 2}
     _Quantity: 1
-  - _Item: {fileID: 11400000, guid: d4a5adac1352b7b4a933c2ab175bd229, type: 2}
-    _Quantity: 2

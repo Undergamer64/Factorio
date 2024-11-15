@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb4e6cbe77c5ea4a8a64ae1c616dc11, type: 3}
-  m_Name: SO_IronExtraction
+  m_Script: {fileID: 11500000, guid: a2c54e6e5f982df4b8535e727e56b1f7, type: 3}
+  m_Name: SO_Aluminium_Ingot
   m_EditorClassIdentifier: 
-  _Cooldown: 2
-  _InputItem: []
-  _OutputItem:
-  - _Item: {fileID: 11400000, guid: af33f1b644b46e346b6aeacefb7c369c, type: 2}
-    _Quantity: 1
+  _name: aluminium Ingot
+  _maxStack: 60
+  _sprite: {fileID: -8497713912764569763, guid: 7d37b3dc3afed6c4fa22bbeddf72ec34, type: 3}

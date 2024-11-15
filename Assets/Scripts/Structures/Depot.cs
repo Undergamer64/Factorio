@@ -26,7 +26,7 @@ public class Depot : Structure
             bool failed = false;
             for (int i = 0; i<_Inventory._WhiteListItems.Count; i++)
             {
-                _amount[i] = _Inventory.CountItem(_Inventory._WhiteListItems[i], InputOrOutput._InputSlots);
+                _amount[i] += _Inventory.CountItem(_Inventory._WhiteListItems[i], InputOrOutput._InputSlots);
                 foreach (ItemsWithQuantity ItemQuant in _levels[_level - 1]._Items)
                 {
                     if (_Inventory._WhiteListItems[i] == ItemQuant._Item)
@@ -40,6 +40,7 @@ public class Depot : Structure
                 }
             }
             _progressScript.UpdateProgress(_levels[_level-1]._Items, _amount);
+            _Inventory.EmptyInventory(InputOrOutput._InputSlots);
             if (!failed && _level < _levels.Count)
             {
                 SetObjective(_levels[_level]);
