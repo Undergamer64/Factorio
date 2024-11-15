@@ -160,7 +160,7 @@ MonoBehaviour:
   _Item: {fileID: 11400000, guid: 22941fc57f77b4641877d122951e26bc, type: 2}
   _maxOutputCooldown: 10
   _resourceRenderer: {fileID: 2256786623939581560}
-  _Visuals: {fileID: 0}
+  _Visuals: {fileID: 3361832228066397578}
   _levels:
   - {fileID: 0}
   _progressScript: {fileID: 0}

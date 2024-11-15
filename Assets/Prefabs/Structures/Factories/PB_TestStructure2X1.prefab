@@ -87,7 +87,7 @@ MonoBehaviour:
   _Item: {fileID: 11400000, guid: 70034b895a2f23440be59af76a877643, type: 2}
   _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 8413211921764364551}
-  _Visuals: {fileID: 0}
+  _Visuals: {fileID: 1364637976326834550}
   _Recipe: {fileID: 11400000, guid: d2a70aee823f1f147b9da66f8ae55bb0, type: 2}
 --- !u!114 &1532517974863151658
 MonoBehaviour:

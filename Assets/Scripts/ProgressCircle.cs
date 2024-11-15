@@ -12,7 +12,7 @@ public class ProgressCircle : MonoBehaviour
 
     private void Start()
     {
-        _parentFactory = transform.parent.parent.GetComponent<Factory>();
+        _parentFactory = transform.GetComponentInParent<Factory>();
         _progressSlider = GetComponent<Slider>();
         if (_parentFactory._Recipe != null)
         {
