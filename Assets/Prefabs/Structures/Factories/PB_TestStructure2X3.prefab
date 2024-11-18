@@ -33,10 +33,9 @@ Transform:
   m_Children:
   - {fileID: 5988988541689995716}
   - {fileID: 3546055159537882559}
-  - {fileID: 2482670367860808384}
   - {fileID: 6891692853308767973}
   - {fileID: 2061612959859110231}
-  - {fileID: 3655364119523800587}
+  - {fileID: 7818903164406568399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5675896757240418626
@@ -55,6 +54,7 @@ MonoBehaviour:
   _Item: {fileID: 11400000, guid: 5fce84829521b0148a1375e0fc08a9a4, type: 2}
   _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 8413211921764364551}
+  _Visuals: {fileID: 6096246713684972606}
   _Recipe: {fileID: 11400000, guid: d2a70aee823f1f147b9da66f8ae55bb0, type: 2}
 --- !u!114 &1532517974863151658
 MonoBehaviour:
@@ -427,7 +427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1241067001853913296}
+  m_Father: {fileID: 7818903164406568399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8413211921764364551
 SpriteRenderer:
@@ -665,6 +665,39 @@ MonoBehaviour:
   _Transform: {fileID: 4102168909766078048}
   _ParentInventory: {fileID: 1532517974863151658}
   _Input: {fileID: 0}
+--- !u!1 &6096246713684972606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7818903164406568399}
+  m_Layer: 0
+  m_Name: Visuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7818903164406568399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096246713684972606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3655364119523800587}
+  - {fileID: 2482670367860808384}
+  m_Father: {fileID: 1241067001853913296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7514967469268616271
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,7 +977,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1241067001853913296}
+    m_TransformParent: {fileID: 7818903164406568399}
     m_Modifications:
     - target: {fileID: 1507169402038184935, guid: 8685a41a4858ee848a185bf136f78d26, type: 3}
       propertyPath: m_AnchorMax.x

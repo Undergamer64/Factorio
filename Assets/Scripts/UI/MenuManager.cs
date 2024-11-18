@@ -8,6 +8,9 @@ public class MenuManager : MonoBehaviour
     private GameObject _pauseMenu;
 
     [SerializeField]
+    private GameObject _winMenu;
+
+    [SerializeField]
     private PlayerInput _playerInput;
 
     private void Awake()
@@ -32,6 +35,14 @@ public class MenuManager : MonoBehaviour
         _playerInput.SwitchCurrentActionMap("InGame");
         Time.timeScale = 1.0f;
         _pauseMenu.SetActive(false);
+        _winMenu.SetActive(false);
+    }
+
+    public void Win()
+    {
+        _playerInput.SwitchCurrentActionMap("Pause");
+        _winMenu.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     public void Quit()

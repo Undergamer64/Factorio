@@ -18,10 +18,6 @@ public class Conveyor : Structure
         {
             _cooldown -= Time.deltaTime;
         }
-        else
-        {
-            _Inventory._WhiteListItems.Clear();
-        }
         if (_cooldown <= 0)
         {
             if (CallOutput())
