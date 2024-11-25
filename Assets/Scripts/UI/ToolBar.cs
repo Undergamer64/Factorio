@@ -13,9 +13,6 @@ public class ToolBar : MonoBehaviour
             _characterData._PlacedStructureItem = null;
             return;
         }
-
         _characterData._PlacedStructureItem = _structures[structureIndex];
     }
-
-
 }
