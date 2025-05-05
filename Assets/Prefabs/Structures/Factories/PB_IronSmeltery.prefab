@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1241067001853913296}
   - component: {fileID: 5675896757240418626}
-  - component: {fileID: 1532517974863151658}
   m_Layer: 0
   m_Name: PB_IronSmeltery
   m_TagString: Untagged
@@ -50,30 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745029c429112a34ab5bef10cd014357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Inventory: {fileID: 1532517974863151658}
+  _Input: {fileID: 5748631277282785448}
+  _Output: {fileID: 1174852340176016441}
   _Item: {fileID: 11400000, guid: c6b498d879b51e34b8b9a31b06be7835, type: 2}
   _maxOutputCooldown: 0
   _resourceRenderer: {fileID: 8413211921764364551}
   _Visuals: {fileID: 2462296489695699162}
   _Recipe: {fileID: 11400000, guid: b647fead682073749baf4d71810e528e, type: 2}
---- !u!114 &1532517974863151658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544764270192503503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f5df26cf66797944a5d9ed4226f1429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slotNumbers: 1
-  _Inputs:
-  - {fileID: 6328820164349617826}
-  _Outputs:
-  - {fileID: 2127591005246305345}
-  _WhiteListItems: []
 --- !u!1 &1693941906926781891
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +233,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4664479394305337263}
   - component: {fileID: 8124179354609083285}
-  - component: {fileID: 6328820164349617826}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -320,21 +301,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &6328820164349617826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2472392146117766037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Transform: {fileID: 4664479394305337263}
-  _ParentInventory: {fileID: 1532517974863151658}
-  _Output: {fileID: 0}
 --- !u!1 &3958257904654360486
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +485,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4102168909766078048}
   - component: {fileID: 8443320930374658019}
-  - component: {fileID: 2127591005246305345}
   m_Layer: 0
   m_Name: Output
   m_TagString: Untagged
@@ -588,21 +553,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &2127591005246305345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6084443497394279138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7175730366c9d1942a7fda6360d90a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Transform: {fileID: 4102168909766078048}
-  _ParentInventory: {fileID: 1532517974863151658}
-  _Input: {fileID: 0}
 --- !u!1 &7514967469268616271
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2061612959859110231}
+  - component: {fileID: 1174852340176016441}
   m_Layer: 0
   m_Name: Outputs
   m_TagString: Untagged
@@ -635,6 +586,23 @@ Transform:
   - {fileID: 4102168909766078048}
   m_Father: {fileID: 1241067001853913296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1174852340176016441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7514967469268616271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7175730366c9d1942a7fda6360d90a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotNumbers: 3
+  _WhiteListItems: []
+  _Inputs: []
+  _LinkingPoints:
+  - {fileID: 8443320930374658019}
 --- !u!1 &8667067200860678109
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6891692853308767973}
+  - component: {fileID: 5748631277282785448}
   m_Layer: 0
   m_Name: Inputs
   m_TagString: Untagged
@@ -667,6 +636,23 @@ Transform:
   - {fileID: 4664479394305337263}
   m_Father: {fileID: 1241067001853913296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5748631277282785448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667067200860678109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotNumbers: 3
+  _WhiteListItems: []
+  _Outputs: []
+  _LinkingPoints:
+  - {fileID: 8124179354609083285}
 --- !u!1 &8856643556709258468
 GameObject:
   m_ObjectHideFlags: 0

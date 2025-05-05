@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Factory : Structure
@@ -68,29 +67,19 @@ public class Factory : Structure
         {
             return false;
         }
-        bool HasOutputItem = false;
-        foreach (ItemsWithQuantity item in _Recipe._OutputItem)
+        if (!_Output.IsInventoryEmpty())
         {
-            if (_Output.CountItem(item._Item) >= 1)
+            foreach (Slot slot in _Output._Slots)
             {
-                HasOutputItem = true; break;
-            }
-        }
-        if (HasOutputItem)
-        {
-            /*
-            List<Output> outputs = new List<Output>();
-            foreach (Output output in _Inventory._Outputs)
-            {
-                if (output._Input != null)
+                if (slot.Item == null || slot.Quantity == 0) continue;
+
+                if (_Output.PullOutInventory(slot.Item, slot.Quantity))
                 {
-                    outputs.Add(output);
+                    return true;
                 }
             }
-            if (outputs.Count <= 0)
-            {
-                return false;
-            }*/
+            
+            /*
             bool hasAtLeastOnefail = false;
             foreach (ItemsWithQuantity item in _Recipe._OutputItem)
             {
@@ -108,6 +97,7 @@ public class Factory : Structure
                     if (_whiteList.Count == 0)
                     {
                         output._Input._ParentInventory._WhiteListItems.Add(item._Item);
+                        
                         hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
                         break;
                     }
@@ -116,13 +106,13 @@ public class Factory : Structure
                         hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
                         break;
                     }
-                }*/
+                }
                 if (hasfailed)
                 { 
                     hasAtLeastOnefail = true;
                 }
-            }
-            return !hasAtLeastOnefail;
+            }*/
+            //return !hasAtLeastOnefail;
         }
         return false;
     }

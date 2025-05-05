@@ -21,7 +21,9 @@ public class Output : Inventory
             List<Collider2D> Inputs = Physics2D.OverlapBoxAll(col.transform.position, col.bounds.size, 0).ToList();
             foreach (Collider2D collider in Inputs)
             {
-                if (collider.TryGetComponent(out Input input))
+                Input input = collider.GetComponentInParent<Input>();
+                
+                if (input != null)
                 {
                     if (input.GetComponentInParent<Structure>().enabled)
                     {
@@ -50,8 +52,7 @@ public class Output : Inventory
     /// <param name="item"> item to push</param>
     /// <param name="quantity">number to push</param>
     /// <returns></returns>
-    //need to add a split function
-    public bool PullOutInventory(ItemBase item, int quantity)
+    public bool PullOutInventory(ItemBase item, int quantity) // need to add a split function
     {
         foreach (Input input in _Inputs)
         {

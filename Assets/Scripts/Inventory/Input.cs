@@ -27,7 +27,9 @@ public class Input : Inventory
             List<Collider2D> Outputs = Physics2D.OverlapBoxAll(col.transform.position, col.bounds.size, 0).ToList();
             foreach (Collider2D collider in Outputs)
             {
-                if (collider.TryGetComponent(out Output output ))
+                Output output = collider.GetComponentInParent<Output>();
+                
+                if (output != null)
                 {
                     if (output.GetComponentInParent<Structure>().enabled)
                     {

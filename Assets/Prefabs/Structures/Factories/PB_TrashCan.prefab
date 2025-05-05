@@ -96,7 +96,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1241067001853913296}
-  - component: {fileID: 1532517974863151658}
   - component: {fileID: -8959684065835983330}
   m_Layer: 0
   m_Name: PB_TrashCan
@@ -124,26 +123,6 @@ Transform:
   - {fileID: 4794930765867579557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1532517974863151658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544764270192503503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f5df26cf66797944a5d9ed4226f1429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slotNumbers: 10
-  _Inputs:
-  - {fileID: 6328820164349617826}
-  - {fileID: 8850246945369398747}
-  - {fileID: 8503515292807372367}
-  - {fileID: 7348626899048903399}
-  _Outputs: []
-  _WhiteListItems: []
 --- !u!114 &-8959684065835983330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3ab94312883464989500af77c12571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Inventory: {fileID: 1532517974863151658}
+  _Input: {fileID: 8223327815395846310}
+  _Output: {fileID: 0}
   _Item: {fileID: 11400000, guid: 22941fc57f77b4641877d122951e26bc, type: 2}
   _maxOutputCooldown: 10
   _resourceRenderer: {fileID: 2256786623939581560}
@@ -164,6 +144,10 @@ MonoBehaviour:
   _levels:
   - {fileID: 0}
   _progressScript: {fileID: 0}
+  _menuManager: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _victoryClip: {fileID: 0}
+  _levelUpClip: {fileID: 0}
 --- !u!1 &1693941906926781891
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +327,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4664479394305337263}
   - component: {fileID: 8124179354609083285}
-  - component: {fileID: 6328820164349617826}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -412,21 +395,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &6328820164349617826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2472392146117766037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Transform: {fileID: 4664479394305337263}
-  _ParentInventory: {fileID: 1532517974863151658}
-  _Output: {fileID: 0}
 --- !u!1 &2687383605621596337
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +405,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4890162806372440556}
   - component: {fileID: 4473185550362185941}
-  - component: {fileID: 8503515292807372367}
   m_Layer: 0
   m_Name: Input (2)
   m_TagString: Untagged
@@ -506,21 +473,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &8503515292807372367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2687383605621596337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Transform: {fileID: 4890162806372440556}
-  _ParentInventory: {fileID: 1532517974863151658}
-  _Output: {fileID: 0}
 --- !u!1 &3361832228066397578
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +776,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6634368686738307459}
   - component: {fileID: 8778580841358742637}
-  - component: {fileID: 7348626899048903399}
   m_Layer: 0
   m_Name: Input (3)
   m_TagString: Untagged
@@ -893,21 +844,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &7348626899048903399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428415238497827880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Transform: {fileID: 6634368686738307459}
-  _ParentInventory: {fileID: 1532517974863151658}
-  _Output: {fileID: 0}
 --- !u!1 &6609815176503288040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +941,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1068202895263104264}
   - component: {fileID: 7445817400650461201}
-  - component: {fileID: 8850246945369398747}
   m_Layer: 0
   m_Name: Input (1)
   m_TagString: Untagged
@@ -1074,21 +1009,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &8850246945369398747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140251843254288731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Transform: {fileID: 1068202895263104264}
-  _ParentInventory: {fileID: 1532517974863151658}
-  _Output: {fileID: 0}
 --- !u!1 &8667067200860678109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6891692853308767973}
+  - component: {fileID: 8223327815395846310}
   m_Layer: 0
   m_Name: Inputs
   m_TagString: Untagged
@@ -1124,3 +1045,23 @@ Transform:
   - {fileID: 6634368686738307459}
   m_Father: {fileID: 1241067001853913296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8223327815395846310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667067200860678109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5557ce21554a74282ad7d14a9824dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotNumbers: 3
+  _WhiteListItems: []
+  _Outputs: []
+  _LinkingPoints:
+  - {fileID: 8124179354609083285}
+  - {fileID: 7445817400650461201}
+  - {fileID: 4473185550362185941}
+  - {fileID: 8778580841358742637}

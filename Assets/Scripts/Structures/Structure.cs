@@ -20,6 +20,7 @@ public abstract class Structure : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (_Output == null) return;
         if (!_Output.IsInventoryEmpty())
         {
             _cooldown -= Time.deltaTime;
