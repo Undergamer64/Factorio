@@ -14,7 +14,7 @@ public class Conveyor : Structure
 	
     protected override void Update()
     {
-        if (!_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
+        if (!_Input.IsInventoryEmpty())
         {
             _cooldown -= Time.deltaTime;
         }
@@ -29,36 +29,14 @@ public class Conveyor : Structure
 
     protected override bool CallOutput()
     {
-        if (_Inventory._InputSlots[0].Quantity == 0)
+        if (_Input._Slots[0].Quantity == 0)
         {    
             return false;
         }
-        List<Output> outputs = new List<Output>();
-        foreach (Output output in _Inventory._Outputs)
+        foreach (Slot slot in _Input._Slots)
         {
-            if (output._Input != null)
-            {
-                outputs.Add(output);
-            }
-        }
-        foreach (Slot slot in _Inventory._InputSlots)
-        {
-            if (outputs.Count <= 0)
-            {
-                return false;
-            }
-            bool succeded = false;
-            foreach (Output output in outputs)
-            {
-                if (output.PullOutInventory(slot.Item, slot.Quantity/ outputs.Count, InputOrOutput._InputSlots))
-                {
-                    succeded = true;
-                }
-            }
-            if (outputs[0].PullOutInventory(slot.Item, slot.Quantity % outputs.Count, InputOrOutput._InputSlots))
-            {
-                succeded = true;
-            }
+            bool succeded = _Output.PullOutInventory(slot.Item, slot.Quantity);
+            
             if (succeded)
             {
                 break;
@@ -70,15 +48,15 @@ public class Conveyor : Structure
 
     public override void UpdateSprite()
     {
-        if (_Inventory.IsInventoryEmpty(InputOrOutput._InputSlots))
+        if (_Input.IsInventoryEmpty())
         {
             _amount.SetText("");
             SetSprite(null);
         }
         else
         {
-            _amount.SetText(_Inventory._InputSlots[0].Quantity.ToString());
-            SetSprite(_Inventory._InputSlots[0].Item.Sprite);
+            _amount.SetText(_Input._Slots[0].Quantity.ToString());
+            SetSprite(_Input._Slots[0].Item.Sprite);
         }
     }
 }

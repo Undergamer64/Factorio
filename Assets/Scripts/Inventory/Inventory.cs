@@ -13,10 +13,10 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private int _slotNumbers = 0;
 
-    public List<Slot> _InputSlots = new List<Slot>();
-    public List<Slot> _OutputSlots = new List<Slot>();
-    public List<Input> _Inputs = new List<Input>();
-    public List<Output> _Outputs = new List<Output>();
+    public List<Slot> _Slots = new List<Slot>();
+    //public List<Slot> _OutputSlots = new List<Slot>();
+    //public List<Input> _Inputs = new List<Input>();
+    //public List<Output> _Outputs = new List<Output>();
     public List<ItemBase> _WhiteListItems = new List<ItemBase>();
     //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
@@ -24,11 +24,11 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < _slotNumbers; i++)
         {
-            _InputSlots.Add(new Slot());
-            _OutputSlots.Add(new Slot());
+            _Slots.Add(new Slot());
         }
     }
 
+    /*
     public List<Slot> EnumToSlots(InputOrOutput slots)
     {
         List<Slot> _slotsCopy = new List<Slot>();
@@ -46,25 +46,25 @@ public class Inventory : MonoBehaviour
         }
         return _slotsCopy;
     }
-
-    public void EmptyInventory(InputOrOutput slots)
+    */
+    public void EmptyInventory()
     {
-        foreach(var slot in EnumToSlots(slots))
+        foreach(var slot in _Slots)
         {
             slot.UpdateQuantity(0);
         }
     }
 
-    public bool IsInventoryEmpty(InputOrOutput slots)
+    public bool IsInventoryEmpty()
     {
-        foreach(Slot slot in EnumToSlots(slots))
+        foreach(Slot slot in _Slots)
         {
             if (!IsEmpty(slot)) return false;
         }
         return true;
     }
 
-    public bool CanAddItem(ItemBase ItemToADD,InputOrOutput slots)
+    public bool CanAddItem(ItemBase ItemToADD)
     {
         if (_WhiteListItems.Count == 0)
         {
@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
         {
             foreach(ItemBase item in _WhiteListItems)
             {
-                if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD,slots) != null) return true;
+                if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD) != null) return true;
             }
         }
         return false;
@@ -93,18 +93,18 @@ public class Inventory : MonoBehaviour
     /// Tries to Add "quantity" items of type "item"
     /// </summary>
     /// <returns>The remaining quantity of items left to add (0 if none are left)</returns>
-    public int TryAddItems(ItemBase item, int quantity,InputOrOutput slots)
+    public int TryAddItems(ItemBase item, int quantity)
     {
         int remainingItems = quantity;
 
         for (int i = 0; i < quantity; i++)
         {
-            if (FindFirstSlotAvailable(item,slots) == null)
+            if (FindFirstSlotAvailable(item) == null)
             {
                 return remainingItems;
             }
 
-            AddItem(item,slots);
+            AddItem(item);
             remainingItems--;
         }
         return remainingItems;
@@ -113,9 +113,9 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Adds the item "item" to the inventory if a slot is available
     /// </summary>
-    private void AddItem(ItemBase item, InputOrOutput slots)
+    private void AddItem(ItemBase item)
     {
-        Slot itemSlot = FindFirstSlotAvailable(item,slots);
+        Slot itemSlot = FindFirstSlotAvailable(item);
         
         if (itemSlot == null)
         {
@@ -136,12 +136,12 @@ public class Inventory : MonoBehaviour
     /// Tries to remove the quantity "quantity" of last instance of the item "item" in inventory.
     /// </summary>
     /// <returns>The remaining quantity of items left to remove (0 if none are left)</returns>
-    public int TryRemoveItems(ItemBase item, int quantity,InputOrOutput slots)
+    public int TryRemoveItems(ItemBase item, int quantity)
     {
         int tempQuantity = quantity;
-        for (int i = EnumToSlots(slots).Count - 1; i >= 0; i--)
+        for (int i = _Slots.Count - 1; i >= 0; i--)
         {
-            Slot itemSlot = EnumToSlots(slots)[i];
+            Slot itemSlot = _Slots[i];
             if (tempQuantity <= 0)
             {
                 return 0;
@@ -170,11 +170,11 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Counts the number of item "item" in the inventory and returns it
     /// </summary>
-    public int CountItem(ItemBase item, InputOrOutput slots)
+    public int CountItem(ItemBase item)
     {
         int quantity = 0;
 
-        foreach (Slot slot in EnumToSlots(slots))
+        foreach (Slot slot in _Slots)
         {
             if (slot.Item == item)
             {
@@ -213,10 +213,10 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Find the first available slot in the inventory (empty or holding the same item as item)
     /// </summary>
-    public Slot FindFirstSlotAvailable(ItemBase item, InputOrOutput slots)
+    public Slot FindFirstSlotAvailable(ItemBase item)
     {
         //search stacks first
-        foreach (Slot itemSlot in EnumToSlots(slots))
+        foreach (Slot itemSlot in _Slots)
         {
             if (IsEmpty(itemSlot))
             {
@@ -233,9 +233,9 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Finds if the inventory is full (if there is no empty inventory slot)
     /// </summary>
-    public bool IsInventoryFull(InputOrOutput slots)
+    public bool IsInventoryFull()
     {
-        foreach (Slot itemSlot in EnumToSlots(slots))
+        foreach (Slot itemSlot in _Slots)
         {
             if (IsEmpty(itemSlot))
             {
@@ -245,15 +245,15 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public bool IsInventoryFull(ItemBase item, int quantity,InputOrOutput slots)
+    public bool IsInventoryFull(ItemBase item, int quantity)
     {
-        if (!IsInventoryFull(slots)) 
+        if (!IsInventoryFull()) 
         { 
             return false; 
         }
 
         int remainingQuantity = quantity;
-        foreach (Slot itemSlot in EnumToSlots(slots))
+        foreach (Slot itemSlot in _Slots)
         {
             if (itemSlot.Item == item && itemSlot.Quantity < itemSlot.Item.MaxStack)
             {

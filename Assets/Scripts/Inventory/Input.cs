@@ -3,34 +3,42 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class Input : Tunnel
+public class Input : Inventory
 {
-    public Output _Output;
+    public List<Output> _Outputs = new List<Output>();
+    public List<Collider2D> _LinkingPoints = new List<Collider2D>();
 
     //check if there's space in inventory
     //if yes try and remove item from partner
     //if yes add item to inventory
     private void Start()
     {
+        for (int i = 0; i < _LinkingPoints.Count; i++)
+        {
+            _Outputs.Add(null);
+        }
         FindPartner();
     }
 
     public void FindPartner()
     {
-        List<Collider2D> _Outputs = Physics2D.OverlapBoxAll(transform.position, Vector2.one*.1f, 0).ToList();
-        foreach (Collider2D collider in _Outputs)
+        foreach (Collider2D col in _LinkingPoints)
         {
-            if (collider.TryGetComponent<Output>(out Output output))
+            List<Collider2D> Outputs = Physics2D.OverlapBoxAll(col.transform.position, col.bounds.size, 0).ToList();
+            foreach (Collider2D collider in Outputs)
             {
-                if (output._ParentInventory.GetComponent<Structure>().enabled)
+                if (collider.TryGetComponent(out Output output ))
                 {
-                    if (output == _Output)
+                    if (output.GetComponentInParent<Structure>().enabled)
                     {
+                        if (_Outputs.Contains(output))
+                        {
+                            break;
+                        }
+                        _Outputs[_LinkingPoints.IndexOf(col)] = output;
+                        output.FindPartner();
                         break;
                     }
-                    _Output = output;
-                    _Output.FindPartner();
-                    break;
                 }
             }
         }
