@@ -56,7 +56,6 @@ public class Depot : Structure
                     _audioSource.PlayOneShot(_levelUpClip);
                 }
                 SetObjective(_levels[_level]);
-                return;
             }
 
         }

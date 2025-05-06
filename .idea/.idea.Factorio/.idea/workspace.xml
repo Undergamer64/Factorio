@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c71a4e06-aa45-47a1-9ab0-9d0c478118c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factorio/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factorio/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PB_Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PB_Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Resources/PB_Aluminium_Ore.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Resources/PB_Aluminium_Ore.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Output.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Conveyor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Conveyor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Depot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Depot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Factory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Factory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746516760083</updated>
-      <workItem from="1746516761678" duration="4336000" />
+      <workItem from="1746516761678" duration="12019000" />
     </task>
     <servers />
   </component>

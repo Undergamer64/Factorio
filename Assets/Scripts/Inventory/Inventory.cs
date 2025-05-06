@@ -1,12 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputOrOutput
-{
-    _InputSlots,
-    _OutputSlots
-}
-
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
@@ -27,25 +21,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    /*
-    public List<Slot> EnumToSlots(InputOrOutput slots)
-    {
-        List<Slot> _slotsCopy = new List<Slot>();
-        switch (slots)
-        {
-            case InputOrOutput._InputSlots:
-                _slotsCopy = _InputSlots;
-                break;
-            case InputOrOutput._OutputSlots:
-                _slotsCopy = _OutputSlots;
-                break;
-            default:
-                _slotsCopy = _InputSlots;
-                break;
-        }
-        return _slotsCopy;
-    }
-    */
+    
     public void EmptyInventory()
     {
         foreach(var slot in _Slots)
@@ -86,6 +62,24 @@ public class Inventory : MonoBehaviour
         {
             _WhiteListItems.Add(item);
         }
+    }
+
+    public int FindFirstSlotNonEmpty()
+    {
+        if (_Slots.Count == 0 || IsInventoryEmpty())
+        {
+            return -1;
+        }
+
+        for (int i = 0; i < _Slots.Count; i++)
+        {
+            if (!IsEmpty(_Slots[i]))
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     /// <summary>

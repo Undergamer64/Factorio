@@ -51,7 +51,7 @@ public class Conveyor : Structure
         }
         foreach (Slot slot in _Output._Slots)
         {
-            bool succeded = _Output.PullOutInventory(slot.Item, slot.Quantity);
+            bool succeded = _Output.PullOutInventory();
             if (succeded)
             {
                 break;

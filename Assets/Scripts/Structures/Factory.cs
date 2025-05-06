@@ -66,6 +66,7 @@ public class Factory : Structure
         if (_Recipe == null)
         {
             return false;
+            
         }
         if (!_Output.IsInventoryEmpty())
         {
@@ -73,7 +74,7 @@ public class Factory : Structure
             {
                 if (slot.Item == null || slot.Quantity == 0) continue;
 
-                if (_Output.PullOutInventory(slot.Item, slot.Quantity))
+                if (_Output.PullOutInventory(_Recipe))
                 {
                     return true;
                 }
