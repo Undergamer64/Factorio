@@ -11,10 +11,26 @@ public class Conveyor : Structure
         UpdateSprite();
         _cooldown = _maxOutputCooldown;
 	}
-	
+
+    public override void Process()
+    {
+        if (_Output == null || _Input.IsInventoryEmpty())
+            return;
+        ItemBase item = _Input._Slots[0].Item;
+        if (!_Output.IsInventoryFull(item, 1))
+        {
+            if (_Output.CanAddItem(item))
+            {
+                int LeftToAdd = _Output.TryAddItems(item, _Input._Slots[0].Quantity);
+                _Input.TryRemoveItems(item, _Input._Slots[0].Quantity - LeftToAdd);
+                UpdateSprite();
+            }
+        }
+    }
+    
     protected override void Update()
     {
-        if (!_Input.IsInventoryEmpty())
+        if (!_Output.IsInventoryEmpty())
         {
             _cooldown -= Time.deltaTime;
         }
@@ -29,14 +45,13 @@ public class Conveyor : Structure
 
     protected override bool CallOutput()
     {
-        if (_Input._Slots[0].Quantity == 0)
+        if (_Output.IsInventoryEmpty())
         {    
             return false;
         }
-        foreach (Slot slot in _Input._Slots)
+        foreach (Slot slot in _Output._Slots)
         {
             bool succeded = _Output.PullOutInventory(slot.Item, slot.Quantity);
-            
             if (succeded)
             {
                 break;
@@ -48,15 +63,15 @@ public class Conveyor : Structure
 
     public override void UpdateSprite()
     {
-        if (_Input.IsInventoryEmpty())
+        if (_Output.IsInventoryEmpty())
         {
             _amount.SetText("");
             SetSprite(null);
         }
         else
         {
-            _amount.SetText(_Input._Slots[0].Quantity.ToString());
-            SetSprite(_Input._Slots[0].Item.Sprite);
+            _amount.SetText(_Output._Slots[0].Quantity.ToString());
+            SetSprite(_Output._Slots[0].Item.Sprite);
         }
     }
 }

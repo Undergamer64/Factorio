@@ -140,11 +140,11 @@ public class Inventory : MonoBehaviour
         int tempQuantity = quantity;
         for (int i = _Slots.Count - 1; i >= 0; i--)
         {
-            Slot itemSlot = _Slots[i];
             if (tempQuantity <= 0)
             {
                 return 0;
             }
+            Slot itemSlot = _Slots[i];
             if (IsEmpty(itemSlot))
             {
                 continue;
