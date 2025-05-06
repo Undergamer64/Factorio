@@ -2,7 +2,9 @@ using UnityEngine;
 
 public abstract class Structure : MonoBehaviour
 {
-    public Inventory _Inventory;
+    //public Inventory _Inventory;
+    public Input _Input;
+    public Output _Output;
     public StructureItem _Item;
     [SerializeField] protected float _maxOutputCooldown = 10;
     [SerializeField] private SpriteRenderer _resourceRenderer;
@@ -18,7 +20,8 @@ public abstract class Structure : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!_Inventory.IsInventoryEmpty(InputOrOutput._OutputSlots))
+        if (_Output == null) return;
+        if (!_Output.IsInventoryEmpty())
         {
             _cooldown -= Time.deltaTime;
         }

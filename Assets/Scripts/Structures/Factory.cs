@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Factory : Structure
@@ -24,7 +23,7 @@ public class Factory : Structure
         }
         foreach (var item in _Recipe._InputItem)
         {
-            _Inventory._WhiteListItems.Add(item._Item);
+            _Input._WhiteListItems.Add(item._Item);
         }
     }
 
@@ -50,7 +49,7 @@ public class Factory : Structure
                 }
                 foreach (var item in _Recipe._InputItem)
                 {
-                    if (!(_Inventory.CountItem(item._Item, InputOrOutput._InputSlots) >= item._Quantity))
+                    if (!(_Input.CountItem(item._Item) >= item._Quantity))
                     {
                         _CanCraft = false;
                         return;
@@ -68,44 +67,37 @@ public class Factory : Structure
         {
             return false;
         }
-        bool HasOutputItem = false;
-        foreach (ItemsWithQuantity item in _Recipe._OutputItem)
+        if (!_Output.IsInventoryEmpty())
         {
-            if (_Inventory.CountItem(item._Item, InputOrOutput._OutputSlots) >= 1)
+            foreach (Slot slot in _Output._Slots)
             {
-                HasOutputItem = true; break;
-            }
-        }
-        if (HasOutputItem)
-        {
-            List<Output> outputs = new List<Output>();
-            foreach (Output output in _Inventory._Outputs)
-            {
-                if (output._Input != null)
+                if (slot.Item == null || slot.Quantity == 0) continue;
+
+                if (_Output.PullOutInventory(slot.Item, slot.Quantity))
                 {
-                    outputs.Add(output);
+                    return true;
                 }
             }
-            if (outputs.Count <= 0)
-            {
-                return false;
-            }
+            
+            /*
             bool hasAtLeastOnefail = false;
             foreach (ItemsWithQuantity item in _Recipe._OutputItem)
             {
-                if (_Inventory.CountItem(item._Item, InputOrOutput._OutputSlots) < 1)
+                if (_Output.CountItem(item._Item) < 1)
                 {
                     hasAtLeastOnefail = true;
                     continue;
                 }
 
                 bool hasfailed = true;
+                /*
                 foreach (Output output in outputs)
                 {
                     List<ItemBase> _whiteList = output._Input._ParentInventory._WhiteListItems;
                     if (_whiteList.Count == 0)
                     {
                         output._Input._ParentInventory._WhiteListItems.Add(item._Item);
+                        
                         hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
                         break;
                     }
@@ -119,8 +111,8 @@ public class Factory : Structure
                 { 
                     hasAtLeastOnefail = true;
                 }
-            }
-            return !hasAtLeastOnefail;
+            }*/
+            //return !hasAtLeastOnefail;
         }
         return false;
     }
@@ -142,7 +134,7 @@ public class Factory : Structure
         {
             foreach (var InputItem in _Recipe._InputItem)
             {
-                _Inventory.TryRemoveItems(InputItem._Item, InputItem._Quantity, InputOrOutput._InputSlots);
+                _Input.TryRemoveItems(InputItem._Item, InputItem._Quantity);
             }
         }
     }
@@ -162,11 +154,11 @@ public class Factory : Structure
                 int remainingQuantity = 0;
                 if (i == _failedCraftIndex)
                 {
-                    remainingQuantity = _Inventory.TryAddItems(_Recipe._OutputItem[i]._Item, _failedCraftQuantity, InputOrOutput._OutputSlots);
+                    remainingQuantity = _Output.TryAddItems(_Recipe._OutputItem[i]._Item, _failedCraftQuantity);
                 }
                 else
                 {
-                    remainingQuantity = _Inventory.TryAddItems(_Recipe._OutputItem[i]._Item, _Recipe._OutputItem[i]._Quantity, InputOrOutput._OutputSlots);
+                    remainingQuantity = _Output.TryAddItems(_Recipe._OutputItem[i]._Item, _Recipe._OutputItem[i]._Quantity);
                 }
 
                 if (remainingQuantity > 0)
@@ -190,7 +182,7 @@ public class Factory : Structure
         }
         foreach (var inputItem in _Recipe._InputItem)
         {
-            if (_Inventory.CountItem(inputItem._Item, InputOrOutput._InputSlots) < inputItem._Quantity)
+            if (_Input.CountItem(inputItem._Item) < inputItem._Quantity)
             {
                 return;
             }

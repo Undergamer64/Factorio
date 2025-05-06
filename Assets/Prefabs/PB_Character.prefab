@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slotNumbers: 0
-  _Inputs: []
-  _Outputs: []
   _WhiteListItems: []
 --- !u!114 &3970107291243484780
 MonoBehaviour:
