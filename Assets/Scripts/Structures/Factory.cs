@@ -39,7 +39,7 @@ public class Factory : Structure
         {
             _CraftCooldown -= Time.deltaTime;
         }
-        if (_CraftCooldown < 0)
+        if (_CraftCooldown <= 0)
         {
             if (_failedCraftIndex < 0)
             {
@@ -79,41 +79,6 @@ public class Factory : Structure
                     return true;
                 }
             }
-            
-            /*
-            bool hasAtLeastOnefail = false;
-            foreach (ItemsWithQuantity item in _Recipe._OutputItem)
-            {
-                if (_Output.CountItem(item._Item) < 1)
-                {
-                    hasAtLeastOnefail = true;
-                    continue;
-                }
-
-                bool hasfailed = true;
-                /*
-                foreach (Output output in outputs)
-                {
-                    List<ItemBase> _whiteList = output._Input._ParentInventory._WhiteListItems;
-                    if (_whiteList.Count == 0)
-                    {
-                        output._Input._ParentInventory._WhiteListItems.Add(item._Item);
-                        
-                        hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
-                        break;
-                    }
-                    else if (_whiteList.Contains(item._Item))
-                    {
-                        hasfailed = !output.PullOutInventory(item._Item, item._Quantity, InputOrOutput._OutputSlots);
-                        break;
-                    }
-                }
-                if (hasfailed)
-                { 
-                    hasAtLeastOnefail = true;
-                }
-            }*/
-            //return !hasAtLeastOnefail;
         }
         return false;
     }

@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour
     {
         if (_WhiteListItems.Count == 0)
         {
-            return true;
+            if (FindFirstSlotAvailable(ItemToADD) != null) return true;
         }
         else
         {

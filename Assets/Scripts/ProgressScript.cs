@@ -17,6 +17,7 @@ public class ProgressScript : MonoBehaviour
             _item.text += (items._Item.Name + "\n");
         }
         UpdateProgress(level._Items, amount);
+        
     }
 
     public void UpdateProgress( List<ItemsWithQuantity> objective, List<int> amount)

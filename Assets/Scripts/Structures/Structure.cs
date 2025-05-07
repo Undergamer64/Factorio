@@ -14,6 +14,11 @@ public abstract class Structure : MonoBehaviour
     public virtual void Process() { }
     public virtual void Init() 
     {
+        if (_Input != null)
+        {
+            _Input.RefreshSprite = UpdateSprite;
+            _Input.StartProcess = Process;
+        }
         _cooldown = _maxOutputCooldown;
         Process();
     }

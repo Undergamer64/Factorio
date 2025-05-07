@@ -5,16 +5,18 @@ using UnityEngine;
 public class Conveyor : Structure
 {
     [SerializeField] private TextMeshProUGUI _amount;
-
+    private int _quantity;
     private void Start()
     {
         UpdateSprite();
         _cooldown = _maxOutputCooldown;
 	}
-
-    public override void Process()
+    
+    protected override void Update()
     {
-        if (_Output == null || _Input.IsInventoryEmpty())
+        base.Update();
+        
+        if (_Input.IsInventoryEmpty())
             return;
         ItemBase item = _Input._Slots[0].Item;
         if (!_Output.IsInventoryFull(item, 1))
@@ -24,21 +26,6 @@ public class Conveyor : Structure
                 int LeftToAdd = _Output.TryAddItems(item, _Input._Slots[0].Quantity);
                 _Input.TryRemoveItems(item, _Input._Slots[0].Quantity - LeftToAdd);
                 UpdateSprite();
-            }
-        }
-    }
-    
-    protected override void Update()
-    {
-        if (!_Output.IsInventoryEmpty())
-        {
-            _cooldown -= Time.deltaTime;
-        }
-        if (_cooldown <= 0)
-        {
-            if (CallOutput())
-            {
-                _cooldown = _maxOutputCooldown;
             }
         }
     }
@@ -63,15 +50,23 @@ public class Conveyor : Structure
 
     public override void UpdateSprite()
     {
-        if (_Output.IsInventoryEmpty())
+        if (_Output.IsInventoryEmpty() && _Input.IsInventoryEmpty())
         {
             _amount.SetText("");
             SetSprite(null);
         }
         else
         {
-            _amount.SetText(_Output._Slots[0].Quantity.ToString());
-            SetSprite(_Output._Slots[0].Item.Sprite);
+            _quantity = _Output._Slots[0].Quantity + _Input._Slots[0].Quantity;
+            _amount.SetText(_quantity.ToString());
+            if (!_Output.IsInventoryEmpty())
+            {
+                SetSprite(_Output._Slots[0].Item.Sprite);
+            }
+            else if (!_Input.IsInventoryEmpty())
+            {
+                SetSprite(_Input._Slots[0].Item.Sprite);
+            }
         }
     }
 }

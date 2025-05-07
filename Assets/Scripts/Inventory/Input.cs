@@ -1,12 +1,17 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class Input : Inventory
 {
     public List<Output> _Outputs = new List<Output>();
     public List<Collider2D> _LinkingPoints = new List<Collider2D>();
+    
+    public bool _CanConnect = false;
+    
+    public Action RefreshSprite;
+    public Action StartProcess;
 
     //check if there's space in inventory
     //if yes try and remove item from partner
@@ -31,7 +36,7 @@ public class Input : Inventory
                 
                 if (output != null)
                 {
-                    if (output.GetComponentInParent<Structure>().enabled)
+                    if (output._CanConnect)
                     {
                         if (_Outputs.Contains(output))
                         {

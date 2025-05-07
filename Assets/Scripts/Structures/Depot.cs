@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Depot : Structure
@@ -26,43 +27,53 @@ public class Depot : Structure
         }
         else
         {
+            List<ItemBase> items = new List<ItemBase>();
+
+            items = _levels[_level - 1]._Items.Select(x => x._Item).ToList();
+            
             bool failed = false;
-            for (int i = 0; i<_Input._WhiteListItems.Count; i++)
+
+            foreach (Slot slot in _Input._Slots)
             {
-                _amount[i] += _Input.CountItem(_Input._WhiteListItems[i]);
-                foreach (ItemsWithQuantity ItemQuant in _levels[_level - 1]._Items)
+                if (items.Contains(slot.Item))
                 {
-                    if (_Input._WhiteListItems[i] == ItemQuant._Item)
-                    {
-                        if (_amount[i] < ItemQuant._Quantity)
-                        {
-                            failed = true;
-                            break;
-                        }
-                    }
+                    _amount[items.IndexOf(slot.Item)] += slot.Quantity;
                 }
             }
+            
             _progressScript.UpdateProgress(_levels[_level-1]._Items, _amount);
             _Input.EmptyInventory();
-            if (!failed && _level <= _levels.Count)
+            if (CheckProgress() && _level <= _levels.Count)
             {
                 if(_level == _levels.Count)
                 {
-                    _audioSource.PlayOneShot(_victoryClip);
+                    //_audioSource.PlayOneShot(_victoryClip);
                     _menuManager.Win();
                 }
                 else
                 {
-                    _audioSource.PlayOneShot(_levelUpClip);
+                    //_audioSource.PlayOneShot(_levelUpClip);
                 }
                 SetObjective(_levels[_level]);
             }
 
         }
+        
     }
 
+    private bool CheckProgress()
+    {
+        for (int i = 0; i < _levels[_level-1]._Items.Count; i++)
+        {
+            if (_amount[i] < _levels[_level - 1]._Items[i]._Quantity)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     //count on input and delete object
-
     private void Start()
     {
         if (_progressScript == null)
@@ -79,11 +90,11 @@ public class Depot : Structure
     {
         _amount.Clear();
         _Input._WhiteListItems.Clear();
-        foreach(ItemsWithQuantity item in level._Items)
+        /*foreach(ItemsWithQuantity item in level._Items)
         {
             _Input._WhiteListItems.Add(item._Item);
             _amount.Add(0);
-        }
+        }*/
         _progressScript.UpdateDisplay(level, _amount);
         _Input.EmptyInventory();
         _level = level._Level;

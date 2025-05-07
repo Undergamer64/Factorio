@@ -6,6 +6,9 @@ public class Output : Inventory
 {
     public List<Input> _Inputs = new List<Input>();
     public List<Collider2D> _LinkingPoints = new List<Collider2D>();
+    
+    public bool _CanConnect = false;
+    
     private void Start()
     {
         for (int i = 0; i < _LinkingPoints.Count; i++)
@@ -25,14 +28,13 @@ public class Output : Inventory
                 
                 if (input != null)
                 {
-                    if (input.GetComponentInParent<Structure>().enabled)
+                    if (input._CanConnect)
                     {
                         if (_Inputs.Contains(input))
                         {
                             break;
                         }
                         _Inputs[_LinkingPoints.IndexOf(col)] = input;
-                        input.FindPartner();
                         break;
                     }
                 }
@@ -65,8 +67,8 @@ public class Output : Inventory
                 {
                     int LeftToAdd = input.TryAddItems(item, quantity);
                     TryRemoveItems(item, quantity - LeftToAdd);
-                    input.GetComponentInParent<Structure>().UpdateSprite();
-                    input.GetComponentInParent<Structure>().Process();
+                    input.RefreshSprite?.Invoke();
+                    input.StartProcess?.Invoke();
                     return true;
                 }
             }
@@ -81,7 +83,6 @@ public class Output : Inventory
     public bool PullOutInventory() // need to add a split function
     {
         Slot slot = _Slots[FindFirstSlotNonEmpty()];
-        
         SplitAndSendOut(slot, slot.Quantity);
         return true;
     } 
@@ -92,57 +93,51 @@ public class Output : Inventory
     /// <returns></returns>
     public void SplitAndSendOut(Slot slot, int quantity) // need to add a split function
     {
-        int inputCount = 0;
-
-        foreach (Input input in _Inputs)
-        {
-            if (input != null && !input.CanAddItem(slot.Item)) inputCount++;
-        }
+        if (quantity <= 0) return;
         
-        if (inputCount == 0) return;
-
         int RemainingItems = quantity;
         
-        foreach (Input input in _Inputs)
         {
-            if (input == null)
-                continue;
-            if (!input.IsInventoryFull(slot.Item, 1)) // not needed ?
-            {
-                if (input.CanAddItem(slot.Item))
-                {
-                    int LeftToAdd = input.TryAddItems(slot.Item, quantity / inputCount);
-                    TryRemoveItems(slot.Item, (quantity / inputCount) - LeftToAdd);
-                    RemainingItems -= LeftToAdd;
-                    input.GetComponentInParent<Structure>()?.UpdateSprite();
-                    input.GetComponentInParent<Structure>()?.Process();
-                }
-            }
-        }
-
-        if (RemainingItems <= inputCount)
-        {
-            if (RemainingItems == 0) return;
-            
+            List<Input> tempInputs = new List<Input>();
             foreach (Input input in _Inputs)
             {
-                if (input == null)
-                    continue;
-                if (!input.IsInventoryFull(slot.Item, 1)) // not needed ?
+                if (input != null && input.CanAddItem(slot.Item))
                 {
-                    if (input.CanAddItem(slot.Item))
+                    tempInputs.Add(input);
+                }
+            }
+
+            if (tempInputs.Count == 0) return;
+            
+            foreach (Input input in tempInputs)
+            {
+                int LeftToAdd = input.TryAddItems(slot.Item, quantity / tempInputs.Count);
+                TryRemoveItems(slot.Item, (quantity / tempInputs.Count) - LeftToAdd);
+                RemainingItems -= (quantity / tempInputs.Count) - LeftToAdd;
+                input.RefreshSprite?.Invoke();
+                input.StartProcess?.Invoke();
+            }
+
+            if (RemainingItems == 0) return;
+            
+            if (quantity % tempInputs.Count > 0)
+            {
+                foreach (Input input in tempInputs)
+                {
+                    if (!input.IsInventoryFull(slot.Item, 1))
                     {
                         int LeftToAdd = input.TryAddItems(slot.Item, RemainingItems);
                         TryRemoveItems(slot.Item, RemainingItems - LeftToAdd);
-                        RemainingItems -= LeftToAdd;
-                        input.GetComponentInParent<Structure>()?.UpdateSprite();
-                        input.GetComponentInParent<Structure>()?.Process();
+                        input.RefreshSprite?.Invoke();
+                        input.StartProcess?.Invoke();
                         return;
                     }
                 }
+
+                return;
             }
         }
-
+        //recursivité cause overflow + fuite de mémoire
         SplitAndSendOut(slot, RemainingItems);
     } 
     
@@ -152,25 +147,26 @@ public class Output : Inventory
     /// <returns></returns>
     public bool PullOutInventory(Recipe recipe) // need to add a split function
     {
+        bool result = false;
         for (int i = 0; i < recipe._OutputItem.Count; i++)
         {
             Input input = _Inputs[i];
             if (input == null)
                 continue;
             ItemBase item = recipe._OutputItem[i]._Item;
-            int quantity = recipe._OutputItem[i]._Quantity;
+            int quantity = Mathf.Clamp(CountItem(item), 0, item.MaxStack);
             if (!input.IsInventoryFull(item, 1))
             {
                 if (input.CanAddItem(item))
                 {
                     int LeftToAdd = input.TryAddItems(item, quantity);
                     TryRemoveItems(item, quantity - LeftToAdd);
-                    input.GetComponentInParent<Structure>()?.UpdateSprite();
-                    input.GetComponentInParent<Structure>()?.Process();
-                    return true;
+                    input.RefreshSprite?.Invoke();
+                    input.StartProcess?.Invoke();
+                    result = true;
                 }
             }
         }
-        return false;
+        return result;
     } 
 }

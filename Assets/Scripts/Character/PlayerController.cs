@@ -19,17 +19,11 @@ public class PlayerController : MonoBehaviour
 
     private Quaternion _rotation = Quaternion.Euler(0,0,-90);
     private Quaternion _currentRotation = default;
-
-    private Rigidbody2D _rigidbody2D;
-    private Vector2 _velocity;
+    
+    private Vector3 _velocity;
 
     [SerializeField]
     private float _speed = 2f;
-
-    private void Awake()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-    }
 
     private void Update()
     {
@@ -38,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        _rigidbody2D.linearVelocity = _velocity * _speed;
+        transform.position += _velocity * (_speed * Time.deltaTime);
     }
 
     public void MovementAction(InputAction.CallbackContext context)
@@ -69,8 +63,13 @@ public class PlayerController : MonoBehaviour
         {
             _currentPreviewStructure = TileManager._Instance.Place(structureItem.Structure, structureItem._SizeX, structureItem._SizeY, TileManager._Instance.RoundToCell(_currentMousePosition));
             _currentVisualStructure = _currentPreviewStructure.GetComponent<Structure>()._Visuals;
-            _currentPreviewStructure.GetComponent<Structure>().enabled = false;
+            
             if (_currentPreviewStructure == null) { return; }
+            
+            Structure structure = _currentPreviewStructure.GetComponent<Structure>();
+            
+            structure.enabled = false;
+            
             ProgressCircle progressCircle = _currentPreviewStructure.GetComponentInChildren<ProgressCircle>();
             if (progressCircle != null)
             {
@@ -111,6 +110,7 @@ public class PlayerController : MonoBehaviour
             {
                 //_characterData._Inventory.TryRemoveItems(itemStructure, 1);
                 GameObject structure = TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos, _currentRotation);
+                
                 if (structure == null)
                 {
                     ResetPreview();
@@ -118,6 +118,14 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     structure.GetComponent<Structure>()._Visuals.transform.localRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, -_currentRotation.eulerAngles.z);
+                    if (structure.GetComponent<Structure>()._Input)
+                    {
+                        structure.GetComponent<Structure>()._Input._CanConnect = true;
+                    }
+                    if (structure.GetComponent<Structure>()._Output)
+                    {
+                        structure.GetComponent<Structure>()._Output._CanConnect = true;
+                    }
                 }
             }
         }

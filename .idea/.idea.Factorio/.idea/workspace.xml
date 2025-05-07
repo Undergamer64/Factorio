@@ -6,11 +6,38 @@
   <component name="ChangeListManager">
     <list default="true" id="c71a4e06-aa45-47a1-9ab0-9d0c478118c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factorio/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factorio/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PB_Character.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PB_Character.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Input.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Input.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Output.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProgressScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProgressScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Conveyor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Conveyor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Depot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Depot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Factory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Factory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Structure.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Structure.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Textures.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/readMe.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/readMe.txt.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,29 +50,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2wiG0nfqEP1RofvWJ8waCwQGIcf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Refacto",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Refacto&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Unity.exe" />
@@ -76,15 +103,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17848">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17848" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -101,6 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1746516760083</updated>
       <workItem from="1746516761678" duration="12019000" />
+      <workItem from="1746602653168" duration="21446000" />
     </task>
     <servers />
   </component>

@@ -87,8 +87,6 @@ public class TileManager : MonoBehaviour
 
         List<Collider2D> colliders = Physics2D.OverlapBoxAll(position, sizeRotationed, 0).ToList();
 
-        if (colliders.Where(x => x.GetComponent<PlayerController>() != null).Count() > 0) { return false; }
-
         return (colliders.Where(x => x.GetComponentInParent<Structure>() != null && x.transform.parent.parent.GetComponent<Tilemap>() == _defaultTileMap).Count() == 0);
     }
 }
