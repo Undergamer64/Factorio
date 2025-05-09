@@ -7,11 +7,6 @@ public class Inventory : MonoBehaviour
     private int _slotNumbers = 0;
 
     public List<Slot> _Slots = new List<Slot>();
-    //public List<Slot> _OutputSlots = new List<Slot>();
-    //public List<Input> _Inputs = new List<Input>();
-    //public List<Output> _Outputs = new List<Output>();
-    public List<ItemBase> _WhiteListItems = new List<ItemBase>();
-    //public List<ItemBase> _BlackListItems = new List<ItemBase>();
 
     private void Awake()
     {
@@ -41,29 +36,11 @@ public class Inventory : MonoBehaviour
 
     public bool CanAddItem(ItemBase ItemToADD)
     {
-        if (_WhiteListItems.Count == 0)
-        {
-            if (FindFirstSlotAvailable(ItemToADD) != null) return true;
-        }
-        else
-        {
-            foreach(ItemBase item in _WhiteListItems)
-            {
-                if(ItemToADD == item && FindFirstSlotAvailable(ItemToADD) != null) return true;
-            }
-        }
+        if (FindFirstSlotAvailable(ItemToADD) != null) return true;
+        
         return false;
     }
-
-    public void UpdateWhiteList(List<ItemBase> items)
-    {
-        _WhiteListItems.Clear();
-        foreach(var item in items)
-        {
-            _WhiteListItems.Add(item);
-        }
-    }
-
+    
     public int FindFirstSlotNonEmpty()
     {
         if (_Slots.Count == 0 || IsInventoryEmpty())

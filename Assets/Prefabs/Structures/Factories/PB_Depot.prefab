@@ -2399,7 +2399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slotNumbers: 9
-  _WhiteListItems: []
   _Outputs: []
   _LinkingPoints:
   - {fileID: 513543701326167910}
@@ -2414,3 +2413,4 @@ MonoBehaviour:
   - {fileID: 4319902985899435689}
   - {fileID: 769255701956371775}
   - {fileID: 8124179354609083285}
+  _CanConnect: 1

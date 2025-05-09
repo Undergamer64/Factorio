@@ -770,6 +770,7 @@ MonoBehaviour:
   _LinkingPoints:
   - {fileID: 8443320930374658019}
   - {fileID: 6022985374695345743}
+  _CanConnect: 0
 --- !u!1 &8667067200860678109
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +821,7 @@ MonoBehaviour:
   _Outputs: []
   _LinkingPoints:
   - {fileID: 8124179354609083285}
+  _CanConnect: 1
 --- !u!1 &8856643556709258468
 GameObject:
   m_ObjectHideFlags: 0

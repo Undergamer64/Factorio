@@ -30,7 +30,7 @@ public class Depot : Structure
             List<ItemBase> items = new List<ItemBase>();
 
             items = _levels[_level - 1]._Items.Select(x => x._Item).ToList();
-            
+            Debug.Log(items.Count);
             bool failed = false;
 
             foreach (Slot slot in _Input._Slots)
@@ -84,17 +84,16 @@ public class Depot : Structure
         {
             SetObjective(_levels[0]);
         }
+        Init();
     }
 
     private void SetObjective(Level level)
     {
         _amount.Clear();
-        _Input._WhiteListItems.Clear();
-        /*foreach(ItemsWithQuantity item in level._Items)
+        for (int _ = 0; _ < level._Items.Count; _++)
         {
-            _Input._WhiteListItems.Add(item._Item);
             _amount.Add(0);
-        }*/
+        }
         _progressScript.UpdateDisplay(level, _amount);
         _Input.EmptyInventory();
         _level = level._Level;
@@ -106,7 +105,7 @@ public class Depot : Structure
     {
         if (!_isTrashCan)
         {
-            SetSprite(_Input._WhiteListItems[0].Sprite);
+            SetSprite(_levels[_level-1]._Items[0]._Item.Sprite);
         }
     }
 }

@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 _currentMousePosition = Vector2.zero;
     private Vector3 _lastMousePosition = Vector3.zero;
     private GameObject _currentPreviewStructure = null;
-    private GameObject _currentVisualStructure = null;
 
     private Quaternion _rotation = Quaternion.Euler(0,0,-90);
     private Quaternion _currentRotation = default;
@@ -62,7 +61,6 @@ public class PlayerController : MonoBehaviour
         if (_currentPreviewStructure == null)
         {
             _currentPreviewStructure = TileManager._Instance.Place(structureItem.Structure, structureItem._SizeX, structureItem._SizeY, TileManager._Instance.RoundToCell(_currentMousePosition));
-            _currentVisualStructure = _currentPreviewStructure.GetComponent<Structure>()._Visuals;
             
             if (_currentPreviewStructure == null) { return; }
             
@@ -108,7 +106,6 @@ public class PlayerController : MonoBehaviour
             
             if (itemStructure.Structure != null)
             {
-                //_characterData._Inventory.TryRemoveItems(itemStructure, 1);
                 GameObject structure = TileManager._Instance.Place(itemStructure.Structure, itemStructure._SizeX, itemStructure._SizeY, mousePos, _currentRotation);
                 
                 if (structure == null)
@@ -131,15 +128,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void RigthClickAction(InputAction.CallbackContext context)
+    public void RightClickAction(InputAction.CallbackContext context)
     {
         if (context.started)
         {
+            ResetPreview();
             if (_currentMousePosition == Vector2.zero) { return; }
             
             if (CheckUIInTheWay())
             {
-                ResetPreview();
                 return;
             }
 
@@ -148,23 +145,15 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos + Vector3.back * 10, _camera.GetComponent<Camera>().transform.forward, 11f);
             if (hit.collider == null)
             {
-                ResetPreview();
                 return;
             }
 
             Structure structure = hit.collider.GetComponentInParent<Structure>();
             if (structure == null || structure._Item == null)
             {
-                ResetPreview();
                 return;
             }
-
-            StructureItem item = structure._Item;
             Destroy(structure.gameObject);
-
-            //_characterData._Inventory.TryAddItems(item);
-
-            ResetPreview();
         }
     }
 
@@ -190,7 +179,6 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(_currentPreviewStructure);
             _currentPreviewStructure = null;
-            _currentVisualStructure = null;
         }
     }
 
@@ -207,10 +195,13 @@ public class PlayerController : MonoBehaviour
         Vector3 sizeOffset = new Vector3(structureItem._SizeX / 2f - 0.5f, structureItem._SizeY / 2f - 0.5f, 0);
 
         sizeOffset = new Vector3(
-            (sizeOffset.x * Mathf.Cos(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) - sizeOffset.y * Mathf.Sin(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f))),
-            (sizeOffset.x * Mathf.Sin(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) + sizeOffset.y * Mathf.Cos(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f))),
+            (sizeOffset.x * Mathf.Cos(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) 
+             - sizeOffset.y * Mathf.Sin(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f))),
+            (sizeOffset.x * Mathf.Sin(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f)) 
+             + sizeOffset.y * Mathf.Cos(_currentRotation.eulerAngles.z * (2 * Mathf.PI / 360f))),
             0
         );
+        
 
         currentMousePositionRounded += sizeOffset + TileManager._Instance._TileOffset;
         if (_lastMousePosition != currentMousePositionRounded)
@@ -218,7 +209,6 @@ public class PlayerController : MonoBehaviour
             _lastMousePosition = currentMousePositionRounded;
         }
         _currentPreviewStructure.transform.rotation = _currentRotation;
-        _currentVisualStructure.transform.localRotation = Quaternion.Euler(_currentRotation.eulerAngles.x, _currentRotation.eulerAngles.y, -_currentRotation.eulerAngles.z);
         _currentPreviewStructure.transform.position = _lastMousePosition;
     }
 

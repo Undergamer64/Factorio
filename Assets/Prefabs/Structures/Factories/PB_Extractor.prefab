@@ -557,6 +557,7 @@ MonoBehaviour:
   _Inputs: []
   _LinkingPoints:
   - {fileID: 8443320930374658019}
+  _CanConnect: 0
 --- !u!1001 &2581287308317693363
 PrefabInstance:
   m_ObjectHideFlags: 0

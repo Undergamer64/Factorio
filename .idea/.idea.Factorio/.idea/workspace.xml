@@ -6,38 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="c71a4e06-aa45-47a1-9ab0-9d0c478118c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factorio/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factorio/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PB_Character.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PB_Character.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PB_PlayerCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PB_PlayerCamera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Aluminium_Refinery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Aluminium_Refinery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Aluminium_Smeltery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Aluminium_Smeltery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Depot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Depot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Extractor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_Extractor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_IronRefinery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_IronRefinery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_IronSmeltery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_IronSmeltery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_TrashCan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Factories/PB_TrashCan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Transporter/PB_Conveyor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Transporter/PB_Conveyor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Transporter/PB_Merger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Transporter/PB_Merger.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Transporter/PB_Splitter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Transporter/PB_Splitter.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game 1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Level/So_Level4.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Input.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Input.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Output.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProgressScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProgressScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Conveyor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Conveyor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProgressCircle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProgressCircle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Depot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Depot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Factory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Factory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Structure.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Structure.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grass.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Materials/grayStone.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grass.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/Textures/grayStone.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimplyPack/readMe.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimplyPack/readMe.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structures/Gatherer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structures/Gatherer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +113,7 @@
       <updated>1746516760083</updated>
       <workItem from="1746516761678" duration="12019000" />
       <workItem from="1746602653168" duration="21446000" />
+      <workItem from="1746775555727" duration="9891000" />
     </task>
     <servers />
   </component>

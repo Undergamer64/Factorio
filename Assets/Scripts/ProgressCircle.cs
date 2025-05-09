@@ -14,9 +14,9 @@ public class ProgressCircle : MonoBehaviour
     {
         _parentFactory = transform.GetComponentInParent<Factory>();
         _progressSlider = GetComponent<Slider>();
-        if (_parentFactory._Recipe != null)
+        if (_parentFactory._CurrentRecipe != null)
         {
-            _maxTimer = _parentFactory._Recipe._Cooldown;
+            _maxTimer = _parentFactory._CurrentRecipe._Cooldown;
         }
     }
 
@@ -28,7 +28,7 @@ public class ProgressCircle : MonoBehaviour
         }
         _currentTimer = _parentFactory._CraftCooldown;
         float ratio = _currentTimer / _maxTimer;
-        if (_parentFactory._CanCraft)
+        if (_parentFactory._IsCrafting)
         {
             _progressSlider.value = 1 - ratio;
             _fill.color = _gradient.Evaluate(ratio);

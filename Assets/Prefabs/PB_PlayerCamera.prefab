@@ -233,7 +233,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3674597711406400436}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: RigthClickAction
+        m_MethodName: RightClickAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

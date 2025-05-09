@@ -18,7 +18,7 @@ public class Gatherer : Factory
         {   
             if (collider.TryGetComponent<ResourceOre>(out ResourceOre resource))
             {
-                _Recipe = resource._Recipe;
+                _CurrentRecipe = resource._Recipe;
                 break;
             }
         }
